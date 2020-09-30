@@ -1,0 +1,16 @@
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\projectGS\FacturaElectronicaGS\obj\Debug\FacturaElectronica.csprojAssemblyReference.cache
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\projectGS\FacturaElectronicaGS\obj\Debug\FacturaElectronica.g.cs
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\projectGS\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS_MarkupCompile.cache
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\projectGS\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS_MarkupCompile.lref
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\projectGS\FacturaElectronicaGS\obj\Debug\FacturaElectronica.baml
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\projectGS\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.g.resources
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\projectGS\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.Properties.Resources.resources
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\projectGS\FacturaElectronicaGS\obj\Debug\FacturaElectronica.csproj.GenerateResource.cache
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\projectGS\FacturaElectronicaGS\obj\Debug\FacturaElectronica.csproj.CoreCompileInputs.cache
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\FacturaElectronicaGS.dll.config
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\projectGS\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.dll
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\projectGS\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.pdb
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\FacturaElectronicaGS.dll
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\FacturaElectronicaGS.pdb
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\projectGS\FacturaElectronicaGS\obj\Debug\FacturaElectronica_MarkupCompile.cache
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\projectGS\FacturaElectronicaGS\obj\Debug\FacturaElectronica_MarkupCompile.lref

@@ -1,0 +1,110 @@
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.csprojAssemblyReference.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.g.cs
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS_MarkupCompile.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS_MarkupCompile.lref
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.baml
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.g.resources
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.Properties.Resources.resources
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.csproj.GenerateResource.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.csproj.CoreCompileInputs.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.dll
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.pdb
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\FacturaElectronicaGS.dll
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\FacturaElectronicaGS.pdb
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\FacturaElectronicaGS.dll.config
+C:\3muelles\tremuelles\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.csprojResolveAssemblyReference.cache
+C:\3muelles\tremuelles\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.g.cs
+C:\3muelles\tremuelles\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS_MarkupCompile.cache
+C:\3muelles\tremuelles\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS_MarkupCompile.lref
+C:\3muelles\tremuelles\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.dll
+C:\3muelles\tremuelles\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.pdb
+C:\3muelles\tremuelles\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.baml
+C:\3muelles\tremuelles\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.g.resources
+C:\3muelles\tremuelles\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.Properties.Resources.resources
+C:\3muelles\tremuelles\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.csproj.GenerateResource.cache
+C:\3muelles\tremuelles\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.csproj.CoreCompileInputs.cache
+C:\3muelles\FacturaElectronicaGS.dll.config
+C:\3muelles\FacturaElectronicaGS.dll
+C:\3muelles\FacturaElectronicaGS.pdb
+C:\lecofa\FacturaElectronicaGS\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.csprojAssemblyReference.cache
+C:\lecofa\FacturaElectronicaGS\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.g.cs
+C:\lecofa\FacturaElectronicaGS\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS_MarkupCompile.cache
+C:\lecofa\FacturaElectronicaGS\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS_MarkupCompile.lref
+C:\lecofa\FacturaElectronicaGS\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.baml
+C:\lecofa\FacturaElectronicaGS\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.g.resources
+C:\lecofa\FacturaElectronicaGS\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.Properties.Resources.resources
+C:\lecofa\FacturaElectronicaGS\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.csproj.GenerateResource.cache
+C:\lecofa\FacturaElectronicaGS.dll.config
+C:\lecofa\FacturaElectronicaGS\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.dll
+C:\lecofa\FacturaElectronicaGS\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.pdb
+C:\lecofa\FacturaElectronicaGS.dll
+C:\lecofa\FacturaElectronicaGS.pdb
+C:\facelectronicaleco\obj\Debug\FacturaElectronicaGS.csprojAssemblyReference.cache
+C:\facelectronicaleco\obj\Debug\FacturaElectronicaGS.g.cs
+C:\facelectronicaleco\obj\Debug\FacturaElectronicaGS_MarkupCompile.cache
+C:\facelectronicaleco\obj\Debug\FacturaElectronicaGS_MarkupCompile.lref
+C:\facelectronicaleco\obj\Debug\FacturaElectronicaGS.baml
+C:\facelectronicaleco\obj\Debug\FacturaElectronicaGS.g.resources
+C:\facelectronicaleco\obj\Debug\FacturaElectronicaGS.Properties.Resources.resources
+C:\facelectronicaleco\obj\Debug\FacturaElectronicaGS.csproj.GenerateResource.cache
+C:\FacturaElectronicaGS.dll.config
+C:\facelectronicaleco\obj\Debug\FacturaElectronicaGS.dll
+C:\facelectronicaleco\obj\Debug\FacturaElectronicaGS.pdb
+C:\lecofa\SiasoftLeco\Library\FacturaElectronicaGS.dll.config
+C:\lecofa\SiasoftLeco\Library\FacturaElectronicaGS.dll
+C:\lecofa\SiasoftLeco\Library\FacturaElectronicaGS.pdb
+C:\3muelles\tremuelles\lecofa\SiasoftLeco\Library\FacturaElectronicaGS.dll.config
+C:\3muelles\tremuelles\lecofa\SiasoftLeco\Library\FacturaElectronicaGS.dll
+C:\3muelles\tremuelles\lecofa\SiasoftLeco\Library\FacturaElectronicaGS.pdb
+C:\3muelles\tremuelles\facelectronicaleco\obj\Debug\FacturaElectronicaGS.csprojResolveAssemblyReference.cache
+C:\3muelles\tremuelles\facelectronicaleco\obj\Debug\FacturaElectronicaGS.g.cs
+C:\3muelles\tremuelles\facelectronicaleco\obj\Debug\FacturaElectronicaGS_MarkupCompile.cache
+C:\3muelles\tremuelles\facelectronicaleco\obj\Debug\FacturaElectronicaGS_MarkupCompile.lref
+C:\3muelles\tremuelles\facelectronicaleco\obj\Debug\FacturaElectronicaGS.baml
+C:\3muelles\tremuelles\facelectronicaleco\obj\Debug\FacturaElectronicaGS.g.resources
+C:\3muelles\tremuelles\facelectronicaleco\obj\Debug\FacturaElectronicaGS.Properties.Resources.resources
+C:\3muelles\tremuelles\facelectronicaleco\obj\Debug\FacturaElectronicaGS.csproj.GenerateResource.cache
+C:\3muelles\tremuelles\facelectronicaleco\obj\Debug\FacturaElectronicaGS.csproj.CoreCompileInputs.cache
+C:\3muelles\tremuelles\facelectronicaleco\obj\Debug\FacturaElectronicaGS.dll
+C:\3muelles\tremuelles\facelectronicaleco\obj\Debug\FacturaElectronicaGS.pdb
+C:\3muelles\tremuelles\facelectrotresmuelles\obj\Debug\FacturaElectronicaGS.csprojResolveAssemblyReference.cache
+C:\3muelles\tremuelles\facelectrotresmuelles\obj\Debug\FacturaElectronicaGS.g.cs
+C:\3muelles\tremuelles\facelectrotresmuelles\obj\Debug\FacturaElectronicaGS_MarkupCompile.cache
+C:\3muelles\tremuelles\facelectrotresmuelles\obj\Debug\FacturaElectronicaGS_MarkupCompile.lref
+C:\3muelles\tremuelles\facelectrotresmuelles\obj\Debug\FacturaElectronicaGS.baml
+C:\3muelles\tremuelles\facelectrotresmuelles\obj\Debug\FacturaElectronicaGS.g.resources
+C:\3muelles\tremuelles\facelectrotresmuelles\obj\Debug\FacturaElectronicaGS.Properties.Resources.resources
+C:\3muelles\tremuelles\facelectrotresmuelles\obj\Debug\FacturaElectronicaGS.csproj.GenerateResource.cache
+C:\3muelles\tremuelles\facelectrotresmuelles\obj\Debug\FacturaElectronicaGS.csproj.CoreCompileInputs.cache
+C:\3muelles\tremuelles\facelectrotresmuelles\obj\Debug\FacturaElectronicaGS.dll
+C:\3muelles\tremuelles\facelectrotresmuelles\obj\Debug\FacturaElectronicaGS.pdb
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\projectGS\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.g.cs
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\projectGS\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS_MarkupCompile.cache
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\projectGS\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS_MarkupCompile.lref
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\projectGS\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.baml
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\projectGS\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.g.resources
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\projectGS\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.Properties.Resources.resources
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\projectGS\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.csproj.GenerateResource.cache
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\projectGS\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.csproj.CoreCompileInputs.cache
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\FacturaElectronicaGS.dll.config
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\projectGS\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.dll
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\projectGS\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.pdb
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\FacturaElectronicaGS.dll
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\FacturaElectronicaGS.pdb
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\projectGS\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.csprojAssemblyReference.cache
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\projectGS\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.csproj.CopyComplete
+C:\Users\aleja\Desktop\GS\server 11\SiasoftGSV2019_actual\Library\project\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.csprojAssemblyReference.cache
+C:\Users\aleja\Desktop\GS\server 11\SiasoftGSV2019_actual\Library\project\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.g.cs
+C:\Users\aleja\Desktop\GS\server 11\SiasoftGSV2019_actual\Library\project\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS_MarkupCompile.cache
+C:\Users\aleja\Desktop\GS\server 11\SiasoftGSV2019_actual\Library\project\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS_MarkupCompile.lref
+C:\Users\aleja\Desktop\GS\server 11\SiasoftGSV2019_actual\Library\project\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.baml
+C:\Users\aleja\Desktop\GS\server 11\SiasoftGSV2019_actual\Library\project\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.g.resources
+C:\Users\aleja\Desktop\GS\server 11\SiasoftGSV2019_actual\Library\project\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.Properties.Resources.resources
+C:\Users\aleja\Desktop\GS\server 11\SiasoftGSV2019_actual\Library\project\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.csproj.GenerateResource.cache
+C:\Users\aleja\Desktop\GS\server 11\SiasoftGSV2019_actual\Library\project\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.csproj.CoreCompileInputs.cache
+C:\Users\aleja\Desktop\GS\server 11\SiasoftGSV2019_actual\Library\project\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.csproj.CopyComplete
+C:\Users\aleja\Desktop\GS\server 11\SiasoftGSV2019_actual\Library\FacturaElectronicaGS.dll.config
+C:\Users\aleja\Desktop\GS\server 11\SiasoftGSV2019_actual\Library\project\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.dll
+C:\Users\aleja\Desktop\GS\server 11\SiasoftGSV2019_actual\Library\project\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.pdb
+C:\Users\aleja\Desktop\GS\server 11\SiasoftGSV2019_actual\Library\FacturaElectronicaGS.dll
+C:\Users\aleja\Desktop\GS\server 11\SiasoftGSV2019_actual\Library\FacturaElectronicaGS.pdb

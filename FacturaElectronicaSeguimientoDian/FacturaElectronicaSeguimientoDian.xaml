@@ -1,0 +1,117 @@
+﻿<UserControl x:Class="SiasoftAppExt.FacturaElectronicaSeguimientoDian"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SiasoftAppExt"
+             xmlns:SiaSf="http://schemas.syncfusion.com/wpf"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1200" Background="White">
+
+    <UserControl.Resources>
+        <SolidColorBrush Color="DodgerBlue" x:Key="ColorMain"/>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource ColorMain}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource ColorMain}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+        <Style TargetType="SiaSf:GridHeaderCellControl" x:Key="headerStyle">
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="Foreground" Value="WhiteSmoke"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style TargetType="SiaSf:FilterToggleButton">
+            <Setter Property="Height" Value="15"/>
+            <Setter Property="Width" Value="15" />
+            <Setter Property="Foreground" Value="WhiteSmoke"/>
+        </Style>
+        <Style TargetType="SiaSf:GridCell" x:Key="edit">
+            <Setter Property="Background" Value="#4CF1C40F"/>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+
+        <Grid Background="Black">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="140"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="130"/>
+                <ColumnDefinition Width="130"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0" Text="Tipo:" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Right" FontWeight="Bold"/>
+            <ComboBox Name="CbTipo" Grid.Column="1" VerticalAlignment="Center" Margin="5">
+                <ComboBoxItem IsSelected="True" Content="Factura Credito"/>
+                <ComboBoxItem Content="Nota Credito"/>
+            </ComboBox>
+
+            <TextBlock Grid.Column="2" Text="Fecha Inicial:" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Right" FontWeight="Bold"/>
+            <DatePicker Name="TxFecIni" Grid.Column="3" VerticalAlignment="Center" Margin="5"/>
+
+            <TextBlock Grid.Column="4" Text="Fecha Final:" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Right" FontWeight="Bold"/>
+            <DatePicker Name="TxFecFin" Grid.Column="5" VerticalAlignment="Center" Margin="5"/>
+
+            <Button Name="BtnConsultar" Content="Consutlar" Grid.Column="6" VerticalAlignment="Center" Width="100" Height="30"  Click="BtnConsultar_Click"/>
+            <Button Name="BtnExportar" Content="Exportar" Grid.Column="7" VerticalAlignment="Center" Width="100" Height="30"  Click="BtnExportar_Click"/>
+
+            <TextBlock Grid.Column="8" Text="Facturacion electronica" Foreground="{StaticResource ColorMain}" VerticalAlignment="Center" FontSize="14"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="200"/>
+            </Grid.RowDefinitions>
+            
+            <Grid>
+                <SiaSf:SfBusyIndicator Name="sfBusyIndicator" Margin="5" VerticalAlignment="Center" FontSize="14" AnimationSpeed="100"  AnimationType="Gear" Header="Cargando Datos - SiasoftApp" Height="200" IsBusy="False" Panel.ZIndex="1"/>
+                <SiaSf:SfDataGrid  x:Name="dataGridFE" FrozenColumnCount="3" AllowResizingColumns="True" AutoGenerateColumns="False" ShowGroupDropArea="False" FontSize="10" AllowFiltering="True"  HeaderStyle="{StaticResource headerStyle}" Background="#FFF9F8F8">
+                    <SiaSf:SfDataGrid.Columns>
+                        <SiaSf:GridTextColumn HeaderText="idreg"  MappingName="idreg" Width="80"/>
+                        <SiaSf:GridTextColumn HeaderText="Codigo"  MappingName="cod_trn" Width="100"/>
+                        <SiaSf:GridTextColumn HeaderText="Documento"  MappingName="num_trn" Width="120"/>
+                        <SiaSf:GridTextColumn HeaderText="Documento FE"  MappingName="fa_docelect" Width="120"/>
+                        <SiaSf:GridTextColumn HeaderText="Nit/CC"  MappingName="cod_cli" Width="120"/>
+                        <SiaSf:GridTextColumn HeaderText="Cufe"  MappingName="fa_cufe" Width="200"/>
+                        <SiaSf:GridTextColumn HeaderText="Fecha Resp" MappingName="fa_fecharesp" Width="100"/>
+                        <SiaSf:GridTextColumn HeaderText="Cod Respueta" MappingName="fa_codigo" Width="120"/>
+                        <SiaSf:GridTextColumn HeaderText="FE documento" MappingName="fa_docelect" Width="120"/>
+                        <SiaSf:GridTextColumn HeaderText="FE mensage" MappingName="fa_msg" Width="250"/>
+                    </SiaSf:SfDataGrid.Columns>
+                </SiaSf:SfDataGrid>
+            </Grid>
+
+            <Grid Grid.Row="1" Margin="10">
+                <Border Background="White">
+                    <Border.Effect>
+                        <DropShadowEffect Direction="0" ShadowDepth="0.5" BlurRadius="5" Color="Black"/>
+                    </Border.Effect>
+                </Border>
+                <Grid>
+                    <TextBox Name="TxResponse" Margin="5" IsReadOnly="True" TextWrapping="WrapWithOverflow"/>
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="2" Background="Black">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Text="Registros:" Foreground="White" Margin="5,0,0,0" FontWeight="Bold"/>
+                <TextBlock Name="TxRegistr" Text="0" Foreground="White" Margin="5,0,0,0"/>
+            </StackPanel>
+            <Button x:Name="BtnEstado" Content="Consultar Estado" Width="120" Height="30" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" Click="BtnEstado_Click"/>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,15 @@
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\projectGS\FacturaElectronicaSeguimientoDian\obj\Debug\FacturaElectronicaSeguimientoDian.csprojAssemblyReference.cache
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\projectGS\FacturaElectronicaSeguimientoDian\obj\Debug\FacturaElectronicaSeguimientoDian.g.cs
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\projectGS\FacturaElectronicaSeguimientoDian\obj\Debug\FacturaElectronicaSeguimientoDian_MarkupCompile.cache
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\projectGS\FacturaElectronicaSeguimientoDian\obj\Debug\FacturaElectronicaSeguimientoDian_MarkupCompile.lref
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\projectGS\FacturaElectronicaSeguimientoDian\obj\Debug\FacturaElectronicaSeguimientoDian.baml
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\projectGS\FacturaElectronicaSeguimientoDian\obj\Debug\FacturaElectronicaSeguimientoDian.g.resources
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\projectGS\FacturaElectronicaSeguimientoDian\obj\Debug\FacturaElectronicaSeguimientoDian.Properties.Resources.resources
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\projectGS\FacturaElectronicaSeguimientoDian\obj\Debug\FacturaElectronicaSeguimientoDian.csproj.GenerateResource.cache
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\projectGS\FacturaElectronicaSeguimientoDian\obj\Debug\FacturaElectronicaSeguimientoDian.csproj.CoreCompileInputs.cache
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\projectGS\FacturaElectronicaSeguimientoDian\obj\Debug\FacturaElectronicaSeguimientoDian.csproj.CopyComplete
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\projectGS\FacturaElectronicaSeguimientoDian\obj\Debug\FacturaElectronicaSeguimientoDian.dll
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\projectGS\FacturaElectronicaSeguimientoDian\obj\Debug\FacturaElectronicaSeguimientoDian.pdb
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\FacturaElectronicaSeguimientoDian.dll
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\FacturaElectronicaSeguimientoDian.pdb
+D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\FacturaElectronicaSeguimientoDian.dll.config
