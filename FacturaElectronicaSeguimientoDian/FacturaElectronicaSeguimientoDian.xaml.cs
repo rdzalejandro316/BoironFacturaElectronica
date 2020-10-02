@@ -97,7 +97,7 @@ namespace SiasoftAppExt
                     string fec_ini = TxFecIni.Text;
                     string fec_fin = TxFecFin.Text;
 
-                    string where = CbTipo.SelectedIndex == 0 ? " and cod_trn='005' " : " and (cod_trn='007' or cod_trn='008') ";
+                    string where = CbTipo.SelectedIndex == 0 ? " and cod_trn='005' " : " and (cod_trn='007' or cod_trn='008') and trn_anu='005' ";
 
                     dataGridFE.ItemsSource = null;
                     sfBusyIndicator.IsBusy = true;
