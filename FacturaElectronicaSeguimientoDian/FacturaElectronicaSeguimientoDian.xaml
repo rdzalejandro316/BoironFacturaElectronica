@@ -4,9 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SiasoftAppExt"
-             xmlns:SiaSf="http://schemas.syncfusion.com/wpf"
-             mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="1200" Background="White">
+             xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+             xmlns:syncfusionskin ="clr-namespace:Syncfusion.SfSkinManager;assembly=Syncfusion.SfSkinManager.WPF"
+             mc:Ignorable="d" syncfusionskin:SfSkinManager.VisualStyle="Metro"
+             d:DesignHeight="600" d:DesignWidth="1200" Background="White" >
 
     <UserControl.Resources>
         <SolidColorBrush Color="DodgerBlue" x:Key="ColorMain"/>
@@ -16,23 +17,23 @@
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="Cursor" Value="Hand"/>
         </Style>
-        <Style TargetType="SiaSf:GridHeaderCellControl" x:Key="headerStyle">
+        <Style TargetType="syncfusion:GridHeaderCellControl" x:Key="headerStyle">
             <Setter Property="Background" Value="Black"/>
             <Setter Property="Foreground" Value="WhiteSmoke"/>
             <Setter Property="FontSize" Value="10"/>
             <Setter Property="FontWeight" Value="Bold"/>
         </Style>
-        <Style TargetType="SiaSf:FilterToggleButton">
+        <Style TargetType="syncfusion:FilterToggleButton">
             <Setter Property="Height" Value="15"/>
             <Setter Property="Width" Value="15" />
             <Setter Property="Foreground" Value="WhiteSmoke"/>
         </Style>
-        <Style TargetType="SiaSf:GridCell" x:Key="edit">
+        <Style TargetType="syncfusion:GridCell" x:Key="edit">
             <Setter Property="Background" Value="#4CF1C40F"/>
         </Style>
     </UserControl.Resources>
 
-    <Grid>
+    <Grid syncfusionskin:SfSkinManager.VisualStyle="Metro">
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
             <RowDefinition/>
@@ -53,7 +54,7 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock Grid.Column="0" Text="Tipo:" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Right" FontWeight="Bold"/>
-            <ComboBox Name="CbTipo" Grid.Column="1" VerticalAlignment="Center" Margin="5">
+            <ComboBox Name="CbTipo" Grid.Column="1" VerticalAlignment="Center"  Margin="5" Height="30" syncfusionskin:SfSkinManager.VisualStyle="Metro">
                 <ComboBoxItem IsSelected="True" Content="Factura Credito"/>
                 <ComboBoxItem Content="Nota Credito"/>
             </ComboBox>
@@ -77,21 +78,22 @@
             </Grid.RowDefinitions>
             
             <Grid>
-                <SiaSf:SfBusyIndicator Name="sfBusyIndicator" Margin="5" VerticalAlignment="Center" FontSize="14" AnimationSpeed="100"  AnimationType="Gear" Header="Cargando Datos - SiasoftApp" Height="200" IsBusy="False" Panel.ZIndex="1"/>
-                <SiaSf:SfDataGrid  x:Name="dataGridFE" FrozenColumnCount="3" AllowResizingColumns="True" AutoGenerateColumns="False" ShowGroupDropArea="False" FontSize="10" AllowFiltering="True"  HeaderStyle="{StaticResource headerStyle}" Background="#FFF9F8F8">
-                    <SiaSf:SfDataGrid.Columns>
-                        <SiaSf:GridTextColumn HeaderText="idreg"  MappingName="idreg" Width="80"/>
-                        <SiaSf:GridTextColumn HeaderText="Codigo"  MappingName="cod_trn" Width="100"/>
-                        <SiaSf:GridTextColumn HeaderText="Documento"  MappingName="num_trn" Width="120"/>
-                        <SiaSf:GridTextColumn HeaderText="Documento FE"  MappingName="fa_docelect" Width="120"/>
-                        <SiaSf:GridTextColumn HeaderText="Nit/CC"  MappingName="cod_cli" Width="120"/>
-                        <SiaSf:GridTextColumn HeaderText="Cufe"  MappingName="fa_cufe" Width="200"/>
-                        <SiaSf:GridTextColumn HeaderText="Fecha Resp" MappingName="fa_fecharesp" Width="100"/>
-                        <SiaSf:GridTextColumn HeaderText="Cod Respueta" MappingName="fa_codigo" Width="120"/>
-                        <SiaSf:GridTextColumn HeaderText="FE documento" MappingName="fa_docelect" Width="120"/>
-                        <SiaSf:GridTextColumn HeaderText="FE mensage" MappingName="fa_msg" Width="250"/>
-                    </SiaSf:SfDataGrid.Columns>
-                </SiaSf:SfDataGrid>
+                <syncfusion:SfBusyIndicator Name="sfBusyIndicator" Margin="5" VerticalAlignment="Center" FontSize="14" AnimationSpeed="100"  AnimationType="Gear" Header="Cargando Datos - SiasoftApp" Height="200" IsBusy="False" Panel.ZIndex="1"/>
+                <syncfusion:SfDataGrid  x:Name="dataGridFE" FrozenColumnCount="3" AllowResizingColumns="True" AutoGenerateColumns="False" ShowGroupDropArea="False" FontSize="10" AllowFiltering="True"  HeaderStyle="{StaticResource headerStyle}" Background="#FFF9F8F8">
+                    <syncfusion:SfDataGrid.Columns>
+                        <syncfusion:GridTextColumn HeaderText="idreg"  MappingName="idreg" Width="80"/>
+                        <syncfusion:GridTextColumn HeaderText="Codigo"  MappingName="cod_trn" Width="100"/>
+                        <syncfusion:GridTextColumn HeaderText="Documento"  MappingName="num_trn" Width="120"/>
+                        <syncfusion:GridTextColumn HeaderText="Documento FE"  MappingName="fa_docelect" Width="120"/>
+                        <syncfusion:GridTextColumn HeaderText="Nit/CC"  MappingName="cod_cli" Width="120"/>
+                        <syncfusion:GridTextColumn HeaderText="Cufe"  MappingName="fa_cufe" Width="200"/>
+                        <syncfusion:GridTextColumn HeaderText="PV"  MappingName="bod_tra" Width="80"/>
+                        <syncfusion:GridTextColumn HeaderText="Fecha Resp" MappingName="fa_fecharesp" Width="100"/>
+                        <syncfusion:GridTextColumn HeaderText="Cod Respueta" MappingName="fa_codigo" Width="120"/>
+                        <syncfusion:GridTextColumn HeaderText="FE documento" MappingName="fa_docelect" Width="120"/>
+                        <syncfusion:GridTextColumn HeaderText="FE mensage" MappingName="fa_msg" Width="250"/>
+                    </syncfusion:SfDataGrid.Columns>
+                </syncfusion:SfDataGrid>
             </Grid>
 
             <Grid Grid.Row="1" Margin="10">
@@ -101,7 +103,8 @@
                     </Border.Effect>
                 </Border>
                 <Grid>
-                    <TextBox Name="TxResponse" Margin="5" IsReadOnly="True" TextWrapping="WrapWithOverflow"/>
+                    <syncfusion:SfBusyIndicator Name="sfBusyIndicatorEstado" Margin="5" VerticalAlignment="Center" FontSize="14" AnimationSpeed="100"  AnimationType="Gear" Header="Cargando Datos - SiasoftApp" Height="200" IsBusy="False" Panel.ZIndex="1"/>
+                    <TextBox Name="TxResponse" Margin="5" IsReadOnly="True" TextWrapping="WrapWithOverflow" BorderBrush="Black" Foreground="Black"/>
                 </Grid>
             </Grid>
         </Grid>
@@ -111,7 +114,12 @@
                 <TextBlock Text="Registros:" Foreground="White" Margin="5,0,0,0" FontWeight="Bold"/>
                 <TextBlock Name="TxRegistr" Text="0" Foreground="White" Margin="5,0,0,0"/>
             </StackPanel>
-            <Button x:Name="BtnEstado" Content="Consultar Estado" Width="120" Height="30" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" Click="BtnEstado_Click"/>
+
+            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
+                <Button x:Name="BtnEstado" Content="Consultar Estado" Width="120" Height="30" Margin="5" Click="BtnEstado_Click"/>
+                <Button x:Name="BtnRenviar" Content="Enviar" Width="120" Height="30" Margin="5" Click="BtnRenviar_Click"/>
+            </StackPanel>
+        
         </Grid>
     </Grid>
 </UserControl>

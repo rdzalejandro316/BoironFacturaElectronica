@@ -21,6 +21,7 @@ using System.Windows.Shapes;
 using SrvEnvio = FacturaElectronicaSeguimientoDian.ServiceEnvio;
 using SrvAjunto = FacturaElectronicaSeguimientoDian.ServiceAdjuntos;
 using FacturaElectronicaSeguimientoDian.ServiceEnvio;
+using Syncfusion.SfSkinManager;
 
 namespace SiasoftAppExt
 {
@@ -43,6 +44,7 @@ namespace SiasoftAppExt
         public FacturaElectronicaSeguimientoDian(dynamic tabitem1)
         {
             InitializeComponent();
+            SfSkinManager.ApplyStylesOnApplication = true;
             SiaWin = Application.Current.MainWindow;
             tabitem = tabitem1;
             tabitem.Title = "Factura Electronica";
@@ -189,7 +191,7 @@ namespace SiasoftAppExt
             }
         }
 
-        private void BtnEstado_Click(object sender, RoutedEventArgs e)
+        private async void BtnEstado_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -202,28 +204,24 @@ namespace SiasoftAppExt
 
 
 
-                    DocumentStatusResponse response = serviceClienteEnvio.EstadoDocumento(tokenbussines, tokenpassword, num_trn);
+                    sfBusyIndicatorEstado.IsBusy = true;
+                    var response = await serviceClienteEnvio.EstadoDocumentoAsync(tokenbussines, tokenpassword, num_trn);
+                    sfBusyIndicatorEstado.IsBusy = false;
+
 
                     StringBuilder st = new StringBuilder();
-
-                    st.Append("ACEPTACION FISICA: " + response.aceptacionFisica.ToString() + Environment.NewLine);
-                    st.Append("AMBIENTE: " + response.ambiente.ToString().Trim() + Environment.NewLine);
+                    st.Append("ACEPTACION FISICA: " + (response.aceptacionFisica ? "SI" : "NO") + Environment.NewLine);
                     st.Append("CANDENA CODIGO QR: " + response.cadenaCodigoQR.ToString().Trim() + Environment.NewLine);
                     st.Append("CANDENA CODIGO CUFE: " + response.cadenaCufe.ToString().Trim() + Environment.NewLine);
                     st.Append("CODIGO: " + response.codigo.ToString().Trim() + Environment.NewLine);
                     st.Append("CONSECUTIVO: " + response.consecutivo.ToString().Trim() + Environment.NewLine);
                     st.Append("CUFE: " + response.cufe.ToString().Trim() + Environment.NewLine);
-                    st.Append("DESCRIPCION DOC: " + response.descripcionDocumento.ToString().Trim() + Environment.NewLine);
                     st.Append("ESTADO DOC: " + response.descripcionEstatusDocumento.ToString().Trim() + Environment.NewLine);
-                    st.Append("ENTREGA DIAN: " + response.entregaMetodoDIAN.ToString().Trim() + Environment.NewLine);
-                    st.Append("ESTADO DOC2: " + response.estatusDocumento.ToString().Trim() + Environment.NewLine);
-                    st.Append("DIAN VALID: " + response.esValidoDIAN.ToString().Trim() + Environment.NewLine);
+                    st.Append("VALIDACION DIAN: " + (response.esValidoDIAN ? "ACEPTADA" : "EN ESPERA") + Environment.NewLine);
                     st.Append("FECHA DOC: " + response.fechaDocumento.ToString().Trim() + Environment.NewLine);
-                    st.Append("HISTORIAL ENTREGA: " + response.historialDeEntregas.ToString().Trim() + Environment.NewLine);
                     st.Append("MENSAJE: " + response.mensaje.ToString().Trim() + Environment.NewLine);
                     st.Append("MENSAJE DOC: " + response.mensajeDocumento.ToString().Trim() + Environment.NewLine);
-                    st.Append("POSEE ADJ: " + response.poseeAdjuntos.ToString().Trim() + Environment.NewLine);
-                    st.Append("POSEE GRAFIC: " + response.poseeRepresentacionGrafica.ToString().Trim() + Environment.NewLine);
+                    st.Append("POSEE ADJUNTO: " + (response.poseeAdjuntos ? "SI" : "NO") + Environment.NewLine);
                     st.Append("RESULTADO: " + response.resultado.ToString().Trim() + Environment.NewLine);
                     st.Append("TRACK ID: " + response.trackID.ToString().Trim() + Environment.NewLine);
 
@@ -238,12 +236,68 @@ namespace SiasoftAppExt
                 }
 
             }
-            catch (Exception w)
+            catch (Exception)
             {
-                MessageBox.Show("el documento no se encontro", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                TxResponse.Text = "";
+                if (dataGridFE.SelectedIndex >= 0)
+                {
+
+                    DataRowView row = (DataRowView)dataGridFE.SelectedItems[0];
+                    string fa_cufe = row["fa_cufe"].ToString().Trim();
+                    if (string.IsNullOrWhiteSpace(fa_cufe))
+                    {
+                        MessageBox.Show("el documento no se encuentra en el portal", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        TxResponse.Text = "";
+                    }
+                    else
+                    {
+                        MessageBox.Show("el documento fue rechazado por la DIAN verifique en el portal cuales fueron las razones de dicho rechazo", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        TxResponse.Text = "";
+                    }
+                }
+
+
             }
         }
+
+        private void BtnRenviar_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (dataGridFE.SelectedIndex >= 0)
+                {
+
+                    int sal;
+                    DataRowView row = (DataRowView)dataGridFE.SelectedItems[0];
+                    int idreg = Convert.ToInt32(row["idreg"] == DBNull.Value || int.TryParse(row["idreg"].ToString(), out sal) == false ? 0 : row["idreg"]);
+                    string bod_tra = row["bod_tra"].ToString().Trim();
+                    string fa_cufe = row["fa_cufe"].ToString().Trim();
+
+                    if (!string.IsNullOrEmpty(fa_cufe))
+                    {
+                        MessageBox.Show("la factura yo contiene cufe:" + fa_cufe, "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        return;
+                    }
+
+                    dynamic ww = SiaWin.WindowExt(9555, "FacturaElectronicaGS");  //carga desde sql
+                    ww.idemp = SiaWin._BusinessId;
+                    ww.idrowcab = idreg;
+                    ww.cnEmp = cnEmp;
+                    ww.codpvt = bod_tra;
+                    ww.ShowInTaskbar = false;
+                    ww.Owner = Application.Current.MainWindow;
+                    ww.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                    ww.ShowDialog();
+
+
+                }
+
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("error al enviar", "alerta", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
 
 
 

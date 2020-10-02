@@ -13,3 +13,18 @@ D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\projectGS\FacturaEle
 D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\FacturaElectronicaSeguimientoDian.dll
 D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\FacturaElectronicaSeguimientoDian.pdb
 D:\Empresas\Grupo saavedra\SiasoftGS - 11 (pruebas)\Library\FacturaElectronicaSeguimientoDian.dll.config
+D:\Empresas\boiron\BOIRON\Library\project\FacturaElectronicaSeguimientoDian\obj\Debug\FacturaElectronicaSeguimientoDian.csprojAssemblyReference.cache
+D:\Empresas\boiron\BOIRON\Library\project\FacturaElectronicaSeguimientoDian\obj\Debug\FacturaElectronicaSeguimientoDian.g.cs
+D:\Empresas\boiron\BOIRON\Library\project\FacturaElectronicaSeguimientoDian\obj\Debug\FacturaElectronicaSeguimientoDian_MarkupCompile.cache
+D:\Empresas\boiron\BOIRON\Library\project\FacturaElectronicaSeguimientoDian\obj\Debug\FacturaElectronicaSeguimientoDian_MarkupCompile.lref
+D:\Empresas\boiron\BOIRON\Library\project\FacturaElectronicaSeguimientoDian\obj\Debug\FacturaElectronicaSeguimientoDian.baml
+D:\Empresas\boiron\BOIRON\Library\project\FacturaElectronicaSeguimientoDian\obj\Debug\FacturaElectronicaSeguimientoDian.g.resources
+D:\Empresas\boiron\BOIRON\Library\project\FacturaElectronicaSeguimientoDian\obj\Debug\FacturaElectronicaSeguimientoDian.Properties.Resources.resources
+D:\Empresas\boiron\BOIRON\Library\project\FacturaElectronicaSeguimientoDian\obj\Debug\FacturaElectronicaSeguimientoDian.csproj.GenerateResource.cache
+D:\Empresas\boiron\BOIRON\Library\project\FacturaElectronicaSeguimientoDian\obj\Debug\FacturaElectronicaSeguimientoDian.csproj.CoreCompileInputs.cache
+D:\Empresas\boiron\BOIRON\Library\project\FacturaElectronicaSeguimientoDian\obj\Debug\FacturaElectronicaSeguimientoDian.csproj.CopyComplete
+D:\Empresas\boiron\BOIRON\Library\FacturaElectronicaSeguimientoDian.dll.config
+D:\Empresas\boiron\BOIRON\Library\project\FacturaElectronicaSeguimientoDian\obj\Debug\FacturaElectronicaSeguimientoDian.dll
+D:\Empresas\boiron\BOIRON\Library\project\FacturaElectronicaSeguimientoDian\obj\Debug\FacturaElectronicaSeguimientoDian.pdb
+D:\Empresas\boiron\BOIRON\Library\FacturaElectronicaSeguimientoDian.dll
+D:\Empresas\boiron\BOIRON\Library\FacturaElectronicaSeguimientoDian.pdb

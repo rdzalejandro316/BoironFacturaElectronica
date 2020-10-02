@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacturaElectronicaGS", "Fac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacturaElectronicaSeguimientoDian", "..\FacturaElectronicaSeguimientoDian\FacturaElectronicaSeguimientoDian.csproj", "{2CD613A3-2786-4BF1-A99B-938C64D7B86F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneracionPedidosProvedores", "..\GeneracionPedidosProvedores\GeneracionPedidosProvedores.csproj", "{DC3729D1-51BF-452F-8E70-75CA23C162F8}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{2CD613A3-2786-4BF1-A99B-938C64D7B86F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CD613A3-2786-4BF1-A99B-938C64D7B86F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CD613A3-2786-4BF1-A99B-938C64D7B86F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DC3729D1-51BF-452F-8E70-75CA23C162F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DC3729D1-51BF-452F-8E70-75CA23C162F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DC3729D1-51BF-452F-8E70-75CA23C162F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DC3729D1-51BF-452F-8E70-75CA23C162F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
