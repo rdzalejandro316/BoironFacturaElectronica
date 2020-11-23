@@ -108,3 +108,18 @@ C:\Users\aleja\Desktop\GS\server 11\SiasoftGSV2019_actual\Library\project\Factur
 C:\Users\aleja\Desktop\GS\server 11\SiasoftGSV2019_actual\Library\project\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.pdb
 C:\Users\aleja\Desktop\GS\server 11\SiasoftGSV2019_actual\Library\FacturaElectronicaGS.dll
 C:\Users\aleja\Desktop\GS\server 11\SiasoftGSV2019_actual\Library\FacturaElectronicaGS.pdb
+D:\Empresas\boiron\BOIRON\Library\project\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.csprojAssemblyReference.cache
+D:\Empresas\boiron\BOIRON\Library\project\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.g.cs
+D:\Empresas\boiron\BOIRON\Library\project\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS_MarkupCompile.cache
+D:\Empresas\boiron\BOIRON\Library\project\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS_MarkupCompile.lref
+D:\Empresas\boiron\BOIRON\Library\project\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.baml
+D:\Empresas\boiron\BOIRON\Library\project\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.g.resources
+D:\Empresas\boiron\BOIRON\Library\project\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.Properties.Resources.resources
+D:\Empresas\boiron\BOIRON\Library\project\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.csproj.GenerateResource.cache
+D:\Empresas\boiron\BOIRON\Library\project\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.csproj.CoreCompileInputs.cache
+D:\Empresas\boiron\BOIRON\Library\project\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.csproj.CopyComplete
+D:\Empresas\boiron\BOIRON\Library\FacturaElectronicaGS.dll.config
+D:\Empresas\boiron\BOIRON\Library\project\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.dll
+D:\Empresas\boiron\BOIRON\Library\project\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.pdb
+D:\Empresas\boiron\BOIRON\Library\FacturaElectronicaGS.dll
+D:\Empresas\boiron\BOIRON\Library\FacturaElectronicaGS.pdb

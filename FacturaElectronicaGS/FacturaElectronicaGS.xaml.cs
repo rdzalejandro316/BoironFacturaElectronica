@@ -67,8 +67,8 @@ namespace SiasoftAppExt
             this.tbxFechaEmision.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             BtnEnviar.Focus();
             //this.tbxFechaEmision.Text = "2019-12-01 07:36:01";           
-            
-            
+
+
 
 
         }
@@ -247,6 +247,13 @@ namespace SiasoftAppExt
                         codigoTOTALImp = "01",
                         montoTotal = Convert.ToDecimal(row["val_iva"]).ToString()
                     };
+
+                    //if (SiaWin._UserId == 21)
+                    //{
+                    //    double a = Convert.ToDouble(row["val_iva"]);
+                    //    MessageBox.Show("mensage administrador:" + a);
+                    //}
+
                     producto1.impuestosTotales[0] = impuestoTOTAL1;
                     producto1.marca = "HKA";
 
@@ -316,7 +323,7 @@ namespace SiasoftAppExt
                 facturaDemo.impuestosGenerales = new FacturaImpuestos[1];
                 FacturaImpuestos impuestoGeneral1 = new FacturaImpuestos
                 {
-                    baseImponibleTOTALImp = dsImprimir.Tables[2].Rows[0]["base"].ToString().Trim(),
+                    baseImponibleTOTALImp = dsImprimir.Tables[2].Rows[0]["base_iva"].ToString().Trim(),
                     codigoTOTALImp = "01",
                     porcentajeTOTALImp = dsImprimir.Tables[2].Rows[0]["por_iva"].ToString().Trim(),
                     unidadMedida = "94",
@@ -387,7 +394,6 @@ namespace SiasoftAppExt
                 facturaDemo.totalSinImpuestos = dsImprimir.Tables[2].Rows[0]["base"].ToString().Trim();
 
 
-
                 return facturaDemo;
             }
             catch (Exception ex)
@@ -428,7 +434,7 @@ namespace SiasoftAppExt
 
                 factura.fechaVencimiento = Convert.ToDateTime(dsImprimir.Tables[0].Rows[0]["fec_ven"].ToString().Trim()).ToString("yyyy-MM-dd");
 
-                string ArchivoRequest = "Tmp/"+factura.consecutivoDocumento.Trim() + ".txt";
+                string ArchivoRequest = "Tmp/" + factura.consecutivoDocumento.Trim() + ".txt";
                 StreamWriter MyFile = new StreamWriter(ArchivoRequest); //ruta y name del archivo request a almecenar
                 XmlSerializer Serializer1 = new XmlSerializer(typeof(FacturaGeneral));
                 //MessageBox.Show("XML:" + Serializer1.ToString());
