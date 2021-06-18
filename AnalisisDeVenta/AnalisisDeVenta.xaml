@@ -1,0 +1,2131 @@
+﻿<UserControl x:Class="SiasoftAppExt.AnalisisDeVenta"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:chart="clr-namespace:Syncfusion.UI.Xaml.Charts;assembly=Syncfusion.SfChart.WPF" 
+             xmlns:local="clr-namespace:SiasoftAppExt"
+             xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1300" Margin="5,5,5,5" Background="Azure" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Loaded="UserControl_Loaded" >
+
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <Style TargetType="syncfusion:GridCell">
+            <Setter Property="BorderBrush" Value="LightGray" />
+        </Style>
+        <Style TargetType="syncfusion:GridHeaderCellControl" x:Key="headerStyle">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#bdc3c7"/>
+            
+        </Style>
+        <Style TargetType="syncfusion:GridRowHeaderCell">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="syncfusion:GridRowHeaderCell">
+                        <Border x:Name="PART_RowHeaderCellBorder"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                            <Grid>
+                                <TextBlock HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Text="{Binding RowIndex,RelativeSource={RelativeSource TemplatedParent}}"
+                                   TextAlignment="Center" />
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid Name="MainPanel" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:SiaSf="http://schemas.syncfusion.com/wpf" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"    xmlns:sync="clr-namespace:Syncfusion.UI.Xaml.Grid;assembly=Syncfusion.SfGrid.WPF" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  xmlns:sncg="clr-namespace:Syncfusion.Windows.Controls.Grid;assembly=Syncfusion.Grid.WPF" >
+        <SiaSf:TabControlExt Name="TabControl1" Margin="0,0,10,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  SiaSf:SkinStorage.VisualStyle="Metro"  IsDisableUnloadTabItemExtContent="True"  EnableLabelEdit="False" TabItemSelectedBackground="#373737" CloseButtonType="Hide">
+            <SiaSf:TabItemExt Name="tabItemExt1"  Header="Configuracion" FontSize="15" >
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <Grid  x:Name="GridConfiguracion" Grid.Row="0"  HorizontalAlignment="Center" VerticalAlignment="Center" >
+                        <Border CornerRadius="3,3,3,3"  Height="410"  Width="600" Margin="0,0,0,0"   HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="2,2,2,2"  Padding="0" Grid.Row="1" Grid.Column ="1" Grid.ColumnSpan="4"  Grid.RowSpan="8"  >
+                        
+                            <Grid Background="Silver">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="15" />
+                                    <RowDefinition Height="25" />
+                                    <RowDefinition Height="35" />
+                                    <RowDefinition Height="35" />
+                                    <RowDefinition Height="35" />
+                                    <RowDefinition Height="35" />
+                                    <RowDefinition Height="35" />
+                                    <RowDefinition Height="35" />
+                                    <RowDefinition Height="35" />
+                                    <RowDefinition Height="35" />
+                                    <RowDefinition Height="35" />
+                                    <RowDefinition Height="35" />
+                                    <RowDefinition Height="35" />
+
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions >
+                                    <ColumnDefinition Width="10" />
+                                    <ColumnDefinition Width="140" />
+                                    <ColumnDefinition Width="140" />
+                                    <ColumnDefinition Width="140" />
+                                    <ColumnDefinition Width="160" />
+
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Foreground="Black" Grid.Column="2" Grid.Row="1" FontSize="12" Margin="0,0,0,0" HorizontalAlignment="Center"  >Desde</TextBlock>
+                                <TextBlock Foreground="Black" Grid.Column="3" Grid.Row="1" FontSize="12" Margin="0,0,0,0" HorizontalAlignment="Center"  >Hasta</TextBlock>
+
+                                <TextBlock Grid.Column="1" Grid.Row="2" FontSize="12" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="right"  >Fecha:</TextBlock>
+                                <DatePicker Name="FecIni"   HorizontalAlignment="Center" Text="{Binding CabSource.FechaIni}" VerticalAlignment="Center" Width="130" Height="28" Grid.Column="2" Grid.Row="2" Margin="2,0,0,0"  FontSize="12"/>
+                                <DatePicker Name="FecFin"   HorizontalAlignment="Center" Text="{Binding CabSource.FechaFin}" VerticalAlignment="Center" Width="130" Height="28" Grid.Column="3" Grid.Row="2" Margin="2,0,0,0"  FontSize="12"/>
+                                <TextBlock  Grid.Column="1" Grid.Row="3" Foreground="Black"  FontSize="12" VerticalAlignment="Center" HorizontalAlignment="right" >Referencia:</TextBlock>
+                                <TextBox x:Name="TextBoxRefI"   Grid.Column="2" Grid.Row="3"  Width="130" Height="28" MaxLength="15"   FontSize="12"   HorizontalAlignment="Center"  PreviewKeyDown="TextBox_PreviewKeyDown" Tag="inmae_ref" ToolTip="F8 Buscar"></TextBox>
+                                <TextBox  x:Name="TextBoxRefF" Grid.Column="3" Grid.Row="3"  Width="130" MaxLength="15" Height="28"    FontSize="12"   HorizontalAlignment="Center" PreviewKeyDown="TextBox_PreviewKeyDown" Tag="inmae_ref" ToolTip="F8 Buscar"></TextBox>
+
+                                <TextBlock  Grid.Column="1" Grid.Row="4" Foreground="Black"  FontSize="12" VerticalAlignment="Center" HorizontalAlignment="right" >Bodega:</TextBlock>
+                                <TextBox  x:Name="TextBoxBodI" Grid.Column="2" Grid.Row="4" MaxLength="15" Width="130" VerticalAlignment="Center" Height="28"   FontSize="12"   HorizontalAlignment="Center" ToolTip="F8 Buscar" PreviewKeyDown="TextBox_PreviewKeyDown" Tag="inmae_bod"></TextBox>
+                                <TextBox x:Name="TextBoxBodF" Grid.Column="3" MaxLength="15" Grid.Row="4"  Width="130" VerticalAlignment="Center" Height="28"   FontSize="12"   HorizontalAlignment="Center" ToolTip="F8 Buscar" TextDecorations="Underline" PreviewKeyDown="TextBox_PreviewKeyDown" Tag="inmae_bod"></TextBox>
+                                <TextBlock  Grid.Column="1" Grid.Row="5" Foreground="Black"  FontSize="12" VerticalAlignment="Center" HorizontalAlignment="right" >Cliente:</TextBlock>
+                                <TextBox  x:Name="TextBoxTerI" MaxLength="15" Grid.Column="2" Grid.Row="5"  Width="130" Height="28"    FontSize="12"   HorizontalAlignment="Center" ToolTip="F8 Buscar" PreviewKeyDown="TextBox_PreviewKeyDown" Tag="comae_ter"></TextBox>
+                                <TextBlock  Grid.Column="1" Grid.Row="6"   FontSize="12" VerticalAlignment="Center" HorizontalAlignment="right" >Vendedor:</TextBlock>
+                                <TextBox  x:Name="TextBoxVenI" MaxLength="3" Grid.Column="2" Grid.Row="6"  Width="130" Height="30"    FontSize="12"  ToolTip="F8 Buscar" HorizontalAlignment="Center"  PreviewKeyDown="TextBox_PreviewKeyDown" Tag="inmae_mer"></TextBox>
+                                <TextBlock  Grid.Column="1" Grid.Row="7" Foreground="Black"  FontSize="12" VerticalAlignment="Center" HorizontalAlignment="right" >Linea:</TextBlock>
+                                <TextBox  x:Name="TextBoxTipI" MaxLength="3" Grid.Column="2" Grid.Row="7"  Width="130" Height="28"    FontSize="12"  ToolTip="F8 Buscar" HorizontalAlignment="Center"  PreviewKeyDown="TextBox_PreviewKeyDown" Tag="inmae_tip"></TextBox>
+                                <TextBox  x:Name="TextBoxTipF" MaxLength="3" Grid.Column="3" Grid.Row="7"  Width="130" Height="28"    FontSize="12" ToolTip="F8 Buscar"  HorizontalAlignment="Center"  PreviewKeyDown="TextBox_PreviewKeyDown" Tag="inmae_tip"></TextBox>
+
+                                <TextBlock  Grid.Column="1" Grid.Row="8" Foreground="Black"  FontSize="12" VerticalAlignment="Center" HorizontalAlignment="right" >Grupo:</TextBlock>
+                                <TextBox  x:Name="TextBoxGrpI" MaxLength="3" Grid.Column="2" Grid.Row="8"  Width="130" Height="28"    FontSize="12" ToolTip="F8 Buscar"  HorizontalAlignment="Center"  PreviewKeyDown="TextBox_PreviewKeyDown" Tag="inmae_gru"></TextBox>
+                                <TextBox  x:Name="TextBoxGrpF" MaxLength="3" Grid.Column="3" Grid.Row="8"  Width="130" Height="28"    FontSize="12"  ToolTip="F8 Buscar" HorizontalAlignment="Center"  PreviewKeyDown="TextBox_PreviewKeyDown" Tag="inmae_gru"></TextBox>
+
+                                <TextBlock  Grid.Column="1" Grid.Row="8" Foreground="Black"  FontSize="12" VerticalAlignment="Center" HorizontalAlignment="right" >Grupo:</TextBlock>
+
+                                <!--<TextBlock  Grid.Column="1" Grid.Row="9" Foreground="Black"  FontSize="12" VerticalAlignment="Center" HorizontalAlignment="right" >Importacion:</TextBlock>
+                                <TextBox  x:Name="TextBoxImpI"  MaxLength="5" Grid.Column="2" Grid.Row="9"  Width="130" Height="28"    FontSize="12"   HorizontalAlignment="Center"  ></TextBox>-->
+                                <TextBlock  Grid.Column="4" Grid.Row="8"   FontSize="12" VerticalAlignment="Center" Foreground="#3498db" HorizontalAlignment="Left" Margin="0,14,0,5" >F8=Consultar</TextBlock>
+                                <Button  Margin="5,0,5,0" Background="#3498db" Foreground="WhiteSmoke" Grid.Column="2" Grid.Row="11" Name="BtnEjecutar" Width="145" Height="30"  HorizontalAlignment="Center" VerticalAlignment="Center"  Command="{Binding RegisterCommand}" CommandParameter="{Binding ElementName=BtnEjecutar}" Click="ButtonRefresh_Click" Cursor="Hand">Actualizar</Button>
+                                <Button  Margin="5,0,5,0"  Background="#3498db" Grid.Column="3" Grid.Row="11" Foreground="WhiteSmoke" Name="BtnSalir" Width="145" Height="30"  HorizontalAlignment="Center" VerticalAlignment="Center"  Command="{Binding RegisterCommand}" CommandParameter="{Binding ElementName=BtnEjecutar}" Click="BtnSalir_Click" Cursor="Hand">Salir</Button>
+
+
+                            </Grid>
+
+
+                        </Border>
+                    </Grid>
+                    <Grid Grid.Row="1" >
+                    </Grid>
+
+                    <SiaSf:SfBusyIndicator Name="sfBusyIndicator"
+                                    Margin="5"
+                                    VerticalAlignment="Bottom" FontSize="12" AnimationSpeed="100" 
+                                    AnimationType="Rainy" Header="Cargando Datos - SiasoftApp" Height="200" 
+                                    IsBusy="False" Focusable="False"/>
+
+                </Grid>
+            </SiaSf:TabItemExt>
+
+            <SiaSf:TabItemExt Name="tabItemExt2"  Header="Análisis General" FontSize="13"  >
+                <Grid>
+                    <Grid.Resources>
+                        <Style x:Key="botones-menu">
+                            <Setter Property="Control.Background" Value="#16a085"/>
+                            <Setter Property="Control.BorderBrush" Value="{x:Null}"/>
+                            <Setter Property="Control.Foreground" Value="White"/>
+                            <Setter Property="Control.Height" Value="40"/>
+                            <Setter Property="Control.HorizontalAlignment" Value="Stretch"/>
+                            <Setter Property="Control.Margin" Value="0 0 5 0"/>
+                            <Setter Property="Control.Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}" BorderBrush="{x:Null}" BorderThickness="1">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="Control.IsMouseOver" Value="True">
+                                    <Setter Property="Control.Background" Value="#FF117A65"/>
+                                    <Setter Property="Control.Cursor" Value="Hand"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                        <Style x:Key="Tit_dat">
+                            <Setter Property="Control.Margin" Value="10 0 0 0"/>
+                            <Setter Property="Control.Foreground" Value="#03A9F4"/>
+                            <Setter Property="Control.FontWeight" Value="Bold"/>
+                            <Setter Property="Control.FontSize" Value="18"/>
+                        </Style>
+                        <Style TargetType="Border" x:Key="borde">
+                            <Setter Property="Background" Value="White"/>
+                            <Setter Property="Height" Value="Auto"/>
+                            <Setter Property="BorderThickness" Value="1,1,1,1"/>
+                            <Setter Property="Margin" Value="5"/>
+                            <Setter Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect Direction="0" ShadowDepth="0.5" BlurRadius="5" Color="Black"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                        <Style x:Key="title">
+                            <Setter Property="Control.FontSize" Value="18"/>
+                            <Setter Property="Control.HorizontalAlignment" Value="Center"/>
+                            <Setter Property="Control.VerticalAlignment" Value="Center"/>
+                            <Setter Property="Control.Foreground" Value="DodgerBlue"/>
+                            <Setter Property="Control.FontWeight" Value="Bold"/>
+                        </Style>
+                        <Style x:Key="value">
+                            <!--mierda-->
+                            <Setter Property="Control.FontSize" Value="16"/>
+                            <Setter Property="Control.HorizontalAlignment" Value="Center"/>
+                            <Setter Property="Control.VerticalAlignment" Value="Center"/>
+                            <Setter Property="Control.Foreground" Value="DarkGreen"/>
+                            <Setter Property="Control.FontWeight" Value="Bold"/>
+                        </Style>
+
+                    </Grid.Resources>
+
+                    <SiaSf:TabControlExt Grid.Row="0"  Name="TabControlInfo" Margin="0,0,0,1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  SiaSf:SkinStorage.VisualStyle="Metro" IsDisableUnloadTabItemExtContent="True" EnableLabelEdit="False" TabItemSelectedBackground="#373737" CloseButtonType="Hide">
+                        <SiaSf:TabItemExt Name="tabItemExt3"  Header="Ventas Por Producto" >
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="80" />
+                                    <RowDefinition Height="1*" />
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Text="Analisis de Ventas por Productos" Style="{StaticResource Tit_dat}"/>
+
+                                <!--<Border Grid.Row="1" Background="white" Height="Auto"  BorderBrush="Silver" BorderThickness="1,1,1,1" Margin="5">
+                                </Border>-->
+
+                                <Grid Grid.Row="1">
+
+
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="0.5*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Border Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="Registros: " Grid.Row="0" Style="{StaticResource title}"/>
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="Total1" Text="{Binding StringFormat=c}" Grid.Row="1" Style="{StaticResource value}" />
+                                            </Viewbox>
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="Cantidad: " Grid.Row="0" Style="{StaticResource title}"/>
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextCantidad1"  Text="{Binding StringFormat=c}" Grid.Row="1" Style="{StaticResource value}"/>
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Grid.Column="4" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Text="Subtotal: " Grid.Row="0" Style="{StaticResource title}"/>
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextSubtotal1"  Text="{Binding StringFormat=c}" Grid.Row="1" Style="{StaticResource value}"/>
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Grid.Column="6" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Text="Descuento: "  Grid.Row="0" Style="{StaticResource title}"/>
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextDescuento1" Grid.Row="1" Style="{StaticResource value}"/>
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+
+                                    <Border Grid.Column="8" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="Iva: "  Grid.Row="0" Style="{StaticResource title}"/>
+
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextIva1" Grid.Row="1" Style="{StaticResource value}"/>
+                                            </Viewbox>
+
+
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Grid.Column="10" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Text="Total: "  Grid.Row="0" Style="{StaticResource title}"/>
+
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextTotal1" Grid.Row="1" Style="{StaticResource value}" />
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+
+
+
+                                    <Button Content="Exportar Xls" Click="Button_Click" Tag="1" Grid.Column="13" Cursor="Hand" Style="{StaticResource botones-menu}"  />
+
+                                </Grid>
+
+                                <syncfusion:SfDataGrid  AllowDraggingColumns="True" AllowDraggingRows="True" AllowDrop="True" FrozenColumnCount="2" AllowResizingColumns="True" Grid.Row="2" x:Name="VentasPorProducto"  EnableDataVirtualization = "True" AutoGenerateColumns="False" ShowGroupDropArea="True" FontSize="10" AllowFiltering="True" Margin="5" FilterChanged="dataGrid_FilterChanged" Tag="1" HeaderStyle="{StaticResource headerStyle}" RowSelectionBrush="#7F3498DB">
+                                    <syncfusion:SfDataGrid.Columns>
+
+                                        <SiaSf:GridTemplateColumn MappingName="Detalle" Width="56"  AllowFiltering="False">
+                                            <SiaSf:GridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Button x:Name="BtnDetalle" Content="..." Click="BTNdetalle_Click" Background="#3498db" Cursor="Hand" Tag="1"/>
+                                                </DataTemplate>
+                                            </SiaSf:GridTemplateColumn.CellTemplate>
+                                        </SiaSf:GridTemplateColumn>
+
+                                        <syncfusion:GridTextColumn HeaderText="Codigo" MappingName="cod_ref" Width="120" />
+                                        <syncfusion:GridTextColumn HeaderText="Nombre Producto" MappingName="nom_ref" Width="300"/>
+                                        <syncfusion:GridTextColumn HeaderText="Linea" MappingName="nom_tip" Width="120"/>
+                                        <syncfusion:GridTextColumn HeaderText="Grupo" MappingName="nom_gru" Width="120"/>
+                                        <syncfusion:GridNumericColumn HeaderText="CntVta" MappingName="cantidad" Width="80" NumberDecimalDigits="2"/>
+                                        <syncfusion:GridNumericColumn HeaderText="CntDev" MappingName="can_dev" Width="80" NumberDecimalDigits="2"/>
+                                        <syncfusion:GridNumericColumn HeaderText="Neto" MappingName="neto" Width="80" NumberDecimalDigits="2"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=subtotal, StringFormat='{}{0:c}'}"  HeaderText="SubTotal" TextAlignment="Right" Width="110"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=val_des, StringFormat='{}{0:c}'}" HeaderText="Valor Dcto" TextAlignment="Right" Width="100"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=val_iva, StringFormat='{}{0:c}'}"  HeaderText="Valor Iva" TextAlignment="Right" Width="100"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=total, StringFormat='{}{0:c}'}"  HeaderText="Valor Total" TextAlignment="Right" Width="100"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=costo, StringFormat='{}{0:c}'}" HeaderText="Costo" TextAlignment="Right" Width="110"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=cos_unin, StringFormat='{}{0:c}'}" HeaderText="Costo Uni NIIf" TextAlignment="Right" Width="120"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=cos_totn, StringFormat='{}{0:c}'}" HeaderText="Costo Tot NIIF" TextAlignment="Right" Width="120"/>
+                                    </syncfusion:SfDataGrid.Columns>
+
+                                    <syncfusion:SfDataGrid.GroupSummaryRows>
+                                        <syncfusion:GridSummaryRow ShowSummaryInRow="False">
+                                            <syncfusion:GridSummaryRow.SummaryColumns>
+                                                <syncfusion:GridSummaryColumn Name="SubTotal"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="subtotal"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="Valor Dcto"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="val_des"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="Valor Iva"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="val_iva"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="Valor Total"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="total"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="Costo"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="costo"
+                                                          SummaryType="DoubleAggregate" />
+
+                                            </syncfusion:GridSummaryRow.SummaryColumns>
+                                        </syncfusion:GridSummaryRow>
+                                        <syncfusion:GridSummaryRow Title="Total de Producto : {YearSales}" ShowSummaryInRow="True">
+                                            <syncfusion:GridSummaryRow.SummaryColumns>
+                                                <syncfusion:GridSummaryColumn Name="YearSales"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="total"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="ProductCount"
+                                                          Format="'{Count:d}'"
+                                                          MappingName="Name"
+                                                          SummaryType="CountAggregate" />
+                                            </syncfusion:GridSummaryRow.SummaryColumns>
+                                        </syncfusion:GridSummaryRow>
+                                    </syncfusion:SfDataGrid.GroupSummaryRows>
+
+                                </syncfusion:SfDataGrid>
+
+                            </Grid>
+                        </SiaSf:TabItemExt>
+
+                        <SiaSf:TabItemExt Name="tabItemExt4"  Header="Ventas Por Bodega" >
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="80" />
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Text="Analisis de Ventas por Tienda" Style="{StaticResource Tit_dat}"/>
+
+                                <Grid Grid.Row="1">
+
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="0.5*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Border Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="Registros: " Grid.Row="0" Style="{StaticResource title}"/>
+
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="Total2" Text="{Binding StringFormat=c}" Grid.Row="1" Style="{StaticResource value}" />
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="Cantidad: " Grid.Row="0" Style="{StaticResource title}"/>
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextCantidad2"  Text="{Binding StringFormat=c}" Grid.Row="1" Style="{StaticResource value}"/>
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Grid.Column="4" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="Subtotal: " Grid.Row="0" Style="{StaticResource title}"/>
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextSubtotal2"  Text="{Binding StringFormat=c}" Grid.Row="1" Style="{StaticResource value}"/>
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Grid.Column="6" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Text="Descuento: "  Grid.Row="0" Style="{StaticResource title}"/>
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextDescuento2" Grid.Row="1" Style="{StaticResource value}"/>
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+
+                                    <Border Grid.Column="8" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="Iva: "  Grid.Row="0" Style="{StaticResource title}"/>
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextIva2" Grid.Row="1" Style="{StaticResource value}"/>
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Grid.Column="10" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Text="Total: "  Grid.Row="0" Style="{StaticResource title}"/>
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextTotal2" Grid.Row="1" Style="{StaticResource value}" />
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+
+
+
+                                    <Button Content="Exportar Xls" Click="Button_Click" Tag="2" Grid.Column="13" Cursor="Hand" Style="{StaticResource botones-menu}"  />
+
+                                </Grid>
+                                <!--<Button Grid.Row="0" Content="Exportar Xls" Click="Button_Click" Tag="2" Cursor="Hand" Grid.Column="1"  Style="{StaticResource botones-menu}"/>-->
+
+
+                                <syncfusion:SfDataGrid Grid.Row="2" AllowDraggingColumns="True" AllowDraggingRows="True" AllowDrop="True" FrozenColumnCount="2" x:Name="VentaPorBodega" AllowResizingColumns="True" EnableDataVirtualization = "True" AutoGenerateColumns="False" ShowGroupDropArea="True" FontSize="10" AllowFiltering="True" Grid.ColumnSpan="2" Margin="5" FilterChanged="dataGrid_FilterChanged" Tag="2" HeaderStyle="{StaticResource headerStyle}" RowSelectionBrush="#7F3498DB">
+                                    <syncfusion:SfDataGrid.Columns>
+                                        <SiaSf:GridTemplateColumn MappingName="Detalle" Width="56"  AllowFiltering="False">
+                                            <SiaSf:GridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Button x:Name="BtnDetalle" Content="..." Click="BTNdetalle_Click" Background="#3498db" Cursor="Hand" Tag="2"/>
+                                                </DataTemplate>
+                                            </SiaSf:GridTemplateColumn.CellTemplate>
+                                        </SiaSf:GridTemplateColumn>
+
+                                        <syncfusion:GridTextColumn HeaderText="Codigo" MappingName="cod_bod" Width="70"/>
+                                        <syncfusion:GridTextColumn HeaderText="Bodega" MappingName="nom_bod" Width="200"/>
+                                        <syncfusion:GridNumericColumn HeaderText="CntVta" MappingName="cantidad" Width="80" NumberDecimalDigits="2"/>
+                                        <syncfusion:GridNumericColumn HeaderText="CntDev" MappingName="can_dev" Width="80" NumberDecimalDigits="2"/>
+                                        <syncfusion:GridNumericColumn HeaderText="Neto" MappingName="neto" Width="80" NumberDecimalDigits="2"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=subtotal, StringFormat='{}{0:c}'}" HeaderText="SubTotal" TextAlignment="Right" Width="120"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=val_des, StringFormat='{}{0:c}'}" HeaderText="Valor Dcto" TextAlignment="Right" Width="100"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=val_iva, StringFormat='{}{0:c}'}" HeaderText="Valor IVA" TextAlignment="Right" Width="100"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=total, StringFormat='{}{0:c}'}" HeaderText="Valor Total" TextAlignment="Right" Width="120"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=cos_unin, StringFormat='{}{0:c}'}" HeaderText="Costo Uni NIIf" TextAlignment="Right" Width="120"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=cos_totn, StringFormat='{}{0:c}'}" HeaderText="Costo Tot NIIF" TextAlignment="Right" Width="120"/>
+                                    </syncfusion:SfDataGrid.Columns>
+
+                                    <syncfusion:SfDataGrid.GroupSummaryRows>
+                                        <syncfusion:GridSummaryRow ShowSummaryInRow="False">
+                                            <syncfusion:GridSummaryRow.SummaryColumns>
+                                                <syncfusion:GridSummaryColumn Name="SubTotal"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="subtotal"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="Valor Dcto"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="val_des"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="Valor Iva"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="val_iva"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="Valor Total"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="total"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="Costo"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="costo"
+                                                          SummaryType="DoubleAggregate" />
+
+                                            </syncfusion:GridSummaryRow.SummaryColumns>
+                                        </syncfusion:GridSummaryRow>
+                                        <syncfusion:GridSummaryRow Title="Total por Bodega: {YearSales}" ShowSummaryInRow="True">
+                                            <syncfusion:GridSummaryRow.SummaryColumns>
+                                                <syncfusion:GridSummaryColumn Name="YearSales"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="total"
+                                                          SummaryType="DoubleAggregate" />
+                                            </syncfusion:GridSummaryRow.SummaryColumns>
+                                        </syncfusion:GridSummaryRow>
+                                    </syncfusion:SfDataGrid.GroupSummaryRows>
+
+                                </syncfusion:SfDataGrid>
+
+                                <Grid Grid.Row="3" Name="CharVentasBodega" Grid.ColumnSpan="2"   >
+                                    <Grid.Resources>
+                                        <DataTemplate x:Key="headerTemplate">
+                                            <TextBlock FontSize="12" Foreground="Black" Margin="5" Text="{Binding}"/>
+                                        </DataTemplate>
+
+                                        <DataTemplate x:Key="labelTemplate">
+                                            <TextBlock FontSize="10" Foreground="#2980b9"  Margin="1" Text="{Binding Path=LabelContent}"/>
+                                        </DataTemplate>
+
+                                        <Style TargetType="Line" x:Key="AxisStyle">
+                                            <Setter Property="Stroke" Value="DarkGray"  />
+                                            <Setter Property="StrokeThickness" Value="1"/>
+
+                                        </Style>
+
+                                    </Grid.Resources>
+
+                                    <chart:SfChart x:Name="AreaChartVta" AreaBorderThickness="0,1,1,0" Grid.Column="0"      HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,10,1">
+                                        <chart:SfChart.Header>
+                                            <TextBlock FontSize="10" FontFamily="Segoe UI" Foreground="#2980b9" Margin="0,0,0,5">Ventas por Almacen</TextBlock>
+                                        </chart:SfChart.Header>
+                                        <chart:SfChart.PrimaryAxis>
+                                            <chart:CategoryAxis Header="Almacen" FontSize="10" Foreground="DodgerBlue" PlotOffset="30" LabelTemplate="{StaticResource labelTemplate}" HeaderTemplate="{StaticResource headerTemplate}" AxisLineStyle="{StaticResource AxisStyle}" MajorTickLineStyle="{StaticResource AxisStyle}">
+                                            </chart:CategoryAxis>
+                                        </chart:SfChart.PrimaryAxis>
+
+                                        <chart:SfChart.SecondaryAxis>
+                                            <chart:NumericalAxis Foreground="DodgerBlue" Header="Total Ventas" HeaderTemplate="{StaticResource headerTemplate}"   LabelTemplate="{StaticResource labelTemplate}"  AxisLineStyle="{StaticResource AxisStyle}"  MajorTickLineStyle="{StaticResource AxisStyle}">
+                                            </chart:NumericalAxis>
+                                        </chart:SfChart.SecondaryAxis>
+
+                                        <chart:AreaSeries x:Name="AreaSeriesVta" EnableAnimation="True"  XBindingPath="ini_bod"  Label="Bodega" YBindingPath="neto"  ItemsSource="{Binding VentasAnos}"   ShowTooltip="True" AnimationDuration="00:00:03" Margin="0 0 10 0">
+                                            <chart:AreaSeries.AdornmentsInfo>
+                                                <chart:ChartAdornmentInfo AdornmentsPosition="Bottom"  HorizontalAlignment="Center" VerticalAlignment="Center" ShowLabel="True">
+                                                    <chart:ChartAdornmentInfo.LabelTemplate>
+                                                        <DataTemplate>
+                                                            <Grid>
+                                                                <Ellipse Height="27" Width="27" Stroke="#FF1BA1E2" Fill="#7f8c8d" StrokeThickness="2"  HorizontalAlignment="Center"/>
+                                                                <TextBlock Text="{Binding}" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe UI"  FontSize="12"/>
+                                                            </Grid>
+                                                        </DataTemplate>
+                                                    </chart:ChartAdornmentInfo.LabelTemplate>
+                                                </chart:ChartAdornmentInfo>
+                                            </chart:AreaSeries.AdornmentsInfo>
+                                        </chart:AreaSeries>
+                                    </chart:SfChart>
+                                </Grid>
+
+
+                            </Grid>
+                        </SiaSf:TabItemExt>
+
+                        <SiaSf:TabItemExt Name="tabItemExt5"  Header="Ventas Por Cliente" >
+                            <Grid>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="80" />
+                                    <RowDefinition Height="1*" />
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Text="Analisis de Ventas por Cliente"  Style="{StaticResource Tit_dat}"/>
+
+                                <Grid Grid.Row="1">
+
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="0.5*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Border Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="Registros: " Grid.Row="0" Style="{StaticResource title}"/>
+
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="Total3" Text="{Binding StringFormat=c}" Grid.Row="1" Style="{StaticResource value}" />
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="Cantidad: " Grid.Row="0" Style="{StaticResource title}"/>
+
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextCantidad3"  Text="{Binding StringFormat=c}" Grid.Row="1" Style="{StaticResource value}"/>
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Grid.Column="4" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="Subtotal: " Grid.Row="0" Style="{StaticResource title}"/>
+
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextSubtotal3"  Text="{Binding StringFormat=c}" Grid.Row="1" Style="{StaticResource value}"/>
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Grid.Column="6" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Text="Descuento: "  Grid.Row="0" Style="{StaticResource title}"/>
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextDescuento3" Grid.Row="1" Style="{StaticResource value}"/>
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+
+                                    <Border Grid.Column="8" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="Iva: "  Grid.Row="0" Style="{StaticResource title}"/>
+
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextIva3" Grid.Row="1" Style="{StaticResource value}"/>
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Grid.Column="10" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Text="Total: "  Grid.Row="0" Style="{StaticResource title}"/>
+
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextTotal3" Grid.Row="1" Style="{StaticResource value}" />
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+                                    <Button Content="Exportar Xls" Click="Button_Click" Tag="3" Grid.Column="13" Cursor="Hand" Style="{StaticResource botones-menu}"  />
+
+                                </Grid>
+
+
+                                <syncfusion:SfDataGrid Grid.Row="2" x:Name="VentasPorCliente" AllowDraggingColumns="True" AllowDraggingRows="True" AllowDrop="True" AllowResizingColumns="True" FrozenColumnCount="2" EnableDataVirtualization = "True" AutoGenerateColumns="False" ShowGroupDropArea="True" FontSize="10" AllowFiltering="True" Margin="5,5,5,8" Grid.ColumnSpan="2" FilterChanged="dataGrid_FilterChanged" Tag="3" HeaderStyle="{StaticResource headerStyle}" RowSelectionBrush="#7F3498DB">
+                                    <syncfusion:SfDataGrid.Columns>
+
+                                        <SiaSf:GridTemplateColumn MappingName="Detalle" Width="56"  AllowFiltering="False">
+                                            <SiaSf:GridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Button x:Name="BtnDetalle" Content="..." Click="BTNdetalle_Click" Background="#3498db" Cursor="Hand" Tag="3"/>
+                                                </DataTemplate>
+                                            </SiaSf:GridTemplateColumn.CellTemplate>
+                                        </SiaSf:GridTemplateColumn>
+
+                                        <syncfusion:GridTextColumn HeaderText="Codigo" MappingName="cod_cli" Width="100"/>
+                                        <syncfusion:GridTextColumn HeaderText="Nombre" MappingName="nom_cli" Width="300"/>
+                                        <syncfusion:GridNumericColumn HeaderText="CntVta" MappingName="cantidad" Width="80" NumberDecimalDigits="2"/>
+                                        <syncfusion:GridNumericColumn HeaderText="CntDev" MappingName="can_dev" Width="80" NumberDecimalDigits="2"/>
+                                        <syncfusion:GridNumericColumn HeaderText="Neto" MappingName="neto" Width="90" NumberDecimalDigits="2" />
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=subtotal, StringFormat='{}{0:c}'}" HeaderText="SubTotal" TextAlignment="Right" Width="120"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=val_des, StringFormat='{}{0:c}'}" HeaderText="Valor Dcto" TextAlignment="Right" Width="120"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=val_iva, StringFormat='{}{0:c}'}" HeaderText="Valor IVA" TextAlignment="Right" Width="120"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=total, StringFormat='{}{0:c}'}"  HeaderText="Valor Total" TextAlignment="Right" Width="120"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=cos_unin, StringFormat='{}{0:c}'}" HeaderText="Costo Uni NIIf" TextAlignment="Right" Width="120"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=cos_totn, StringFormat='{}{0:c}'}" HeaderText="Costo Tot NIIF" TextAlignment="Right" Width="120"/>
+                                    </syncfusion:SfDataGrid.Columns>
+
+                                    <syncfusion:SfDataGrid.GroupSummaryRows>
+                                        <syncfusion:GridSummaryRow ShowSummaryInRow="False">
+                                            <syncfusion:GridSummaryRow.SummaryColumns>
+                                                <syncfusion:GridSummaryColumn Name="SubTotal"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="subtotal"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="Valor Dcto"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="val_des"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="Valor Iva"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="val_iva"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="Valor Total"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="total"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="Costo"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="costo"
+                                                          SummaryType="DoubleAggregate" />
+
+                                            </syncfusion:GridSummaryRow.SummaryColumns>
+                                        </syncfusion:GridSummaryRow>
+                                        <syncfusion:GridSummaryRow Title="Total por Cliente : {YearSales}" ShowSummaryInRow="True">
+                                            <syncfusion:GridSummaryRow.SummaryColumns>
+                                                <syncfusion:GridSummaryColumn Name="YearSales"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="total"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="ProductCount"
+                                                          Format="'{Count:d}'"
+                                                          MappingName="Name"
+                                                          SummaryType="CountAggregate" />
+                                            </syncfusion:GridSummaryRow.SummaryColumns>
+                                        </syncfusion:GridSummaryRow>
+                                    </syncfusion:SfDataGrid.GroupSummaryRows>
+
+                                </syncfusion:SfDataGrid>
+
+                            </Grid>
+                        </SiaSf:TabItemExt>
+
+                        <SiaSf:TabItemExt Name="tabItemExt6"  Header="Ventas Por Vendedor" >
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="80" />
+                                    <RowDefinition Height="1*" />
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Text="Analisis de Ventas por Vendedor" Style="{StaticResource Tit_dat}"/>
+
+                                <Grid Grid.Row="1">
+
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="0.5*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Border Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="Registros: " Grid.Row="0" Style="{StaticResource title}"/>
+
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="Total4" Text="{Binding StringFormat=c}" Grid.Row="1" Style="{StaticResource value}" />
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="Cantidad: " Grid.Row="0" Style="{StaticResource title}"/>
+
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextCantidad4"  Text="{Binding StringFormat=c}" Grid.Row="1" Style="{StaticResource value}"/>
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Grid.Column="4" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="Subtotal: " Grid.Row="0" Style="{StaticResource title}"/>
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextSubtotal4"  Text="{Binding StringFormat=c}" Grid.Row="1" Style="{StaticResource value}"/>
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Grid.Column="6" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Text="Descuento: "  Grid.Row="0" Style="{StaticResource title}"/>
+
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextDescuento4" Grid.Row="1" Style="{StaticResource value}"/>
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+
+                                    <Border Grid.Column="8" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="Iva: "  Grid.Row="0" Style="{StaticResource title}"/>
+
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextIva4" Grid.Row="1" Style="{StaticResource value}"/>
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Grid.Column="10" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Text="Total: "  Grid.Row="0" Style="{StaticResource title}"/>
+
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextTotal4" Grid.Row="1" Style="{StaticResource value}" />
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+                                   
+
+                                    <Button Content="Exportar Xls" Click="Button_Click" Tag="4" Grid.Column="15" Cursor="Hand" Style="{StaticResource botones-menu}"  />
+
+                                </Grid>
+
+                                <syncfusion:SfDataGrid FrozenColumnCount="2" Grid.Row="2" AllowDraggingColumns="True" AllowDraggingRows="True" AllowDrop="True" AllowResizingColumns="True" x:Name="VentasPorVendedor"  EnableDataVirtualization = "True" AutoGenerateColumns="False" ShowGroupDropArea="True" FontSize="10" AllowFiltering="True" Margin="5" FilterChanged="dataGrid_FilterChanged" Tag="4" HeaderStyle="{StaticResource headerStyle}" RowSelectionBrush="#7F3498DB">
+
+                                    <syncfusion:SfDataGrid.Columns>
+                                        <SiaSf:GridTemplateColumn MappingName="Detalle" Width="56"  AllowFiltering="False">
+                                            <SiaSf:GridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Button x:Name="BtnDetalle" Content="..." Click="BTNdetalle_Click" Background="#3498db" Cursor="Hand" Tag="7"/>
+                                                </DataTemplate>
+                                            </SiaSf:GridTemplateColumn.CellTemplate>
+                                        </SiaSf:GridTemplateColumn>
+                                        <syncfusion:GridTextColumn HeaderText="Codigo" MappingName="cod_ven" Width="140" />
+                                        <syncfusion:GridTextColumn HeaderText="Nombre Vendedor" MappingName="nom_ven" Width="200"/>
+                                        <syncfusion:GridNumericColumn HeaderText="CntVta" MappingName="cantidad" Width="80" NumberDecimalDigits="2"/>
+                                        <syncfusion:GridNumericColumn HeaderText="CntDev" MappingName="can_dev" Width="80" NumberDecimalDigits="2"/>
+                                        <syncfusion:GridNumericColumn HeaderText="Neto" MappingName="neto" Width="80" NumberDecimalDigits="2"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=subtotal, StringFormat='{}{0:c}'}" HeaderText="SubTotal" TextAlignment="Right" Width="120"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=val_des, StringFormat='{}{0:c}'}" HeaderText="Valor Dcto" TextAlignment="Right" Width="120"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=val_iva, StringFormat='{}{0:c}'}" HeaderText="Valor IVA" TextAlignment="Right" Width="120"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=total, StringFormat='{}{0:c}'}" HeaderText="Valor Total" TextAlignment="Right" Width="120"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=costo, StringFormat='{}{0:c}'}" HeaderText="Costo" TextAlignment="Right" Width="120"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=cos_unin, StringFormat='{}{0:c}'}" HeaderText="Costo Uni NIIf" TextAlignment="Right" Width="120"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=cos_totn, StringFormat='{}{0:c}'}" HeaderText="Costo Tot NIIF" TextAlignment="Right" Width="120"/>
+                                        
+                                    </syncfusion:SfDataGrid.Columns>
+
+                                    <syncfusion:SfDataGrid.GroupSummaryRows>
+                                        <syncfusion:GridSummaryRow ShowSummaryInRow="False">
+                                            <syncfusion:GridSummaryRow.SummaryColumns>
+                                                <syncfusion:GridSummaryColumn Name="SubTotal"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="subtotal"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="Valor Dcto"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="val_des"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="Valor Iva"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="val_iva"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="Valor Total"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="total"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="Costo"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="costo"
+                                                          SummaryType="DoubleAggregate" />
+
+                                            </syncfusion:GridSummaryRow.SummaryColumns>
+                                        </syncfusion:GridSummaryRow>
+                                        <syncfusion:GridSummaryRow Title="Total por Vendedor : {YearSales}" ShowSummaryInRow="True">
+                                            <syncfusion:GridSummaryRow.SummaryColumns>
+                                                <syncfusion:GridSummaryColumn Name="YearSales"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="total"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="ProductCount"
+                                                          Format="'{Count:d}'"
+                                                          MappingName="Name"
+                                                          SummaryType="CountAggregate" />
+                                            </syncfusion:GridSummaryRow.SummaryColumns>
+                                        </syncfusion:GridSummaryRow>
+                                    </syncfusion:SfDataGrid.GroupSummaryRows>
+
+                                </syncfusion:SfDataGrid>
+
+
+
+                            </Grid>
+                        </SiaSf:TabItemExt>
+
+                        <SiaSf:TabItemExt Name="tabItemExt7"  Header="Ventas Por Linea" >
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="80" />
+                                    <RowDefinition Height="1*" />
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Text="Analisis de Ventas por Linea" Style="{StaticResource Tit_dat}"/>
+
+                                <Grid Grid.Row="1">
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="0.5*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Border Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="Registros: " Grid.Row="0" Style="{StaticResource title}"/>
+
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="Total5" Text="{Binding StringFormat=c}" Grid.Row="1" Style="{StaticResource value}" />
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="Cantidad: " Grid.Row="0" Style="{StaticResource title}"/>
+
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextCantidad5"  Text="{Binding StringFormat=c}" Grid.Row="1" Style="{StaticResource value}"/>
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Grid.Column="4" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="Subtotal: " Grid.Row="0" Style="{StaticResource title}"/>
+
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextSubtotal5"  Text="{Binding StringFormat=c}" Grid.Row="1" Style="{StaticResource value}"/>
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Grid.Column="6" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Text="Descuento: "  Grid.Row="0" Style="{StaticResource title}"/>
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextDescuento5" Grid.Row="1" Style="{StaticResource value}"/>
+                                            </Viewbox>
+
+
+                                        </Grid>
+                                    </Border>
+
+
+                                    <Border Grid.Column="8" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="Iva: "  Grid.Row="0" Style="{StaticResource title}"/>
+
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextIva5" Grid.Row="1" Style="{StaticResource value}"/>
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Grid.Column="10" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Text="Total: "  Grid.Row="0" Style="{StaticResource title}"/>
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextTotal5" Grid.Row="1" Style="{StaticResource value}" />
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+                                    <Button Content="Exportar Xls" Click="Button_Click" Tag="5" Grid.Column="13" Cursor="Hand" Style="{StaticResource botones-menu}"  />
+
+                                </Grid>
+
+                                <syncfusion:SfDataGrid FrozenColumnCount="2" Grid.Row="2" AllowDraggingColumns="True" AllowDraggingRows="True" AllowDrop="True" AllowResizingColumns="True" x:Name="VentasPorLinea"  EnableDataVirtualization = "True" AutoGenerateColumns="False" ShowGroupDropArea="True" FontSize="10" AllowFiltering="True" Margin="5" Tag="5" FilterChanged="dataGrid_FilterChanged" HeaderStyle="{StaticResource headerStyle}" RowSelectionBrush="#7F3498DB">
+
+                                    <syncfusion:SfDataGrid.Columns>
+                                        <SiaSf:GridTemplateColumn MappingName="Detalle" Width="56"  AllowFiltering="False">
+                                            <SiaSf:GridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Button x:Name="BtnDetalle" Content="..." Click="BTNdetalle_Click" Background="#3498db" Cursor="Hand" Tag="4"/>
+                                                </DataTemplate>
+                                            </SiaSf:GridTemplateColumn.CellTemplate>
+                                        </SiaSf:GridTemplateColumn>
+
+                                        <syncfusion:GridTextColumn HeaderText="Codigo" MappingName="cod_tip" Width="90" />
+                                        <syncfusion:GridTextColumn HeaderText="Nombre Linea" MappingName="nom_tip" Width="200"/>
+                                        <syncfusion:GridNumericColumn HeaderText="CntVta" MappingName="cantidad" Width="80" NumberDecimalDigits="2"/>
+                                        <syncfusion:GridNumericColumn HeaderText="CntDev" MappingName="can_dev" Width="80" NumberDecimalDigits="2"/>
+                                        <syncfusion:GridNumericColumn HeaderText="Neto" MappingName="neto" Width="80" NumberDecimalDigits="2"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=subtotal, StringFormat='{}{0:c}'}" HeaderText="SubTotal" TextAlignment="Right" Width="120"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=val_des, StringFormat='{}{0:c}'}" HeaderText="Valor Dcto" TextAlignment="Right" Width="120"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=val_iva, StringFormat='{}{0:c}'}" HeaderText="Valor IVA" TextAlignment="Right" Width="120"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=total, StringFormat='{}{0:c}'}" HeaderText="Valor Total" TextAlignment="Right" Width="120"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=costo, StringFormat='{}{0:c}'}"  HeaderText="Costo" TextAlignment="Right" Width="120"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=cos_unin, StringFormat='{}{0:c}'}" HeaderText="Costo Uni NIIf" TextAlignment="Right" Width="120"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=cos_totn, StringFormat='{}{0:c}'}" HeaderText="Costo Tot NIIF" TextAlignment="Right" Width="120"/>
+                                    </syncfusion:SfDataGrid.Columns>
+
+                                    <syncfusion:SfDataGrid.GroupSummaryRows>
+                                        <syncfusion:GridSummaryRow ShowSummaryInRow="False">
+                                            <syncfusion:GridSummaryRow.SummaryColumns>
+                                                <syncfusion:GridSummaryColumn Name="SubTotal"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="subtotal"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="Valor Dcto"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="val_des"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="Valor Iva"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="val_iva"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="Valor Total"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="total"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="Costo"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="costo"
+                                                          SummaryType="DoubleAggregate" />
+
+                                            </syncfusion:GridSummaryRow.SummaryColumns>
+                                        </syncfusion:GridSummaryRow>
+                                        <syncfusion:GridSummaryRow Title="Total por linea : {YearSales}" ShowSummaryInRow="True">
+                                            <syncfusion:GridSummaryRow.SummaryColumns>
+                                                <syncfusion:GridSummaryColumn Name="YearSales"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="total"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="ProductCount"
+                                                          Format="'{Count:d}'"
+                                                          MappingName="Name"
+                                                          SummaryType="CountAggregate" />
+                                            </syncfusion:GridSummaryRow.SummaryColumns>
+                                        </syncfusion:GridSummaryRow>
+                                    </syncfusion:SfDataGrid.GroupSummaryRows>
+
+                                </syncfusion:SfDataGrid>
+
+                            </Grid>
+                        </SiaSf:TabItemExt>
+                        
+                        
+                        <SiaSf:TabItemExt Name="tabItemExt8"  Header="Ventas Por Grupo" Visibility="Visible">
+                            <Grid>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="80" />
+                                    <RowDefinition Height="1*" />
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Text="Analisis de Ventas por Grupo" Style="{StaticResource Tit_dat}"/>
+
+
+                                <Grid Grid.Row="1">
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="0.5*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Border Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="Registros: " Grid.Row="0" Style="{StaticResource title}"/>
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="Total6" Text="{Binding StringFormat=c}" Grid.Row="1" Style="{StaticResource value}" />
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="Cantidad: " Grid.Row="0" Style="{StaticResource title}"/>
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextCantidad6"  Text="{Binding StringFormat=c}" Grid.Row="1" Style="{StaticResource value}"/>
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Grid.Column="4" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="Subtotal: " Grid.Row="0" Style="{StaticResource title}"/>
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextSubtotal6"  Text="{Binding StringFormat=c}" Grid.Row="1" Style="{StaticResource value}"/>
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Grid.Column="6" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Text="Descuento: "  Grid.Row="0" Style="{StaticResource title}"/>
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextDescuento6" Grid.Row="1" Style="{StaticResource value}"/>
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+
+                                    <Border Grid.Column="8" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="Iva: "  Grid.Row="0" Style="{StaticResource title}"/>
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextIva6" Grid.Row="1" Style="{StaticResource value}"/>
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Grid.Column="10" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Text="Total: "  Grid.Row="0" Style="{StaticResource title}"/>
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextTotal6" Grid.Row="1" Style="{StaticResource value}" />
+                                            </Viewbox>
+                                        </Grid>
+                                    </Border>
+
+                                    <Button Content="Exportar Xls" Click="Button_Click" Tag="6" Grid.Column="13" Cursor="Hand" Style="{StaticResource botones-menu}"  />
+
+                                </Grid>
+
+                                <syncfusion:SfDataGrid FrozenColumnCount="2" Grid.Row="2" AllowResizingColumns="True" x:Name="VentasPorGrupo"  EnableDataVirtualization = "True" AutoGenerateColumns="False" ShowGroupDropArea="True" FontSize="10" AllowFiltering="True" Margin="5" Tag="6" FilterChanged="dataGrid_FilterChanged" HeaderStyle="{StaticResource headerStyle}" Grid.ColumnSpan="2" RowSelectionBrush="#7F3498DB">
+
+                                    <syncfusion:SfDataGrid.Columns>
+
+                                        <SiaSf:GridTemplateColumn MappingName="Detalle" Width="56"  AllowFiltering="False">
+                                            <SiaSf:GridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Button x:Name="BtnDetalle" Content="..." Click="BTNdetalle_Click" Background="#3498db" Cursor="Hand" Tag="5"/>
+                                                </DataTemplate>
+                                            </SiaSf:GridTemplateColumn.CellTemplate>
+                                        </SiaSf:GridTemplateColumn>
+
+
+                                        <syncfusion:GridTextColumn HeaderText="Codigo" MappingName="cod_gru" Width="80" />
+                                        <syncfusion:GridTextColumn HeaderText="Grupo" MappingName="nom_gru" Width="120"/>
+                                        <syncfusion:GridNumericColumn HeaderText="CntVta" MappingName="cantidad" Width="80" NumberDecimalDigits="2"/>
+                                        <syncfusion:GridNumericColumn HeaderText="CntDev" MappingName="can_dev" Width="80" NumberDecimalDigits="2"/>
+                                        <syncfusion:GridNumericColumn HeaderText="Neto" MappingName="neto" Width="80" NumberDecimalDigits="2"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=subtotal, StringFormat='{}{0:c}'}"  HeaderText="SubTotal" TextAlignment="Right" Width="120"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=val_des, StringFormat='{}{0:c}'}" HeaderText="Valor Dcto" TextAlignment="Right" Width="120"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=val_iva, StringFormat='{}{0:c}'}" HeaderText="Valor IVA" TextAlignment="Right" Width="120"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=total, StringFormat='{}{0:c}'}"  HeaderText="Valor Total" TextAlignment="Right" Width="120"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=costo, StringFormat='{}{0:c}'}"  HeaderText="Costo" TextAlignment="Right" Width="120"/>
+                                    </syncfusion:SfDataGrid.Columns>
+
+                                    <syncfusion:SfDataGrid.GroupSummaryRows>
+                                        <syncfusion:GridSummaryRow ShowSummaryInRow="False">
+                                            <syncfusion:GridSummaryRow.SummaryColumns>
+                                                <syncfusion:GridSummaryColumn Name="SubTotal"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="subtotal"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="Valor Dcto"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="val_des"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="Valor Iva"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="val_iva"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="Valor Total"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="total"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="Costo"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="costo"
+                                                          SummaryType="DoubleAggregate" />
+
+                                            </syncfusion:GridSummaryRow.SummaryColumns>
+                                        </syncfusion:GridSummaryRow>
+                                        <syncfusion:GridSummaryRow Title="Total por Grupo : {YearSales}" ShowSummaryInRow="True">
+                                            <syncfusion:GridSummaryRow.SummaryColumns>
+                                                <syncfusion:GridSummaryColumn Name="YearSales"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="total"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="ProductCount"
+                                                          Format="'{Count:d}'"
+                                                          MappingName="Name"
+                                                          SummaryType="CountAggregate" />
+                                            </syncfusion:GridSummaryRow.SummaryColumns>
+                                        </syncfusion:GridSummaryRow>
+                                    </syncfusion:SfDataGrid.GroupSummaryRows>
+
+                                </syncfusion:SfDataGrid>
+
+
+                            </Grid>
+                        </SiaSf:TabItemExt>
+
+                        <SiaSf:TabItemExt Name="tabItemExt9"  Header="Ventas Por Formas de Pago" >
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="80" />
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="25" />
+                                    <RowDefinition Height="1*" />
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Text="Analisis de Formas de Pago" Style="{StaticResource Tit_dat}"/>
+
+                                <Grid Grid.Row="1">
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="0.5*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Border Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="Registros: " Grid.Row="0" Style="{StaticResource title}"/>
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="Total7" Text="{Binding StringFormat=c}" Grid.Row="1" Style="{StaticResource value}" />
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="Cantidad: " Grid.Row="0" Style="{StaticResource title}"/>
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextCantidad7"  Text="{Binding StringFormat=c}" Grid.Row="1" Style="{StaticResource value}"/>
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Grid.Column="4" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="Subtotal: " Grid.Row="0" Style="{StaticResource title}"/>
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextSubtotal7"  Text="{Binding StringFormat=c}" Grid.Row="1" Style="{StaticResource value}"/>
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Grid.Column="6" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Text="Descuento: "  Grid.Row="0" Style="{StaticResource title}"/>
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextDescuento7" Grid.Row="1" Style="{StaticResource value}"/>
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+
+                                    <Border Grid.Column="8" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="Iva: "  Grid.Row="0" Style="{StaticResource title}"/>
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextIva7" Grid.Row="1" Style="{StaticResource value}"/>
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Grid.Column="10" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Text="Total: "  Grid.Row="0" Style="{StaticResource title}"/>
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextTotal7" Grid.Row="1" Style="{StaticResource value}" />
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+                                    <Button Content="Exportar Xls" Click="Button_Click" Tag="7" Grid.Column="13" Cursor="Hand" Style="{StaticResource botones-menu}"  />
+
+                                </Grid>
+
+                                <syncfusion:SfDataGrid FrozenColumnCount="2" AllowDraggingColumns="True" AllowDraggingRows="True" AllowDrop="True" Grid.Row="2" AllowResizingColumns="True" x:Name="VentasPorFPago"  EnableDataVirtualization = "True" AutoGenerateColumns="False" ShowGroupDropArea="True" FontSize="10" AllowFiltering="True" Margin="5" FilterChanged="dataGrid_FilterChanged" Tag="7" HeaderStyle="{StaticResource headerStyle}" RowSelectionBrush="#7F3498DB">
+                                    <syncfusion:SfDataGrid.Columns>
+                                        <SiaSf:GridTemplateColumn MappingName="Detalle" Width="56"  AllowFiltering="False">
+                                            <SiaSf:GridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Button x:Name="BtnDetalle" Content="..." Click="BTNdetalle_Click" Background="#3498db" Cursor="Hand" Tag="6"/>
+                                                </DataTemplate>
+                                            </SiaSf:GridTemplateColumn.CellTemplate>
+                                        </SiaSf:GridTemplateColumn>
+
+                                        <syncfusion:GridTextColumn HeaderText="Codigo" MappingName="cod_fpag" Width="80" />
+                                        <syncfusion:GridTextColumn HeaderText="Nombre" MappingName="nom_pag" Width="120"/>
+                                        <syncfusion:GridNumericColumn HeaderText="CntVta" MappingName="cantidad" Width="80" NumberDecimalDigits="2"/>
+                                        <syncfusion:GridNumericColumn HeaderText="CntDev" MappingName="can_dev" Width="80" NumberDecimalDigits="2"/>
+                                        <syncfusion:GridNumericColumn HeaderText="Neto" MappingName="neto" Width="80" NumberDecimalDigits="2"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=subtotal, StringFormat='{}{0:c}'}"  HeaderText="SubTotal" TextAlignment="Right" Width="120"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=val_des, StringFormat='{}{0:c}'}"  HeaderText="Valor Dcto" TextAlignment="Right" Width="120"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=val_iva, StringFormat='{}{0:c}'}"  HeaderText="Valor IVA" TextAlignment="Right" Width="120"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=total, StringFormat='{}{0:c}'}"  HeaderText="Valor Total" TextAlignment="Right" Width="120"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=cos_unin, StringFormat='{}{0:c}'}" HeaderText="Costo Uni NIIf" TextAlignment="Right" Width="120"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=cos_totn, StringFormat='{}{0:c}'}" HeaderText="Costo Tot NIIF" TextAlignment="Right" Width="120"/>
+                                    </syncfusion:SfDataGrid.Columns>
+
+                                    <syncfusion:SfDataGrid.GroupSummaryRows>
+                                        <syncfusion:GridSummaryRow ShowSummaryInRow="False">
+                                            <syncfusion:GridSummaryRow.SummaryColumns>
+                                                <syncfusion:GridSummaryColumn Name="SubTotal"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="subtotal"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="Valor Dcto"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="val_des"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="Valor Iva"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="val_iva"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="Valor Total"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="total"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="Costo"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="costo"
+                                                          SummaryType="DoubleAggregate" />
+
+                                            </syncfusion:GridSummaryRow.SummaryColumns>
+                                        </syncfusion:GridSummaryRow>
+                                        <syncfusion:GridSummaryRow Title="Total de Formas de Pago : {YearSales}" ShowSummaryInRow="True">
+                                            <syncfusion:GridSummaryRow.SummaryColumns>
+                                                <syncfusion:GridSummaryColumn Name="YearSales"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="total"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="ProductCount"
+                                                          Format="'{Count:d}'"
+                                                          MappingName="Name"
+                                                          SummaryType="CountAggregate" />
+                                            </syncfusion:GridSummaryRow.SummaryColumns>
+                                        </syncfusion:GridSummaryRow>
+                                    </syncfusion:SfDataGrid.GroupSummaryRows>
+
+                                </syncfusion:SfDataGrid>
+
+                                <TextBlock Grid.Row="3" Text="Detalle Formas de Pago" Foreground="DodgerBlue" FontSize="14"/>
+                                <SiaSf:SfDataGrid  Grid.Row="4" AllowDraggingColumns="True" AllowDraggingRows="True" AllowDrop="True" x:Name="dataGridFP_detallado" AllowResizingColumns="True" EnableDataVirtualization = "True" AutoGenerateColumns="False" ShowGroupDropArea="True" FontSize="10" AllowFiltering="True" Margin="5" HeaderStyle="{StaticResource headerStyle}" RowSelectionBrush="#7F3498DB">
+                                    <SiaSf:SfDataGrid.Columns>
+                                        <SiaSf:GridTextColumn HeaderText="Codigo" MappingName="cod_fpag" Width="80" />
+                                        <SiaSf:GridTextColumn HeaderText="Forma pago" MappingName="nom_pag" Width="150" />
+                                        <SiaSf:GridTextColumn HeaderText="bodega" MappingName="cod_bod" Width="80" />
+                                        <SiaSf:GridTextColumn HeaderText="Nombre bodega" MappingName="nom_bod" Width="150" />
+                                        <syncfusion:GridNumericColumn HeaderText="CntVta" MappingName="cantidad" Width="80" NumberDecimalDigits="0"/>
+                                        <syncfusion:GridNumericColumn HeaderText="CntDev" MappingName="can_dev" Width="80" NumberDecimalDigits="0"/>
+                                        <syncfusion:GridNumericColumn HeaderText="Neto" MappingName="neto" Width="80" NumberDecimalDigits="0"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=subtotal, StringFormat='{}{0:c}'}"  HeaderText="SubTotal" TextAlignment="Right" Width="120"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=val_des, StringFormat='{}{0:c}'}"  HeaderText="Valor Dcto" TextAlignment="Right" Width="120"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=val_iva, StringFormat='{}{0:c}'}"  HeaderText="Valor IVA" TextAlignment="Right" Width="120"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=total, StringFormat='{}{0:c}'}"  HeaderText="Valor Total" TextAlignment="Right" Width="120"/>
+                                    </SiaSf:SfDataGrid.Columns>
+                                    <syncfusion:SfDataGrid.GroupSummaryRows>
+                                        <syncfusion:GridSummaryRow ShowSummaryInRow="False">
+                                            <syncfusion:GridSummaryRow.SummaryColumns>
+                                                <syncfusion:GridSummaryColumn Name="SubTotal"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="subtotal"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="Valor Dcto"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="val_des"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="Valor Iva"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="val_iva"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="Valor Total"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="total"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="Costo"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="costo"
+                                                          SummaryType="DoubleAggregate" />
+
+                                            </syncfusion:GridSummaryRow.SummaryColumns>
+                                        </syncfusion:GridSummaryRow>
+                                        <syncfusion:GridSummaryRow Title="Total Detalle Formas de Pago : {YearSales}" ShowSummaryInRow="True">
+                                            <syncfusion:GridSummaryRow.SummaryColumns>
+                                                <syncfusion:GridSummaryColumn Name="YearSales"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="total"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="ProductCount"
+                                                          Format="'{Count:d}'"
+                                                          MappingName="Name"
+                                                          SummaryType="CountAggregate" />
+                                            </syncfusion:GridSummaryRow.SummaryColumns>
+                                        </syncfusion:GridSummaryRow>
+                                    </syncfusion:SfDataGrid.GroupSummaryRows>
+
+                                </SiaSf:SfDataGrid>
+
+
+                            </Grid>
+                        </SiaSf:TabItemExt>
+                        <SiaSf:TabItemExt Name="tabItemExt10"  Header="Ventas Por Cliente-Producto" >
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="80" />
+                                    <RowDefinition Height="1*" />
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Text="Analisis de Ventas por Cliente" Style="{StaticResource Tit_dat}"/>
+
+                                <Grid Grid.Row="1">
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="0.5*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Border Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="Registros: " Grid.Row="0" Style="{StaticResource title}"/>
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="Total8" Text="{Binding StringFormat=c}" Grid.Row="1" Style="{StaticResource value}" />
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="Cantidad: " Grid.Row="0" Style="{StaticResource title}"/>
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextCantidad8"  Text="{Binding StringFormat=c}" Grid.Row="1" Style="{StaticResource value}"/>
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Grid.Column="4" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="Subtotal: " Grid.Row="0" Style="{StaticResource title}"/>
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextSubtotal8"  Text="{Binding StringFormat=c}" Grid.Row="1" Style="{StaticResource value}"/>
+                                            </Viewbox>
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Grid.Column="6" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Text="Descuento: "  Grid.Row="0" Style="{StaticResource title}"/>
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextDescuento8" Grid.Row="1" Style="{StaticResource value}"/>
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+
+                                    <Border Grid.Column="8" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="Iva: "  Grid.Row="0" Style="{StaticResource title}"/>
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextIva8" Grid.Row="1" Style="{StaticResource value}"/>
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Grid.Column="10" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Text="Total: "  Grid.Row="0" Style="{StaticResource title}"/>
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextTotal8" Grid.Row="1" Style="{StaticResource value}" />
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+                                    <Button Content="Exportar Xls" Click="Button_Click" Tag="8" Grid.Column="13" Cursor="Hand" Style="{StaticResource botones-menu}"  />
+
+                                </Grid>
+
+                                <syncfusion:SfDataGrid FrozenColumnCount="2" Grid.Row="2" AllowDraggingColumns="True" AllowDraggingRows="True" AllowDrop="True" AllowResizingColumns="True" x:Name="VentasPorClienteRef"  EnableDataVirtualization = "True" AutoGenerateColumns="False" ShowGroupDropArea="True" FontSize="10" AllowFiltering="True" Grid.ColumnSpan="3" Margin="5" FilterChanged="dataGrid_FilterChanged" Tag="8" HeaderStyle="{StaticResource headerStyle}" RowSelectionBrush="#7F3498DB">
+                                    <syncfusion:SfDataGrid.Columns>
+                                        <syncfusion:GridTextColumn HeaderText="cod_trn" MappingName="cod_trn" Width="50"/>
+                                        <syncfusion:GridTextColumn HeaderText="Documento" MappingName="num_trn" Width="110"/>
+                                        <syncfusion:GridTextColumn HeaderText="Nit-cc" MappingName="cod_cli" Width="110"/>
+                                        <syncfusion:GridTextColumn HeaderText="Nombre Cliente" MappingName="nom_cli" Width="200"/>
+                                        <syncfusion:GridTextColumn HeaderText="Referencia" MappingName="cod_ref" Width="110"/>
+                                        <syncfusion:GridTextColumn HeaderText="Nombre Producto" MappingName="nom_ref" Width="300"/>
+                                        <syncfusion:GridTextColumn HeaderText="Formula" MappingName="descrip" Width="300"/>
+                                        <syncfusion:GridTextColumn HeaderText="Bodega" MappingName="cod_bod" Width="80"/>
+                                        <syncfusion:GridNumericColumn HeaderText="CanVta" MappingName="cantidad" NumberDecimalDigits="2" Width="80"/>
+                                        <syncfusion:GridNumericColumn HeaderText="CanDev" MappingName="can_dev" NumberDecimalDigits="2" Width="80"/>
+                                        <syncfusion:GridNumericColumn HeaderText="Neto" MappingName="neto" Width="70" NumberDecimalDigits="2"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=subtotal, StringFormat='{}{0:c}'}" HeaderText="SubTotal" TextAlignment="Right" Width="120"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=val_des, StringFormat='{}{0:c}'}" HeaderText="Valor Dcto" TextAlignment="Right" Width="120"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=val_iva, StringFormat='{}{0:c}'}" HeaderText="Valor IVA" TextAlignment="Right" Width="120"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=total, StringFormat='{}{0:c}'}"  HeaderText="Valor Total" TextAlignment="Right" Width="120"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=cos_unin, StringFormat='{}{0:c}'}" HeaderText="Costo Uni NIIf" TextAlignment="Right" Width="120"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=cos_totn, StringFormat='{}{0:c}'}" HeaderText="Costo Tot NIIF" TextAlignment="Right" Width="120"/>
+                                        <syncfusion:GridTextColumn HeaderText="Prv" MappingName="cod_prv" Width="60"/>
+                                        <syncfusion:GridTextColumn HeaderText="Linea" MappingName="cod_tip" Width="60"/>
+                                        <syncfusion:GridTextColumn HeaderText="Nombre Linea" MappingName="nom_tip" Width="100"/>
+                                        <syncfusion:GridTextColumn HeaderText="Ven" MappingName="cod_ven" Width="60"/>
+                                        <syncfusion:GridTextColumn HeaderText="Ciudad" MappingName="ciudad" Width="100"/>
+                                        <syncfusion:GridTextColumn HeaderText="tel1" MappingName="tel1" Width="100"/>
+                                        <syncfusion:GridTextColumn HeaderText="dir1" MappingName="dir1" Width="100"/>
+                                        <syncfusion:GridTextColumn HeaderText="cel" MappingName="cel" Width="100"/>
+                                        <syncfusion:GridTextColumn HeaderText="email" MappingName="email" Width="100"/>
+                                    </syncfusion:SfDataGrid.Columns>
+
+                                    <syncfusion:SfDataGrid.GroupSummaryRows>
+                                        <syncfusion:GridSummaryRow ShowSummaryInRow="False">
+                                            <syncfusion:GridSummaryRow.SummaryColumns>
+                                                <syncfusion:GridSummaryColumn Name="SubTotal"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="subtotal"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="Valor Dcto"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="val_des"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="Valor Iva"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="val_iva"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="Valor Total"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="total"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="Costo"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="costo"
+                                                          SummaryType="DoubleAggregate" />
+
+                                            </syncfusion:GridSummaryRow.SummaryColumns>
+                                        </syncfusion:GridSummaryRow>
+                                        <syncfusion:GridSummaryRow Title="Total de Cliente-producto : {YearSales}" ShowSummaryInRow="True">
+                                            <syncfusion:GridSummaryRow.SummaryColumns>
+                                                <syncfusion:GridSummaryColumn Name="YearSales"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="total"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="ProductCount"
+                                                          Format="'{Count:d}'"
+                                                          MappingName="Name"
+                                                          SummaryType="CountAggregate" />
+                                            </syncfusion:GridSummaryRow.SummaryColumns>
+                                        </syncfusion:GridSummaryRow>
+                                    </syncfusion:SfDataGrid.GroupSummaryRows>
+
+                                </syncfusion:SfDataGrid>
+
+                            </Grid>
+                        </SiaSf:TabItemExt>
+
+                        <SiaSf:TabItemExt Name="tabItemExt11"  Header="Documentos" >
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="80" />
+                                    <RowDefinition Height="1*" />
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Text="Documentos" Style="{StaticResource Tit_dat}"/>
+
+
+                                <Grid Grid.Row="1">
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                        <ColumnDefinition Width="0.5*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Border Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="Registros: " Grid.Row="0" Style="{StaticResource title}"/>
+
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="Total9" Text="{Binding StringFormat=c}" Grid.Row="1" Style="{StaticResource value}" />
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="Cantidad: " Grid.Row="0" Style="{StaticResource title}"/>
+                                            
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextCantidad9" Text="{Binding StringFormat=c}" Grid.Row="1" Style="{StaticResource value}"/>
+                                            </Viewbox>
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Grid.Column="4" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="Subtotal: " Grid.Row="0" Style="{StaticResource title}"/>
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextSubtotal9"  Text="{Binding StringFormat=c}" Grid.Row="1" Style="{StaticResource value}"/>
+                                            </Viewbox>
+
+
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Grid.Column="6" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Text="Descuento: "  Grid.Row="0" Style="{StaticResource title}"/>
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextDescuento9" Grid.Row="1" Style="{StaticResource value}"/>
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+
+                                    <Border Grid.Column="8" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="Iva: "  Grid.Row="0" Style="{StaticResource title}"/>
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextIva9" Grid.Row="1" Style="{StaticResource value}"/>
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+
+                                    <Border Grid.Column="10" Grid.ColumnSpan="2" Style="{StaticResource borde}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Text="Total: "  Grid.Row="0" Style="{StaticResource title}"/>
+                                            <Viewbox Stretch="Uniform" Grid.Row="1">
+                                                <TextBlock x:Name="TextTotal9" Grid.Row="1" Style="{StaticResource value}" />
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </Border>
+                                    <Grid Grid.Column="13">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Button Content="Exportar Xls" Click="Button_Click" Tag="9" Grid.Row="0" Cursor="Hand" Style="{StaticResource botones-menu}"  />
+                                        <Button Content="Cruzar In-Co" x:Name="BtnCruzarcoin" Click="BtnCruzarcoin_Click" Tag="9" Grid.Row="1" Cursor="Hand" Style="{StaticResource botones-menu}"  />
+                                    </Grid>
+                                    
+
+                                </Grid>
+
+                                <syncfusion:SfDataGrid FrozenColumnCount="2" AllowDraggingColumns="True" AllowDraggingRows="True" AllowDrop="True" Grid.Row="2" AllowResizingColumns="True" x:Name="GridDocumen"  EnableDataVirtualization = "True" AutoGenerateColumns="False" ShowGroupDropArea="True" FontSize="10" AllowFiltering="True" Grid.ColumnSpan="3" Margin="5" FilterChanged="dataGrid_FilterChanged" Tag="9" HeaderStyle="{StaticResource headerStyle}" RowSelectionBrush="#7F3498DB">
+                                    <syncfusion:SfDataGrid.Columns>
+                                        <SiaSf:GridTemplateColumn MappingName="Detalle" Width="56"  AllowFiltering="False">
+                                            <SiaSf:GridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Button x:Name="BtnDocumento" Content="..." Click="BtnDocumento_Click" Background="#3498db" Cursor="Hand" Tag="2"/>
+                                                </DataTemplate>
+                                            </SiaSf:GridTemplateColumn.CellTemplate>
+                                        </SiaSf:GridTemplateColumn>
+
+                                        <syncfusion:GridTextColumn HeaderText="Trn" MappingName="cod_trn" Width="50"/>
+                                        <syncfusion:GridTextColumn HeaderText="Documento" MappingName="num_trn" Width="110"/>
+                                        <syncfusion:GridTextColumn HeaderText="Fecha Trans" MappingName="fec_trn" Width="130"/>
+                                        <syncfusion:GridTextColumn HeaderText="Ven" MappingName="cod_ven" Width="70"/>
+                                        <syncfusion:GridTextColumn HeaderText="Nit/cc" MappingName="cod_cli" Width="100"/>
+                                        <syncfusion:GridTextColumn HeaderText="Cliente" MappingName="nom_ter" Width="220"/>
+                                        <syncfusion:GridTextColumn HeaderText="Tienda" MappingName="nom_bod"  Width="110"/>
+                                        <syncfusion:GridNumericColumn HeaderText="Cantidad" MappingName="neto" Width="90" NumberDecimalDigits="2"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=subtotal, StringFormat='{}{0:c}'}" HeaderText="SubTotal" TextAlignment="Right"  Width="120"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=val_des, StringFormat='{}{0:c}'}" HeaderText="Valor Dcto" TextAlignment="Right" Width="120"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=val_iva, StringFormat='{}{0:c}'}" HeaderText="Valor IVA" TextAlignment="Right" Width="120"/>
+                                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=total, StringFormat='{}{0:c}'}"  HeaderText="Valor Total" TextAlignment="Right" Width="120" />
+
+                                    </syncfusion:SfDataGrid.Columns>
+
+                                    <syncfusion:SfDataGrid.GroupSummaryRows>
+                                        <syncfusion:GridSummaryRow ShowSummaryInRow="False">
+                                            <syncfusion:GridSummaryRow.SummaryColumns>
+                                                <syncfusion:GridSummaryColumn Name="SubTotal"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="subtotal"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="Valor Dcto"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="val_des"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="Valor Iva"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="val_iva"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="Valor Total"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="total"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="Costo"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="costo"
+                                                          SummaryType="DoubleAggregate" />
+
+                                            </syncfusion:GridSummaryRow.SummaryColumns>
+                                        </syncfusion:GridSummaryRow>
+                                        <syncfusion:GridSummaryRow Title="Total Documentos : {YearSales}" ShowSummaryInRow="True">
+                                            <syncfusion:GridSummaryRow.SummaryColumns>
+                                                <syncfusion:GridSummaryColumn Name="YearSales"
+                                                          Format="'{Sum:c}'"
+                                                          MappingName="total"
+                                                          SummaryType="DoubleAggregate" />
+                                                <syncfusion:GridSummaryColumn Name="ProductCount"
+                                                          Format="'{Count:d}'"
+                                                          MappingName="Name"
+                                                          SummaryType="CountAggregate" />
+                                            </syncfusion:GridSummaryRow.SummaryColumns>
+                                        </syncfusion:GridSummaryRow>
+                                    </syncfusion:SfDataGrid.GroupSummaryRows>
+
+                                </syncfusion:SfDataGrid>
+
+                            </Grid>
+                        </SiaSf:TabItemExt>
+                                
+
+                    </SiaSf:TabControlExt>
+                </Grid>
+            </SiaSf:TabItemExt>
+
+        </SiaSf:TabControlExt>
+    </Grid>
+</UserControl>
+
+
+

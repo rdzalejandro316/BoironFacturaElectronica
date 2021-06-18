@@ -1,0 +1,160 @@
+﻿<Window x:Class="AnalisisDeVenta.Detalle"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AnalisisDeVenta"
+        xmlns:SiaSf="http://schemas.syncfusion.com/wpf"
+        mc:Ignorable="d"
+        Title="Detalle" Height="600" Width="1000"  Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" ShowInTaskbar="False">
+
+    <SiaSf:TabControlExt Name="TabControl1"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  SiaSf:SkinStorage.VisualStyle="Metro"  IsDisableUnloadTabItemExtContent="True" TabItemSelectedBackground="#7f8c8d">
+        <SiaSf:TabItemExt Name="tabItemExt1" Width="Auto" HeaderMargin="0 0 0 0 " FontSize="14" >
+            <Grid>
+                <Grid.Resources>
+                    <Style x:Key="botones-menu">
+                        <Setter Property="Control.Background" Value="#16a085"/>
+                        <Setter Property="Control.BorderBrush" Value="{x:Null}"/>
+                        <Setter Property="Control.Foreground" Value="White"/>
+                        <Setter Property="Control.Width" Value="150"/>
+                        <Setter Property="Control.Margin" Value="0 5 5 5"/>
+                        <Setter Property="Control.Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}" BorderBrush="{x:Null}" BorderThickness="1">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="Control.IsMouseOver" Value="True">
+                                <Setter Property="Control.Background" Value="#FF148F77"/>
+                                <Setter Property="Control.Cursor" Value="Hand"/>
+                                <Setter Property="Control.Margin" Value="0 4 4 4"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Resources>
+
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="150"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border Grid.Column="0" Background="white" Height="Auto"  BorderBrush="#FF1E90FF" BorderThickness="1,1,1,1" Margin="5">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Registros: "  Grid.Column="0" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" FontWeight="Bold" Margin="5 0 5 0"/>
+                            <TextBlock x:Name="Total"  Text="{Binding StringFormat=c}" Grid.Row="1" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF1E90FF" />
+                        </Grid>
+                    </Border>
+
+                    <Border Grid.Column="1" Background="white" Height="Auto"  BorderBrush="#FF1E90FF" BorderThickness="1,1,1,1" Margin="5">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Subtotal: "  Grid.Column="0" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" FontWeight="Bold" Margin="5 0 5 0"/>
+                            <TextBlock x:Name="TextSubtotal" Grid.Row="1" Text="{Binding StringFormat=c}" Grid.Column="1" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF1E90FF" />
+                        </Grid>
+                    </Border>
+
+                    <Border Grid.Column="2" Background="{x:Null}" Height="Auto"  BorderBrush="#FF1E90FF" BorderThickness="1,1,1,1" Margin="5">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="cantidad: "  Grid.Column="0" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" FontWeight="Bold" Margin="5 0 5 0"/>
+                            <TextBlock x:Name="TextCantidad" Grid.Row="1" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF1E90FF" />
+                        </Grid>
+                    </Border>
+
+                    <Border Grid.Column="3" Background="white" Height="Auto"  BorderBrush="#FF1E90FF" BorderThickness="1,1,1,1" Margin="5">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Iva: "  Grid.Column="0" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" FontWeight="Bold" Margin="5 0 5 0"/>
+                            <TextBlock x:Name="TextIVA" Grid.Row="1" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF1E90FF" />
+                        </Grid>
+                    </Border>
+
+                    <Border Grid.Column="4" Background="white" Height="Auto"  BorderBrush="#FF1E90FF" BorderThickness="1,1,1,1" Margin="5">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Total: "  Grid.Column="0" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" FontWeight="Bold" Margin="5 0 5 0"/>
+                            <TextBlock x:Name="TextTotal" Grid.Row="1" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF1E90FF" />
+                        </Grid>
+                    </Border>
+
+                    <Button Content="Exportar Xls" Click="Excel_Click" Tag="1" Grid.Column="10" Cursor="Hand" Style="{StaticResource botones-menu}" Width="100" Height="30" HorizontalAlignment="Right"/>
+
+                </Grid>
+
+                <Border Grid.Row="1" Background="white" Height="Auto"  BorderBrush="Silver" BorderThickness="1,1,1,1"  Margin="5" Visibility="Visible" Name="B2">
+                    <Grid>
+                        <Grid.Resources>
+                            <Style TargetType="SiaSf:GridHeaderCellControl" x:Key="headerStyle">
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter Property="FontSize" Value="11"/>
+                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="Background" Value="#bdc3c7"/>
+                            </Style>
+
+                        </Grid.Resources>
+
+                        <SiaSf:SfDataGrid x:Name="dataGridCxC" FontSize="10" AllowResizingColumns="True" EnableDataVirtualization="True" AutoGenerateColumns="False" ShowGroupDropArea="True"  AllowFiltering="True"  ItemsSource="{Binding DtTraslados}"  HeaderStyle="{StaticResource headerStyle}"  VerticalAlignment="Top" Margin="5" Height="Auto" RowSelectionBrush="#7F3498DB" FilterChanged="dataGrid_FilterChanged">
+                            <SiaSf:SfDataGrid.Columns>
+                                <SiaSf:GridTextColumn HeaderText="Codigo" MappingName="cod_trn" Width="80" />
+                                <SiaSf:GridTextColumn HeaderText="Transaccion " MappingName="num_trn" Width="100" />
+                                <SiaSf:GridTextColumn HeaderText="Fecha trn" MappingName="fec_trn" Width="110" />
+                                <SiaSf:GridTextColumn HeaderText="Vendedor" MappingName="cod_ven" Width="80" />
+                                <SiaSf:GridTextColumn HeaderText="Codigo Cliente" MappingName="cod_cli" Width="100" />
+                                <SiaSf:GridTextColumn HeaderText="Nombre Cliente" MappingName="nom_ter" Width="150" />
+                                <SiaSf:GridTextColumn HeaderText="Bodega" MappingName="cod_bod" Width="70" />
+                                <SiaSf:GridTextColumn HeaderText="Nombre Bodega" MappingName="nom_bod" Width="100" />
+                                <SiaSf:GridTextColumn HeaderText="Referencia" MappingName="cod_ref" Width="120"/>
+                                <SiaSf:GridTextColumn HeaderText="Nombre Producto" MappingName="nom_ref" Width="250"/>
+                                <SiaSf:GridTextColumn HeaderText="Formula" MappingName="descrip" Width="250"/>
+                                <SiaSf:GridTextColumn HeaderText="Linea" MappingName="cod_tip" Width="70" />
+                                <SiaSf:GridTextColumn HeaderText="Cant" MappingName="cantidad" Width="50" />
+                                <SiaSf:GridTextColumn DisplayBinding="{Binding Path=subtotal, StringFormat='{}{0:c}'}"  HeaderText="SubTotal" TextAlignment="Right" Width="100"/>
+                                <SiaSf:GridTextColumn DisplayBinding="{Binding Path=val_des, StringFormat='{}{0:c}'}"  HeaderText="Valor Dcto" TextAlignment="Right" Width="100"/>
+                                <SiaSf:GridTextColumn DisplayBinding="{Binding Path=val_iva, StringFormat='{}{0:c}'}"  HeaderText="Valor Iva" TextAlignment="Right" Width="100"/>
+                                <SiaSf:GridTextColumn DisplayBinding="{Binding Path=total, StringFormat='{}{0:c}'}"  HeaderText="Total" TextAlignment="Right" Width="100"/>
+                            </SiaSf:SfDataGrid.Columns>
+                        </SiaSf:SfDataGrid>
+
+
+                    </Grid>
+                </Border>
+
+
+
+            </Grid>
+        </SiaSf:TabItemExt>
+
+    </SiaSf:TabControlExt>
+
+</Window>
