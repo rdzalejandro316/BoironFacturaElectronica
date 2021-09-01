@@ -12,3 +12,17 @@ D:\Empresas\Empresas\Milanelo\pruebas\Library\project\AnalisisFacturasProvedores
 D:\Empresas\Empresas\Milanelo\pruebas\Library\project\AnalisisFacturasProvedores\obj\Debug\AnalisisFacturasProvedores.pdb
 D:\Empresas\Empresas\Milanelo\pruebas\Library\AnalisisFacturasProvedores.dll
 D:\Empresas\Empresas\Milanelo\pruebas\Library\AnalisisFacturasProvedores.pdb
+D:\Empresas\Empresas\Boirion\proyect\AnalisisFacturasProvedores\obj\Debug\AnalisisFacturasProvedores.csproj.AssemblyReference.cache
+D:\Empresas\Empresas\Boirion\proyect\AnalisisFacturasProvedores\obj\Debug\AnalisisFacturasProvedores.g.cs
+D:\Empresas\Empresas\Boirion\proyect\AnalisisFacturasProvedores\obj\Debug\AnalisisFacturasProvedores_MarkupCompile.cache
+D:\Empresas\Empresas\Boirion\proyect\AnalisisFacturasProvedores\obj\Debug\AnalisisFacturasProvedores_MarkupCompile.lref
+D:\Empresas\Empresas\Boirion\proyect\AnalisisFacturasProvedores\obj\Debug\AnalisisFacturasProvedores.baml
+D:\Empresas\Empresas\Boirion\proyect\AnalisisFacturasProvedores\obj\Debug\AnalisisFacturasProvedores.g.resources
+D:\Empresas\Empresas\Boirion\proyect\AnalisisFacturasProvedores\obj\Debug\AnalisisFacturasProvedores.Properties.Resources.resources
+D:\Empresas\Empresas\Boirion\proyect\AnalisisFacturasProvedores\obj\Debug\AnalisisFacturasProvedores.csproj.GenerateResource.cache
+D:\Empresas\Empresas\Boirion\proyect\AnalisisFacturasProvedores\obj\Debug\AnalisisFacturasProvedores.csproj.CoreCompileInputs.cache
+D:\Empresas\Empresas\Boirion\proyect\AnalisisFacturasProvedores\obj\Debug\AnalisisFacturasProvedores.csproj.CopyComplete
+D:\Empresas\Empresas\Boirion\proyect\AnalisisFacturasProvedores\obj\Debug\AnalisisFacturasProvedores.dll
+D:\Empresas\Empresas\Boirion\proyect\AnalisisFacturasProvedores\obj\Debug\AnalisisFacturasProvedores.pdb
+D:\Empresas\Empresas\Boirion\AnalisisFacturasProvedores.dll
+D:\Empresas\Empresas\Boirion\AnalisisFacturasProvedores.pdb

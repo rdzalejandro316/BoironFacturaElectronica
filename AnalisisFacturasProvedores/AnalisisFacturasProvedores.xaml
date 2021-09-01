@@ -370,6 +370,7 @@
                                     <syncfusion:GridTextColumn HeaderText="Documento" MappingName="num_trn" Width="120" />
                                     <syncfusion:GridDateTimeColumn CustomPattern="dd-MM-yyyy" Pattern="CustomPattern" HeaderText="Fecha" MappingName="fec_trn" Width="120"/>
                                     <syncfusion:GridTextColumn HeaderText="Provedor" MappingName="cod_prv" Width="120" />
+                                    <syncfusion:GridTextColumn HeaderText="Nombre" MappingName="nom_ter" Width="120" />
                                     <syncfusion:GridTextColumn HeaderText="Factura" MappingName="doc_ref" Width="120" />
                                     <syncfusion:GridTextColumn HeaderText="Dias Plazo" MappingName="dia_pla" Width="120"/>
                                     <syncfusion:GridDateTimeColumn CustomPattern="dd-MM-yyyy" Pattern="CustomPattern" HeaderText="Fecha Fact" MappingName="fec_fact" Width="120"/>
@@ -508,8 +509,8 @@
                                     <syncfusion:GridTextColumn HeaderText="Documento" MappingName="num_trn" Width="120" />
                                     <syncfusion:GridDateTimeColumn CustomPattern="dd-MM-yyyy" Pattern="CustomPattern" HeaderText="Fecha" MappingName="fec_trn" Width="120"/>
                                     <syncfusion:GridTextColumn HeaderText="Provedor" MappingName="cod_prv" Width="120" />
+                                    <syncfusion:GridTextColumn HeaderText="Nombre" MappingName="nom_ter" Width="120" />
                                     <syncfusion:GridTextColumn HeaderText="Factura" MappingName="doc_ref" Width="120" />
-
                                     <syncfusion:GridTextColumn HeaderText="Referencia" MappingName="cod_ref" Width="120" />
                                     <syncfusion:GridTextColumn HeaderText="Detalle" MappingName="descrip" Width="120" />
                                     <syncfusion:GridTextColumn HeaderText="Lote" MappingName="lote" Width="120" />
