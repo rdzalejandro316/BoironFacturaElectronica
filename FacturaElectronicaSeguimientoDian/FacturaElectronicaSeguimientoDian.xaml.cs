@@ -233,11 +233,15 @@ namespace SiasoftAppExt
                 {
                     MessageBox.Show("selecione un documento para poder ver el estado", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     TxResponse.Text = "";
+                    sfBusyIndicatorEstado.IsBusy = false;
+
                 }
 
             }
             catch (Exception)
             {
+                sfBusyIndicatorEstado.IsBusy = false;
+
                 if (dataGridFE.SelectedIndex >= 0)
                 {
 

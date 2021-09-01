@@ -84,11 +84,13 @@
                         <syncfusion:GridTextColumn HeaderText="idreg"  MappingName="idreg" Width="80"/>
                         <syncfusion:GridTextColumn HeaderText="Codigo"  MappingName="cod_trn" Width="100"/>
                         <syncfusion:GridTextColumn HeaderText="Documento"  MappingName="num_trn" Width="120"/>
-                        <syncfusion:GridTextColumn HeaderText="Documento FE"  MappingName="fa_docelect" Width="120"/>
+                        <syncfusion:GridTextColumn HeaderText="FE"  MappingName="siasoft_num_trn" Width="120"/>
+                        <syncfusion:GridDateTimeColumn CustomPattern="dd-MM-yyyy" Pattern="CustomPattern" HeaderText="Fecha" MappingName="fec_trn" Width="120"/>
                         <syncfusion:GridTextColumn HeaderText="Nit/CC"  MappingName="cod_cli" Width="120"/>
+                        <syncfusion:GridTextColumn HeaderText="Documento FE"  MappingName="fa_docelect" Width="120"/>
                         <syncfusion:GridTextColumn HeaderText="Cufe"  MappingName="fa_cufe" Width="200"/>
                         <syncfusion:GridTextColumn HeaderText="PV"  MappingName="bod_tra" Width="80"/>
-                        <syncfusion:GridTextColumn HeaderText="Fecha Resp" MappingName="fa_fecharesp" Width="100"/>
+                        <syncfusion:GridDateTimeColumn CustomPattern="dd-MM-yyyy" Pattern="CustomPattern" HeaderText="Fecha Resp" MappingName="fa_fecharesp" Width="120"/>
                         <syncfusion:GridTextColumn HeaderText="Cod Respueta" MappingName="fa_codigo" Width="120"/>
                         <syncfusion:GridTextColumn HeaderText="FE documento" MappingName="fa_docelect" Width="120"/>
                         <syncfusion:GridTextColumn HeaderText="FE mensage" MappingName="fa_msg" Width="250"/>

@@ -1,0 +1,16 @@
+D:\Empresas\Empresas\Milanelo\pruebas\Library\project\FacturasProvedores\obj\Debug\FacturasProvedores.csproj.AssemblyReference.cache
+D:\Empresas\Empresas\Milanelo\pruebas\Library\project\FacturasProvedores\obj\Debug\FacturasProvedores.g.cs
+D:\Empresas\Empresas\Milanelo\pruebas\Library\project\FacturasProvedores\obj\Debug\FacturasProvedores_MarkupCompile.cache
+D:\Empresas\Empresas\Milanelo\pruebas\Library\project\FacturasProvedores\obj\Debug\FacturasProvedores_MarkupCompile.lref
+D:\Empresas\Empresas\Milanelo\pruebas\Library\project\FacturasProvedores\obj\Debug\FacturasProvedores.baml
+D:\Empresas\Empresas\Milanelo\pruebas\Library\project\FacturasProvedores\obj\Debug\FacturasProvedores.g.resources
+D:\Empresas\Empresas\Milanelo\pruebas\Library\project\FacturasProvedores\obj\Debug\FacturasProvedores.Properties.Resources.resources
+D:\Empresas\Empresas\Milanelo\pruebas\Library\project\FacturasProvedores\obj\Debug\FacturasProvedores.csproj.GenerateResource.cache
+D:\Empresas\Empresas\Milanelo\pruebas\Library\project\FacturasProvedores\obj\Debug\FacturasProvedores.csproj.CoreCompileInputs.cache
+D:\Empresas\Empresas\Milanelo\pruebas\Library\project\FacturasProvedores\obj\Debug\FacturasProvedores.dll
+D:\Empresas\Empresas\Milanelo\pruebas\Library\project\FacturasProvedores\obj\Debug\FacturasProvedores.pdb
+D:\Empresas\Empresas\Milanelo\pruebas\Library\FacturasProvedores.dll
+D:\Empresas\Empresas\Milanelo\pruebas\Library\FacturasProvedores.pdb
+D:\Empresas\Empresas\Milanelo\pruebas\Library\project\FacturasProvedores\obj\Debug\FacturasProvedores.csproj.CopyComplete
+D:\Empresas\Empresas\Milanelo\pruebas\Library\project\FacturasProvedores\obj\Debug\BtnEditar.g.cs
+D:\Empresas\Empresas\Milanelo\pruebas\Library\project\FacturasProvedores\obj\Debug\BtnEditar.baml
