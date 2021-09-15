@@ -198,7 +198,10 @@ namespace SiasoftAppExt
                 //tabitem.Progreso(true);
                 string ffi = FecIni.Text.ToString();
                 string fff = FecFin.Text.ToString();
-                var slowTask = Task<DataSet>.Factory.StartNew(() => LoadData(ffi, fff, where, cod_empresa));
+
+                
+
+                var slowTask = Task<DataSet>.Factory.StartNew(() => LoadData(ffi, fff,  where, cod_empresa));
                 await slowTask;
                 //MessageBox.Show(slowTask.Result.ToString());
                 BtnEjecutar.IsEnabled = true;
@@ -232,7 +235,7 @@ namespace SiasoftAppExt
 
                     VentasPorClienteRef.ItemsSource = ((DataSet)slowTask.Result).Tables[7];
                     Total8.Text = ((DataSet)slowTask.Result).Tables[7].Rows.Count.ToString();
-                    
+
 
                     GridDocumen.ItemsSource = ((DataSet)slowTask.Result).Tables[8];
                     Total9.Text = ((DataSet)slowTask.Result).Tables[8].Rows.Count.ToString();
@@ -312,7 +315,7 @@ namespace SiasoftAppExt
         }
 
 
-        private DataSet LoadData(string Fi, string Ff, string where, string cod_empresa)
+        private DataSet LoadData(string Fi, string Ff,string where, string cod_empresa)
         {
 
             try
@@ -326,10 +329,10 @@ namespace SiasoftAppExt
                 //cmd = new SqlCommand("SpConsultaInAnalisisDeVentas", con);
                 cmd = new SqlCommand("_EmpSpConsultaInAnalisisDeVentas", con1);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@FechaIni", Fi);//if you have parameters.
-                cmd.Parameters.AddWithValue("@FechaFin", Ff);//if you have parameters.
-                cmd.Parameters.AddWithValue("@Where", where);//if you have parameters.
-                cmd.Parameters.AddWithValue("@codemp", cod_empresa);//if you have parameters.
+                cmd.Parameters.AddWithValue("@FechaIni", Fi);
+                cmd.Parameters.AddWithValue("@FechaFin", Ff);
+                cmd.Parameters.AddWithValue("@Where", where);                
+                cmd.Parameters.AddWithValue("@codemp", cod_empresa);
                 da = new SqlDataAdapter(cmd);
                 da.SelectCommand.CommandTimeout = 0;
                 da.Fill(ds);
@@ -722,7 +725,7 @@ namespace SiasoftAppExt
                     TextIva9.Text = ivaX.ToString("C");
                     TextTotal9.Text = totalX.ToString("C");
                     Total9.Text = GridDocumen.View.Records.Count.ToString();
-                }               
+                }
 
             }
             catch (Exception w)

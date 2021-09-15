@@ -202,7 +202,6 @@ D:\Siasoft\SiasoftApp\SiasoftApp_Aluwork\Library\Project\AnalisisDeVenta\obj\Deb
 D:\Siasoft\SiasoftApp\SiasoftApp_Aluwork\Library\Project\AnalisisDeVenta\obj\Debug\AnalisisDeVenta.pdb
 D:\Siasoft\SiasoftApp\SiasoftApp_Aluwork\Library\AnalisisDeVenta.dll
 D:\Siasoft\SiasoftApp\SiasoftApp_Aluwork\Library\AnalisisDeVenta.pdb
-D:\Empresas\Empresas\Boirion\proyect\AnalisisDeVenta\obj\Debug\AnalisisDeVenta.csprojAssemblyReference.cache
 D:\Empresas\Empresas\Boirion\proyect\AnalisisDeVenta\obj\Debug\AnalisisDeVenta.g.cs
 D:\Empresas\Empresas\Boirion\proyect\AnalisisDeVenta\obj\Debug\Detalle.g.cs
 D:\Empresas\Empresas\Boirion\proyect\AnalisisDeVenta\obj\Debug\AnalisisDeVenta_MarkupCompile.cache
@@ -218,3 +217,4 @@ D:\Empresas\Empresas\Boirion\proyect\AnalisisDeVenta\obj\Debug\AnalisisDeVenta.d
 D:\Empresas\Empresas\Boirion\proyect\AnalisisDeVenta\obj\Debug\AnalisisDeVenta.pdb
 D:\Empresas\Empresas\Boirion\AnalisisDeVenta.dll
 D:\Empresas\Empresas\Boirion\AnalisisDeVenta.pdb
+D:\Empresas\Empresas\Boirion\proyect\AnalisisDeVenta\obj\Debug\AnalisisDeVenta.csproj.AssemblyReference.cache

@@ -102,8 +102,10 @@
                                 <TextBlock  Grid.Column="1" Grid.Row="8" Foreground="Black"  FontSize="12" VerticalAlignment="Center" HorizontalAlignment="right" >Grupo:</TextBlock>
                                 <TextBox  x:Name="TextBoxGrpI" MaxLength="3" Grid.Column="2" Grid.Row="8"  Width="130" Height="28"    FontSize="12" ToolTip="F8 Buscar"  HorizontalAlignment="Center"  PreviewKeyDown="TextBox_PreviewKeyDown" Tag="inmae_gru"></TextBox>
                                 <TextBox  x:Name="TextBoxGrpF" MaxLength="3" Grid.Column="3" Grid.Row="8"  Width="130" Height="28"    FontSize="12"  ToolTip="F8 Buscar" HorizontalAlignment="Center"  PreviewKeyDown="TextBox_PreviewKeyDown" Tag="inmae_gru"></TextBox>
-
+                                
+                                
                                 <TextBlock  Grid.Column="1" Grid.Row="8" Foreground="Black"  FontSize="12" VerticalAlignment="Center" HorizontalAlignment="right" >Grupo:</TextBlock>
+                                                                
 
                                 <!--<TextBlock  Grid.Column="1" Grid.Row="9" Foreground="Black"  FontSize="12" VerticalAlignment="Center" HorizontalAlignment="right" >Importacion:</TextBlock>
                                 <TextBox  x:Name="TextBoxImpI"  MaxLength="5" Grid.Column="2" Grid.Row="9"  Width="130" Height="28"    FontSize="12"   HorizontalAlignment="Center"  ></TextBox>-->
@@ -2061,6 +2063,8 @@
                                         <syncfusion:GridTextColumn HeaderText="Trn" MappingName="cod_trn" Width="50"/>
                                         <syncfusion:GridTextColumn HeaderText="Documento" MappingName="num_trn" Width="110"/>
                                         <syncfusion:GridTextColumn HeaderText="Fecha Trans" MappingName="fec_trn" Width="130"/>
+                                        <syncfusion:GridTextColumn HeaderText="CUFE" MappingName="fa_cufe" Width="200"/>
+                                        <syncfusion:GridTextColumn HeaderText="TRN ANUL" MappingName="trn_anu" Width="80"/>
                                         <syncfusion:GridTextColumn HeaderText="Ven" MappingName="cod_ven" Width="70"/>
                                         <syncfusion:GridTextColumn HeaderText="Nit/cc" MappingName="cod_cli" Width="100"/>
                                         <syncfusion:GridTextColumn HeaderText="Cliente" MappingName="nom_ter" Width="220"/>
