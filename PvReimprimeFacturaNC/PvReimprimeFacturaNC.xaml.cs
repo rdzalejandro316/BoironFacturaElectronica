@@ -17,7 +17,7 @@ namespace SiasoftAppExt
 
         // prueba 
         //Sia.PublicarPnt(9558,"PvReimprimeFacturaNC");
-        
+
         dynamic SiaWin;
         public int idEmp = 0;
         string codbod = "";
@@ -95,11 +95,11 @@ namespace SiasoftAppExt
 
         private async void Ejecutar_Click(object sender, RoutedEventArgs e)
         {
-                       
+
             //LoadData(codtrn);
             try
             {
-                      
+
                 int _TipoDoc = CmbTipoDoc.SelectedIndex;
                 if (_TipoDoc < 0)
                 {
@@ -122,21 +122,21 @@ namespace SiasoftAppExt
                 if (_TipoDoc == 3) codtrn = "008"; // devolucion aplicada
                 if (_TipoDoc == 4) codtrn = "011"; // coditazion 
                 if (_TipoDoc == 5) codtrn = "505"; // pedidos
-               
+
                 string FecIni = FechaIni.Text;
                 string FecFin = FechaFin.Text;
-                string bodega = codbod.Trim();                             
+                string bodega = codbod.Trim();
 
                 var slowTask = Task<DataSet>.Factory.StartNew(() => SlowDude(FecIni, FecFin, bodega, codtrn, source.Token), source.Token);
-                await slowTask;                
+                await slowTask;
 
                 if (((DataSet)slowTask.Result).Tables[0].Rows.Count > 0)
                 {
                     dataGridSF.ItemsSource = ((DataSet)slowTask.Result).Tables[0];
-                    TextTotalEntradas.Text = ((DataSet)slowTask.Result).Tables[0].Rows.Count.ToString();                                      
+                    TextTotalEntradas.Text = ((DataSet)slowTask.Result).Tables[0].Rows.Count.ToString();
                 }
 
-                this.sfBusyIndicator.IsBusy = false;                
+                this.sfBusyIndicator.IsBusy = false;
             }
             catch (Exception ex)
             {
@@ -150,7 +150,7 @@ namespace SiasoftAppExt
         {
             try
             {
-                DataSet jj = LoadData(FecIni, FecFin, bodega,cod_trn, cancellationToken);
+                DataSet jj = LoadData(FecIni, FecFin, bodega, cod_trn, cancellationToken);
                 return jj;
 
             }
@@ -161,36 +161,36 @@ namespace SiasoftAppExt
             return null;
         }
 
-        private DataSet LoadData(string FI,string FF, string bodega,string cod_trn, CancellationToken cancellationToken)
+        private DataSet LoadData(string FI, string FF, string bodega, string cod_trn, CancellationToken cancellationToken)
         {
             try
             {
 
                 string tiponum = cod_trn == "005" ? "siasoft_num_trn" : "num_trn";
 
-                string query = "select cab.idreg,cab.cod_trn,cab."+ tiponum + " as num_trn,cab.fec_trn,cab.cod_cli,ter.cod_ven,vend.nom_mer,rtrim(ter.nom_ter) as nom_cli,cue.cod_bod,sum(cue.cantidad) as cantidad,sum(isnull(cue.subtotal+cue.val_iva-cue.val_des-cue.val_ret-cue.val_ica-cue.val_riva,0)) as tot_tot,max(trn.tip_trn) as tip_trn,cab.fa_cufe,cab.fa_fecharesp,cab.fa_codigo,cab.fa_msg,cab.fa_docelect,cab.trn_anu,cab.num_anu from incue_doc as cue ";             
-                query += " inner join incab_doc as cab on cab.idreg = cue.idregcab and cab.cod_trn='" + cod_trn + "'  inner join inmae_bod as bod on bod.cod_bod = cue.cod_bod ";                
+                string query = "select cab.idreg,cab.cod_trn,cab." + tiponum + " as num_trn,cab.fec_trn,cab.cod_cli,ter.cod_ven,vend.nom_mer,rtrim(ter.nom_ter) as nom_cli,cue.cod_bod,sum(cue.cantidad) as cantidad,sum(isnull(cue.subtotal+cue.val_iva-cue.val_des-cue.val_ret-cue.val_ica-cue.val_riva,0)) as tot_tot,max(trn.tip_trn) as tip_trn,cab.fa_cufe,cab.fa_fecharesp,cab.fa_codigo,cab.fa_msg,cab.fa_docelect,cab.trn_anu,cab.num_anu from incue_doc as cue ";
+                query += " inner join incab_doc as cab on cab.idreg = cue.idregcab and cab.cod_trn='" + cod_trn + "'  inner join inmae_bod as bod on bod.cod_bod = cue.cod_bod ";
                 query += " inner join comae_ter as ter on cab.cod_cli = ter.cod_ter ";
                 query += " left join InMae_mer as vend on  ter.cod_ven = vend.cod_mer ";
-                query += " inner join inmae_trn as trn on trn.cod_trn=cab.cod_trn   where convert(date,cab.fec_trn) between '" + FI + "' and '"+FF+" 23:59:59' ";                
-                query += " and cue.cod_bod = '" + bodega + "' group by cab.idreg,cab.cod_trn,cab."+ tiponum + ",cab.fec_trn,cab.cod_cli,ter.nom_ter,cue.cod_bod,fa_cufe,cab.fa_fecharesp,cab.fa_codigo,cab.fa_msg ,fa_docelect,cab.trn_anu,cab.num_anu,ter.cod_ven,vend.nom_mer order by cab.cod_trn,cab.fec_trn";                
+                query += " inner join inmae_trn as trn on trn.cod_trn=cab.cod_trn   where convert(date,cab.fec_trn) between '" + FI + "' and '" + FF + " 23:59:59' ";
+                query += " and cue.cod_bod = '" + bodega + "' group by cab.idreg,cab.cod_trn,cab." + tiponum + ",cab.fec_trn,cab.cod_cli,ter.nom_ter,cue.cod_bod,fa_cufe,cab.fa_fecharesp,cab.fa_codigo,cab.fa_msg ,fa_docelect,cab.trn_anu,cab.num_anu,ter.cod_ven,vend.nom_mer order by cab.cod_trn,cab.fec_trn";
 
                 DataSet ds = new DataSet();
-                if (string.IsNullOrEmpty(cod_trn)) return null;                                
-                dt.Clear();                
-                                                               
-                DataTable tabla = SiaWin.Func.SqlDT(query, "Tabla", idEmp);                
-                ds.Tables.Add(tabla);                
-                return ds;               
+                if (string.IsNullOrEmpty(cod_trn)) return null;
+                dt.Clear();
+
+                DataTable tabla = SiaWin.Func.SqlDT(query, "Tabla", idEmp);
+                ds.Tables.Add(tabla);
+                return ds;
             }
             catch (Exception e)
-            {                
+            {
                 //MessageBox.Show("aqui 44:"+e);
                 return null;
             }
         }
 
-    
+
 
         private void ReImprimir_Click(object sender, RoutedEventArgs e)
         {
@@ -221,18 +221,18 @@ namespace SiasoftAppExt
                     string numero_tran = row["num_trn"].ToString();
 
 
-                    string tipo  = ((ComboBoxItem)CmbTipoDoc.SelectedItem).Content.ToString().Trim(); 
+                    string tipo = ((ComboBoxItem)CmbTipoDoc.SelectedItem).Content.ToString().Trim();
 
                     SiaWin.seguridad.Auditor(
-                        0, 
-                        SiaWin._ProyectId, 
-                        SiaWin._UserId, 
-                        SiaWin._UserGroup, 
-                        SiaWin._BusinessId, 
-                        moduloid, 
-                        -1, 
+                        0,
+                        SiaWin._ProyectId,
+                        SiaWin._UserId,
+                        SiaWin._UserGroup,
+                        SiaWin._BusinessId,
+                        moduloid,
+                        -1,
                         -9,
-                         "PUNTO DE VENTA - "+codpvta+" REIMPRIMIO DOCUMENTO "+ tipo.ToUpper()+" - "+ numero_tran, 
+                         "PUNTO DE VENTA - " + codpvta + " REIMPRIMIO DOCUMENTO " + tipo.ToUpper() + " - " + numero_tran,
                         "REIMPRESION"
                         );
 
@@ -243,17 +243,59 @@ namespace SiasoftAppExt
                 {
                     MessageBox.Show("seleccione el documento que quire imprimir");
                 }
-                                
+
             }
             catch (Exception w)
             {
-                MessageBox.Show("error en la pantalla externa de imprimir:"+w);
+                MessageBox.Show("error en la pantalla externa de imprimir:" + w);
             }
-            
+
         }
 
-       
+        private void BtnRenviar_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                if (dataGridSF.SelectedIndex >= 0)
+                {
+                    DataRowView row = (DataRowView)dataGridSF.SelectedItems[0];
+                    int id = Convert.ToInt32(row["idreg"]);
+                    string num_trn = row["num_trn"].ToString().Trim();
+                    string cod_trn = row["cod_trn"].ToString().Trim();
+                    string trn_anu = row["trn_anu"].ToString().Trim();
+                    string fa_cufe = row["fa_cufe"].ToString().Trim();
+
+                    if (cod_trn == "005" || trn_anu == "005")
+                    {
+                        if (!string.IsNullOrWhiteSpace(fa_cufe))
+                        {
+                            MessageBoxResult mess = MessageBox.Show("el documento: " + num_trn + " ya fue enviado electronicamente ustede desea reenviarlo?", "alerta", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
+                            if (mess == MessageBoxResult.Yes)
+                            {
+                                this.idrowcab = id;
+                                this.codtrn = cod_trn;
+                                this.cufe = "";
+                                this.Close();
+                            }
+                        }
+
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("debe de seleccionar un items de la consulta", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("error al abrir reenvio");
+            }
+        }
 
 
     }
+
 }

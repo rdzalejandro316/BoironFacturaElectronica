@@ -148,23 +148,23 @@
     <None Include="Connected Services\ServiceEnvio\FacturaElectronicaGS.ServiceEnvio.SendEmailResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServiceEnvio\Service.wsdl" />
-    <None Include="Connected Services\ServiceEnvio\Service.xsd">
+    <None Include="Connected Services\ServiceEnvio\Service1.wsdl" />
+    <None Include="Connected Services\ServiceEnvio\Service6.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceEnvio\Service1.xsd">
+    <None Include="Connected Services\ServiceEnvio\Service61.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceEnvio\Service2.xsd">
+    <None Include="Connected Services\ServiceEnvio\Service62.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceEnvio\Service3.xsd">
+    <None Include="Connected Services\ServiceEnvio\Service63.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceEnvio\Service4.xsd">
+    <None Include="Connected Services\ServiceEnvio\Service64.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceEnvio\Service5.xsd">
+    <None Include="Connected Services\ServiceEnvio\Service65.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\Settings.settings">

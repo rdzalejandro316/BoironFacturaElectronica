@@ -6,13 +6,23 @@
              xmlns:local="clr-namespace:SiasoftAppExt"
               xmlns:SiaSf="http://schemas.syncfusion.com/wpf"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="900" Loaded="Window_Loaded">
+             Height="600" Width="1100" Loaded="Window_Loaded">
+
     <Window.Resources>
         <Style TargetType="SiaSf:GridHeaderCellControl" x:Key="headerStyle">
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="11"/>
             <Setter Property="Foreground" Value="LightGray"/>
             <Setter Property="Background" Value="#373737"/>
+        </Style>
+        <Style TargetType="Button" x:Key="BtnStyle">
+            <Setter Property="Background" Value="DodgerBlue"/>
+            <Setter Property="BorderBrush" Value="DodgerBlue"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Cursor" Value="Hand"/>
         </Style>
     </Window.Resources>
 
@@ -23,28 +33,27 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="40"/>
             </Grid.RowDefinitions>
-            
-            <Grid Grid.Row="0"  Background="WhiteSmoke">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="40" />
-                    <RowDefinition Height="10"/>
-                </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0"  Background="Black">
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70"/>
                     <ColumnDefinition Width="100"/>
-                    <ColumnDefinition Width="120"/>
-                    <ColumnDefinition Width="120"/>
-                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="80"/>
                     <ColumnDefinition Width="160"/>
-                    <ColumnDefinition Width="120"/>
-                    <ColumnDefinition Width="120"/>
                     <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Fecha:  "  Grid.Row="0" Grid.Column="0" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="13"/>
+
+                <TextBlock Text="Fecha:  "  Grid.Row="0" Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="13" FontWeight="Bold"/>
                 <DatePicker x:Name="FechaIni" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" ></DatePicker>
                 <DatePicker x:Name="FechaFin" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" ></DatePicker>
-                <TextBlock Text="Tipo documento: "  Grid.Row="0" Grid.Column="3" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="13"/>
-                <ComboBox  x:Name="CmbTipoDoc" Margin="2,5,2,5" Grid.Row="0"  Grid.Column="4"  SelectedItem="{Binding SelectedItem}" IsSynchronizedWithCurrentItem="True" >
-                    <ComboBoxItem IsSelected="True" Content="Factura POS"/>
+
+                <TextBlock Text="Tipo Doc: " ToolTip="Tipo de documento"  Grid.Row="0" Grid.Column="3" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="13" FontWeight="Bold"/>
+
+                <ComboBox  x:Name="CmbTipoDoc" Margin="2,5,2,5" Grid.Row="0"  Grid.Column="4"  SelectedItem="{Binding SelectedItem}" IsSynchronizedWithCurrentItem="True" VerticalAlignment="Center" Height="30">
+                    <ComboBoxItem  Content="Factura POS"/>
                     <ComboBoxItem Content="Factura Credito"/>
                     <ComboBoxItem Content="Nota Credito Total"/>
                     <ComboBoxItem Content="Nota Credito Devolucion"/>
@@ -52,11 +61,21 @@
                     <ComboBoxItem Content="Pedidos"/>
                 </ComboBox>
 
-                <Button x:Name="Ejecutar" Content="Ejecutar" Grid.Column="5" Margin="5,5,5,0" Background="DodgerBlue" Click="Ejecutar_Click" Foreground="White" Height="30" VerticalAlignment="Top" BorderBrush="{x:Null}" Cursor="Hand"/>
-                <Button x:Name="ReImprimir" Content="Re-Imprimir" Grid.Column="6" Margin="5,5,5,5" Background="DodgerBlue" Click="ReImprimir_Click" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand"/>
-                <Image Name="ImgEmpresa" Grid.Column="7" Source="{Binding  ConfigCSource.PathImgBusiness}"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SnapsToDevicePixels="True" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
+                <TextBlock Text="# Doc: " Grid.Column="5" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="13" FontWeight="Bold"/>
+                <TextBox Grid.Row="0" x:Name="TxtNumDoc" Height="25" Grid.Column="6" VerticalAlignment="Center" VerticalContentAlignment="Center" MaxLength="12" Foreground="Red" FontWeight="Bold" />
+
+
+
+                <StackPanel Orientation="Horizontal" Grid.Column="7" Margin="10,0,0,0">
+                    <Button x:Name="Ejecutar" Content="Ejecutar" Click="Ejecutar_Click"  Style="{StaticResource BtnStyle}"/>
+                    <Button x:Name="ReImprimir" Content="Re-Imprimir" Click="ReImprimir_Click" Style="{StaticResource BtnStyle}"/>
+                    <Button x:Name="BtnRenviar" Content="FE renvio" ToolTip="FACTURA ELECTRONICA REENVIO" Click="BtnRenviar_Click" Style="{StaticResource BtnStyle}"/>
+
+                </StackPanel>
+
+
             </Grid>
-            
+
             <Grid Grid.Row="1">
                 <SiaSf:SfBusyIndicator Name="sfBusyIndicator" Margin="5" VerticalAlignment="Center" FontSize="12" AnimationSpeed="100"  AnimationType="Rainy" Header="Cargando Datos - SiasoftApp" Height="200" IsBusy="False" />
                 <SiaSf:SfDataGrid  x:Name="dataGridSF"  Margin="2,2,2,2" EnableDataVirtualization = "True" AutoGenerateColumns="False" ShowGroupDropArea="True" FontSize="11" AllowFiltering="True" Foreground="Black" AllowResizingColumns="True" HeaderStyle="{StaticResource headerStyle}">
@@ -73,12 +92,12 @@
 
                         <SiaSf:GridTextColumn HeaderText="cod_ven" MappingName="cod_ven" Width="50" />
                         <SiaSf:GridTextColumn HeaderText="vendedor" MappingName="nom_mer" Width="150" />
-                        
+
                         <SiaSf:GridTextColumn HeaderText="TrnAnu" MappingName="trn_anu" Width="40" />
                         <SiaSf:GridTextColumn HeaderText="NumAnu" MappingName="num_anu" Width="100" />
                         <SiaSf:GridTextColumn HeaderText="Cufe" MappingName="fa_cufe" Width="150" />
                         <SiaSf:GridTextColumn HeaderText="DocumentoElect" MappingName="fa_docelect" Width="100" />
-                        
+
                         <SiaSf:GridTextColumn HeaderText="Codigo" MappingName="fa_codigo" Width="50" />
                         <SiaSf:GridTextColumn HeaderText="FechaRespuesta" MappingName="fa_fecharesp" Width="150" />
                         <SiaSf:GridTextColumn HeaderText="Msg" MappingName="fa_msg" Width="250" />
@@ -90,13 +109,13 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-               
+
                 <TextBlock Text="Total Documentos : " Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="White" FontWeight="Bold"/>
                 <TextBlock  x:Name="TextTotalEntradas" Grid.Column="1" Text="0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White"/>
-                
+
             </Grid>
         </Grid>
-        
+
 
     </Grid>
 

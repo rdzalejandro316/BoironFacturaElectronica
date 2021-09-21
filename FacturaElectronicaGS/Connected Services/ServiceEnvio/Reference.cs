@@ -98,6 +98,9 @@ namespace FacturaElectronicaGS.ServiceEnvio {
         private string redondeoAplicadoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private FacturaElectronicaGS.ServiceEnvio.SectorSalud sectorSaludField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private FacturaElectronicaGS.ServiceEnvio.TasaDeCambio tasaDeCambioField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -111,6 +114,9 @@ namespace FacturaElectronicaGS.ServiceEnvio {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string tipoOperacionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string tipoSectorField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string totalAnticiposField;
@@ -472,6 +478,19 @@ namespace FacturaElectronicaGS.ServiceEnvio {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public FacturaElectronicaGS.ServiceEnvio.SectorSalud sectorSalud {
+            get {
+                return this.sectorSaludField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.sectorSaludField, value) != true)) {
+                    this.sectorSaludField = value;
+                    this.RaisePropertyChanged("sectorSalud");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public FacturaElectronicaGS.ServiceEnvio.TasaDeCambio tasaDeCambio {
             get {
                 return this.tasaDeCambioField;
@@ -532,6 +551,19 @@ namespace FacturaElectronicaGS.ServiceEnvio {
                 if ((object.ReferenceEquals(this.tipoOperacionField, value) != true)) {
                     this.tipoOperacionField = value;
                     this.RaisePropertyChanged("tipoOperacion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string tipoSector {
+            get {
+                return this.tipoSectorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.tipoSectorField, value) != true)) {
+                    this.tipoSectorField = value;
+                    this.RaisePropertyChanged("tipoSector");
                 }
             }
         }
@@ -1427,6 +1459,115 @@ namespace FacturaElectronicaGS.ServiceEnvio {
                 if ((object.ReferenceEquals(this.matriculaTransporteField, value) != true)) {
                     this.matriculaTransporteField = value;
                     this.RaisePropertyChanged("matriculaTransporte");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SectorSalud", Namespace="http://schemas.datacontract.org/2004/07/ServiceSoap.UBL2._0.Models.Object")]
+    [System.SerializableAttribute()]
+    public partial class SectorSalud : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private FacturaElectronicaGS.ServiceEnvio.BeneficiarioSalud BeneficiarioField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IdPersonalizacionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private FacturaElectronicaGS.ServiceEnvio.DatosPacienteSalud[] PacientesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TipoEscenarioField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private FacturaElectronicaGS.ServiceEnvio.Extras[] extrasField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public FacturaElectronicaGS.ServiceEnvio.BeneficiarioSalud Beneficiario {
+            get {
+                return this.BeneficiarioField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BeneficiarioField, value) != true)) {
+                    this.BeneficiarioField = value;
+                    this.RaisePropertyChanged("Beneficiario");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string IdPersonalizacion {
+            get {
+                return this.IdPersonalizacionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IdPersonalizacionField, value) != true)) {
+                    this.IdPersonalizacionField = value;
+                    this.RaisePropertyChanged("IdPersonalizacion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public FacturaElectronicaGS.ServiceEnvio.DatosPacienteSalud[] Pacientes {
+            get {
+                return this.PacientesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PacientesField, value) != true)) {
+                    this.PacientesField = value;
+                    this.RaisePropertyChanged("Pacientes");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TipoEscenario {
+            get {
+                return this.TipoEscenarioField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TipoEscenarioField, value) != true)) {
+                    this.TipoEscenarioField = value;
+                    this.RaisePropertyChanged("TipoEscenario");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public FacturaElectronicaGS.ServiceEnvio.Extras[] extras {
+            get {
+                return this.extrasField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.extrasField, value) != true)) {
+                    this.extrasField = value;
+                    this.RaisePropertyChanged("extras");
                 }
             }
         }
@@ -2567,6 +2708,12 @@ namespace FacturaElectronicaGS.ServiceEnvio {
         private string descripcionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string descripcion2Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string descripcion3Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string descripcionTecnicaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -2595,6 +2742,9 @@ namespace FacturaElectronicaGS.ServiceEnvio {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private FacturaElectronicaGS.ServiceEnvio.Extensible[] extrasField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string idEsquemaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private FacturaElectronicaGS.ServiceEnvio.FacturaImpuestos[] impuestosDetallesField;
@@ -2800,6 +2950,32 @@ namespace FacturaElectronicaGS.ServiceEnvio {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string descripcion2 {
+            get {
+                return this.descripcion2Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.descripcion2Field, value) != true)) {
+                    this.descripcion2Field = value;
+                    this.RaisePropertyChanged("descripcion2");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string descripcion3 {
+            get {
+                return this.descripcion3Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.descripcion3Field, value) != true)) {
+                    this.descripcion3Field = value;
+                    this.RaisePropertyChanged("descripcion3");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string descripcionTecnica {
             get {
                 return this.descripcionTecnicaField;
@@ -2925,6 +3101,19 @@ namespace FacturaElectronicaGS.ServiceEnvio {
                 if ((object.ReferenceEquals(this.extrasField, value) != true)) {
                     this.extrasField = value;
                     this.RaisePropertyChanged("extras");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string idEsquema {
+            get {
+                return this.idEsquemaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.idEsquemaField, value) != true)) {
+                    this.idEsquemaField = value;
+                    this.RaisePropertyChanged("idEsquema");
                 }
             }
         }
@@ -3228,6 +3417,9 @@ namespace FacturaElectronicaGS.ServiceEnvio {
         private string codigoInternoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string conceptoRecaudoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string cufeDocReferenciadoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -3246,7 +3438,13 @@ namespace FacturaElectronicaGS.ServiceEnvio {
         private string fechaInicioValidezField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string montoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string numeroDocumentoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string numeroIdentificacionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string tipoCUFEField;
@@ -3289,6 +3487,19 @@ namespace FacturaElectronicaGS.ServiceEnvio {
                 if ((object.ReferenceEquals(this.codigoInternoField, value) != true)) {
                     this.codigoInternoField = value;
                     this.RaisePropertyChanged("codigoInterno");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string conceptoRecaudo {
+            get {
+                return this.conceptoRecaudoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.conceptoRecaudoField, value) != true)) {
+                    this.conceptoRecaudoField = value;
+                    this.RaisePropertyChanged("conceptoRecaudo");
                 }
             }
         }
@@ -3372,6 +3583,19 @@ namespace FacturaElectronicaGS.ServiceEnvio {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string monto {
+            get {
+                return this.montoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.montoField, value) != true)) {
+                    this.montoField = value;
+                    this.RaisePropertyChanged("monto");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string numeroDocumento {
             get {
                 return this.numeroDocumentoField;
@@ -3380,6 +3604,19 @@ namespace FacturaElectronicaGS.ServiceEnvio {
                 if ((object.ReferenceEquals(this.numeroDocumentoField, value) != true)) {
                     this.numeroDocumentoField = value;
                     this.RaisePropertyChanged("numeroDocumento");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string numeroIdentificacion {
+            get {
+                return this.numeroIdentificacionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.numeroIdentificacionField, value) != true)) {
+                    this.numeroIdentificacionField = value;
+                    this.RaisePropertyChanged("numeroIdentificacion");
                 }
             }
         }
@@ -3749,6 +3986,9 @@ namespace FacturaElectronicaGS.ServiceEnvio {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string montoTotalField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string redondeoAplicadoField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -3794,6 +4034,19 @@ namespace FacturaElectronicaGS.ServiceEnvio {
                 if ((object.ReferenceEquals(this.montoTotalField, value) != true)) {
                     this.montoTotalField = value;
                     this.RaisePropertyChanged("montoTotal");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string redondeoAplicado {
+            get {
+                return this.redondeoAplicadoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.redondeoAplicadoField, value) != true)) {
+                    this.redondeoAplicadoField = value;
+                    this.RaisePropertyChanged("redondeoAplicado");
                 }
             }
         }
@@ -5325,6 +5578,9 @@ namespace FacturaElectronicaGS.ServiceEnvio {
         private string tipoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string unidadMedidaTransporteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string valorField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -5463,6 +5719,19 @@ namespace FacturaElectronicaGS.ServiceEnvio {
                 if ((object.ReferenceEquals(this.tipoField, value) != true)) {
                     this.tipoField = value;
                     this.RaisePropertyChanged("tipo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string unidadMedidaTransporte {
+            get {
+                return this.unidadMedidaTransporteField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.unidadMedidaTransporteField, value) != true)) {
+                    this.unidadMedidaTransporteField = value;
+                    this.RaisePropertyChanged("unidadMedidaTransporte");
                 }
             }
         }
@@ -5873,6 +6142,173 @@ namespace FacturaElectronicaGS.ServiceEnvio {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BeneficiarioSalud", Namespace="http://schemas.datacontract.org/2004/07/ServiceSoap.UBL2._0.Models.Object")]
+    [System.SerializableAttribute()]
+    public partial class BeneficiarioSalud : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private FacturaElectronicaGS.ServiceEnvio.Direccion DireccionResidenciaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TipoIdentificacionField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public FacturaElectronicaGS.ServiceEnvio.Direccion DireccionResidencia {
+            get {
+                return this.DireccionResidenciaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DireccionResidenciaField, value) != true)) {
+                    this.DireccionResidenciaField = value;
+                    this.RaisePropertyChanged("DireccionResidencia");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TipoIdentificacion {
+            get {
+                return this.TipoIdentificacionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TipoIdentificacionField, value) != true)) {
+                    this.TipoIdentificacionField = value;
+                    this.RaisePropertyChanged("TipoIdentificacion");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DatosPacienteSalud", Namespace="http://schemas.datacontract.org/2004/07/ServiceSoap.UBL2._0.Models.Object")]
+    [System.SerializableAttribute()]
+    public partial class DatosPacienteSalud : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private FacturaElectronicaGS.ServiceEnvio.GeneralSalud[] CamposGeneralesField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public FacturaElectronicaGS.ServiceEnvio.GeneralSalud[] CamposGenerales {
+            get {
+                return this.CamposGeneralesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CamposGeneralesField, value) != true)) {
+                    this.CamposGeneralesField = value;
+                    this.RaisePropertyChanged("CamposGenerales");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GeneralSalud", Namespace="http://schemas.datacontract.org/2004/07/ServiceSoap.UBL2._0.Models.Object")]
+    [System.SerializableAttribute()]
+    public partial class GeneralSalud : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NombreField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ValorField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Nombre {
+            get {
+                return this.NombreField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NombreField, value) != true)) {
+                    this.NombreField = value;
+                    this.RaisePropertyChanged("Nombre");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Valor {
+            get {
+                return this.ValorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ValorField, value) != true)) {
+                    this.ValorField = value;
+                    this.RaisePropertyChanged("Valor");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DocumentResponse", Namespace="http://schemas.datacontract.org/2004/07/ServiceSoap.UBL2._0.Response")]
     [System.SerializableAttribute()]
     public partial class DocumentResponse : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -5891,6 +6327,9 @@ namespace FacturaElectronicaGS.ServiceEnvio {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool esValidoDianField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string fechaAceptacionDIANField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string fechaRespuestaField;
@@ -5983,6 +6422,19 @@ namespace FacturaElectronicaGS.ServiceEnvio {
                 if ((this.esValidoDianField.Equals(value) != true)) {
                     this.esValidoDianField = value;
                     this.RaisePropertyChanged("esValidoDian");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string fechaAceptacionDIAN {
+            get {
+                return this.fechaAceptacionDIANField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.fechaAceptacionDIANField, value) != true)) {
+                    this.fechaAceptacionDIANField = value;
+                    this.RaisePropertyChanged("fechaAceptacionDIAN");
                 }
             }
         }
@@ -6153,6 +6605,18 @@ namespace FacturaElectronicaGS.ServiceEnvio {
         private bool aceptacionFisicaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string acuseComentarioField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string acuseEstatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string acuseResponsableField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string acuseRespuestaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ambienteField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -6187,6 +6651,9 @@ namespace FacturaElectronicaGS.ServiceEnvio {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private FacturaElectronicaGS.ServiceEnvio.Evento[] eventosField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string fechaAceptacionDIANField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string fechaDocumentoField;
@@ -6240,6 +6707,58 @@ namespace FacturaElectronicaGS.ServiceEnvio {
                 if ((this.aceptacionFisicaField.Equals(value) != true)) {
                     this.aceptacionFisicaField = value;
                     this.RaisePropertyChanged("aceptacionFisica");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string acuseComentario {
+            get {
+                return this.acuseComentarioField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.acuseComentarioField, value) != true)) {
+                    this.acuseComentarioField = value;
+                    this.RaisePropertyChanged("acuseComentario");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string acuseEstatus {
+            get {
+                return this.acuseEstatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.acuseEstatusField, value) != true)) {
+                    this.acuseEstatusField = value;
+                    this.RaisePropertyChanged("acuseEstatus");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string acuseResponsable {
+            get {
+                return this.acuseResponsableField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.acuseResponsableField, value) != true)) {
+                    this.acuseResponsableField = value;
+                    this.RaisePropertyChanged("acuseResponsable");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string acuseRespuesta {
+            get {
+                return this.acuseRespuestaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.acuseRespuestaField, value) != true)) {
+                    this.acuseRespuestaField = value;
+                    this.RaisePropertyChanged("acuseRespuesta");
                 }
             }
         }
@@ -6396,6 +6915,19 @@ namespace FacturaElectronicaGS.ServiceEnvio {
                 if ((object.ReferenceEquals(this.eventosField, value) != true)) {
                     this.eventosField = value;
                     this.RaisePropertyChanged("eventos");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string fechaAceptacionDIAN {
+            get {
+                return this.fechaAceptacionDIANField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.fechaAceptacionDIANField, value) != true)) {
+                    this.fechaAceptacionDIANField = value;
+                    this.RaisePropertyChanged("fechaAceptacionDIAN");
                 }
             }
         }
@@ -7024,6 +7556,15 @@ namespace FacturaElectronicaGS.ServiceEnvio {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LeidoEmailIPAddressField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LeidoEstatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LeidoFechaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string canalDeEntregaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -7069,6 +7610,45 @@ namespace FacturaElectronicaGS.ServiceEnvio {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LeidoEmailIPAddress {
+            get {
+                return this.LeidoEmailIPAddressField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LeidoEmailIPAddressField, value) != true)) {
+                    this.LeidoEmailIPAddressField = value;
+                    this.RaisePropertyChanged("LeidoEmailIPAddress");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LeidoEstatus {
+            get {
+                return this.LeidoEstatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LeidoEstatusField, value) != true)) {
+                    this.LeidoEstatusField = value;
+                    this.RaisePropertyChanged("LeidoEstatus");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LeidoFecha {
+            get {
+                return this.LeidoFechaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LeidoFechaField, value) != true)) {
+                    this.LeidoFechaField = value;
+                    this.RaisePropertyChanged("LeidoFecha");
+                }
             }
         }
         

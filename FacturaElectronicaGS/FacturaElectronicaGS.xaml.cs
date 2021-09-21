@@ -27,7 +27,7 @@ namespace SiasoftAppExt
     public partial class FacturaElectronicaGS : Window
     {
         BasicHttpBinding port;
-        SrvEnvio.ServiceClient serviceClienteEnvio;
+        SrvEnvio.ServiceClient serviceClienteEnvio = new SrvEnvio.ServiceClient();
         SrvAjunto.ServiceClient serviceClientAdjunto = new SrvAjunto.ServiceClient();
 
         dynamic SiaWin;
@@ -409,12 +409,10 @@ namespace SiasoftAppExt
 
         #region Enviar (Web Service SOAP Emisión)
         //        private void BtnEnviar_Click(object sender, EventArgs e)
-        private void Enviando()
+        private async void Enviando()
         {
             try
-            {
-
-                //MessageBox.Show("enviando");
+            {                
                 if ((string)dsImprimir.Tables[0].Rows[0]["cod_trn"] == "005")
                     Tipo_Documento = "Factura";
                 if ((string)dsImprimir.Tables[0].Rows[0]["cod_trn"] == "007")
@@ -431,52 +429,57 @@ namespace SiasoftAppExt
                 }
 
                 factura.fechaEmision = tbxFechaEmision.Text.Trim();
-
                 factura.fechaVencimiento = Convert.ToDateTime(dsImprimir.Tables[0].Rows[0]["fec_ven"].ToString().Trim()).ToString("yyyy-MM-dd");
 
                 string ArchivoRequest = "Tmp/" + factura.consecutivoDocumento.Trim() + ".txt";
                 StreamWriter MyFile = new StreamWriter(ArchivoRequest); //ruta y name del archivo request a almecenar
                 XmlSerializer Serializer1 = new XmlSerializer(typeof(FacturaGeneral));
-                //MessageBox.Show("XML:" + Serializer1.ToString());
+                
 
                 Serializer1.Serialize(MyFile, factura); // Objeto serializado
                 MyFile.Close();
-                DocumentResponse docRespuesta; //
+                Task<DocumentResponse> docRespuesta;
                 rtxInformacion.Clear();
-                this.Cursor = Cursors.Wait;
+
                 rtxInformacion.Text = "Envio de Factura:" + Environment.NewLine;
-                string cantidadAnexos = dsImprimir.Tables[4].Rows[0]["ad_junto"].ToString().Trim();
-                //cantidadAnexos = "1";
+                string cantidadAnexos = dsImprimir.Tables[4].Rows[0]["ad_junto"].ToString().Trim();                
                 string trnenviar = dsImprimir.Tables[0].Rows[0]["cod_trn"].ToString();
                 if (trnenviar == "007" || trnenviar == "008") cantidadAnexos = "0";
-                //                string cantidadAnexos = "0";
 
-                if (cantidadAnexos == "0")
+
+                if (MessageBox.Show("Confirmar envio ?", "Enviando documento", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
 
-                    //MessageBox.Show(tokenEmpresa);
-                    //MessageBox.Show(tokenAuthorizacion);
-                    if (MessageBox.Show("Confirmar envio ?", "Enviando documento", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-                    {
-                        docRespuesta = serviceClienteEnvio.Enviar(tokenEmpresa, tokenAuthorizacion, factura, "0");
+                    sfBusyIndicatorEstado.IsBusy = true;
+                    GridMain.IsEnabled = false;
+                    GridMain.Opacity = 0.5;
 
+                    docRespuesta = serviceClienteEnvio.EnviarAsync(tokenEmpresa, tokenAuthorizacion, factura, "0");
+                    await docRespuesta;
+
+
+                    if (docRespuesta.IsCompleted)
+                    {
+                        sfBusyIndicatorEstado.IsBusy = false;
+                        GridMain.IsEnabled = true;
+                        GridMain.Opacity = 1;
 
                         StringBuilder msgError = new StringBuilder();
-                        if (docRespuesta.mensajesValidacion != null)
+                        if (docRespuesta.Result.mensajesValidacion != null)
                         {
-
-                            int nReturnMsg = docRespuesta.mensajesValidacion.Count();
+                            int nReturnMsg = docRespuesta.Result.mensajesValidacion.Count();
                             for (int i = 0; i < nReturnMsg; i++)
                             {
-                                msgError.Append(docRespuesta.mensajesValidacion[i].ToString() + Environment.NewLine);
+                                msgError.Append(docRespuesta.Result.mensajesValidacion[i].ToString() + Environment.NewLine);
                             }
                         }
-                        if (docRespuesta.codigo == 114)  //documento emitdo previa mente
+
+                        if (docRespuesta.Result.codigo == 114)  //documento emitdo previa mente
                         {
                             DocumentStatusResponse resp = serviceClienteEnvio.EstadoDocumento(tokenEmpresa, tokenAuthorizacion, factura.consecutivoDocumento.ToString());
                             if (resp.codigo == 200)
                             {
-                                rtxInformacion.Text = "ReEnvio de Factura emitido previa mente:" + docRespuesta.codigo + Environment.NewLine;
+                                rtxInformacion.Text = "ReEnvio de Factura emitido previa mente:" + docRespuesta.Result.codigo + Environment.NewLine;
                                 ActualizaDocFacturaElectronicaRespuesta(resp);
                                 rtxInformacion.Text += "Codigo: " + resp.codigo.ToString() + Environment.NewLine +
                                "Consecutivo Documento: " + resp.consecutivo + Environment.NewLine +
@@ -484,31 +487,40 @@ namespace SiasoftAppExt
                                "Mensaje: " + resp.mensaje + Environment.NewLine +
                                "Resultado: " + resp.resultado + Environment.NewLine + Environment.NewLine;
 
-                                this.Cursor = Cursors.Arrow;
                                 return;
-
                             }
-
                         }
 
                         //envio factura 
-                        if (docRespuesta.codigo == 200 || docRespuesta.codigo == 201)
+                        if (docRespuesta.Result.codigo == 200 || docRespuesta.Result.codigo == 201)
                         {
-                            ActualizaDocFacturaElectronica(docRespuesta);
-                            this.rtxInformacion.Text += "Codigo: " + docRespuesta.codigo.ToString() + Environment.NewLine +
-                                 "Consecutivo Documento: " + docRespuesta.consecutivoDocumento + Environment.NewLine +
-                                 "Cufe: " + docRespuesta.cufe + Environment.NewLine +
-                                 "Mensaje: " + docRespuesta.mensaje + Environment.NewLine +
-                                 "Resultado: " + docRespuesta.resultado + Environment.NewLine;
+                            ActualizaDocFacturaElectronica(docRespuesta.Result);
+                            this.rtxInformacion.Text += "Codigo: " + docRespuesta.Result.codigo.ToString() + Environment.NewLine +
+                                 "Consecutivo Documento: " + docRespuesta.Result.consecutivoDocumento + Environment.NewLine +
+                                 "Cufe: " + docRespuesta.Result.cufe + Environment.NewLine +
+                                 "Mensaje: " + docRespuesta.Result.mensaje + Environment.NewLine +
+                                 "Resultado: " + docRespuesta.Result.resultado + Environment.NewLine;
                             //this.Close();
                         }
                         else
                         {
-                            //ActualizaDocFacturaElectronica(docRespuesta);
-                            this.rtxInformacion.Text += "Codigo: " + docRespuesta.codigo.ToString() + Environment.NewLine +
-                                "Mensaje: " + docRespuesta.mensaje + Environment.NewLine +
-                                "Resultado: " + docRespuesta.resultado + Environment.NewLine +
-                                "Errores  :" + msgError.ToString();
+                            StringBuilder response = new StringBuilder();
+                            response.Append("x Codigo x:" + docRespuesta.Result.codigo.ToString() + Environment.NewLine);
+                            response.Append("Consecutivo Documento :" + docRespuesta.Result.consecutivoDocumento + Environment.NewLine);
+                            response.Append("Mensaje :" + docRespuesta.Result.mensaje + Environment.NewLine);
+                            response.Append("Resultado :" + docRespuesta.Result.resultado + Environment.NewLine);
+                            response.Append("Errores :" + msgError.ToString() + Environment.NewLine);
+
+
+                            if (docRespuesta.Result.reglasValidacionDIAN != null)
+                            {
+                                for (int i = 0; i < docRespuesta.Result.reglasValidacionDIAN.Count(); i++)
+                                {
+                                    response.Append("DIAN:" + docRespuesta.Result.reglasValidacionDIAN[i].ToString() + Environment.NewLine);
+                                }
+                            }
+
+                            rtxInformacion.Text += response.ToString();
                         }
 
                     }
@@ -517,111 +529,17 @@ namespace SiasoftAppExt
                         rtxInformacion.Text = "Proceso cancelado";
                     }
                 }
-                else
-                {
-                    factura.cliente.notificar = "SI";
-
-                    docRespuesta = serviceClienteEnvio.Enviar(tokenEmpresa, tokenAuthorizacion, factura, "11");
-                    //envio factura 
-                    StringBuilder msgError = new StringBuilder();
-                    if (docRespuesta.mensajesValidacion != null)
-                    {
-                        //MessageBox.Show(docRespuesta.mensajesValidacion.Count().ToString());
-                        int nReturnMsg = docRespuesta.mensajesValidacion.Count();
-                        for (int i = 0; i < nReturnMsg; i++)
-                        {
-                            //MessageBox.Show(i.ToString() + "-" + msgError.ToString());
-                            msgError.Append(docRespuesta.mensajesValidacion[i].ToString() + Environment.NewLine);
-                        }
 
 
-                        //int reglas = docRespuesta.reglasNotificacionDIAN.Count();
-                        //for (int i = 0; i < reglas; i++)
-                        //{
-                        //    MessageBox.Show("-" + docRespuesta.reglasNotificacionDIAN[i].ToString());
-                        ////    msgError.Append("-DIAN:"+docRespuesta.reglasValidacionDIAN[i].ToString() + Environment.NewLine);
-                        //}
-                    }
-
-
-                    if (docRespuesta.codigo == 114)  //documento emitdo previa mente
-                    {
-                        DocumentStatusResponse resp = serviceClienteEnvio.EstadoDocumento(tokenEmpresa, tokenAuthorizacion, factura.consecutivoDocumento.ToString());
-                        if (resp.codigo == 200)
-                        {
-                            rtxInformacion.Text = "ReEnvio de Factura emitido previa mente:" + docRespuesta.codigo + Environment.NewLine;
-                            ActualizaDocFacturaElectronicaRespuesta(resp);
-                            rtxInformacion.Text += "Codigo: " + resp.codigo.ToString() + Environment.NewLine +
-                           "Consecutivo Documento: " + resp.consecutivo + Environment.NewLine +
-                           "Cufe: " + resp.cufe + Environment.NewLine +
-                           "Mensaje: " + resp.mensaje + Environment.NewLine +
-                           "Resultado: " + resp.resultado + Environment.NewLine + Environment.NewLine;
-
-                            int resultado = EnviarArchivosAdjuntosRespuesta(cantidadAnexos_, resp);
-                            if (resultado > 0)
-                            {
-                                rtxInformacion.Text += resultado.ToString() + "PROCESO EXITOSO: Archivos adjuntos procesados correctamente!!!";
-                            }
-                            else
-                            {
-                                rtxInformacion.Text += Environment.NewLine + "ERROR: procesando archivos adjuntos!!!";
-                            }
-
-                            this.Cursor = Cursors.Arrow;
-                            return;
-
-                        }
-
-
-                    }
-                    if (docRespuesta.codigo == 200 || docRespuesta.codigo == 201)
-                    {
-                        rtxInformacion.Text += "Codigo: " + docRespuesta.codigo.ToString() + Environment.NewLine +
-                                               "Consecutivo Documento: " + docRespuesta.consecutivoDocumento + Environment.NewLine +
-                                               "Cufe: " + docRespuesta.cufe + Environment.NewLine +
-                                               "Mensaje: " + docRespuesta.mensaje + Environment.NewLine +
-                                               "Resultado: " + docRespuesta.resultado + Environment.NewLine + Environment.NewLine;
-
-                        rtxInformacion.Text += "--------------------------------------------------" + Environment.NewLine;
-                        rtxInformacion.Text += "Envio de adjuntos:" + Environment.NewLine;
-                        ActualizaDocFacturaElectronica(docRespuesta);
-                        int resultado = EnviarArchivosAdjuntos(cantidadAnexos_, docRespuesta);
-                        if (resultado > 0)
-                        {
-                            rtxInformacion.Text += resultado.ToString() + "PROCESO EXITOSO: Archivos adjuntos procesados correctamente!!!";
-                        }
-                        else
-                        {
-                            rtxInformacion.Text += Environment.NewLine + "ERROR: procesando archivos adjuntos!!!";
-                        }
-                    }
-                    else
-                    {
-
-
-                        rtxInformacion.Text += docRespuesta.codigo.ToString() + Environment.NewLine + docRespuesta.mensaje + Environment.NewLine + docRespuesta.resultado;
-                        //ActualizaDocFacturaElectronica(docRespuesta);
-                        this.rtxInformacion.Text += "Codigo: " + docRespuesta.codigo.ToString() + Environment.NewLine +
-                            "Mensaje: " + docRespuesta.mensaje + Environment.NewLine +
-                            "Resultado: " + docRespuesta.resultado + Environment.NewLine +
-                            "Errores  :" + msgError.ToString() + Environment.NewLine;
-
-                        this.rtxInformacion.Text += "OTRO : " +
-                            docRespuesta.mensajesValidacion +
-                            docRespuesta.resultado + Environment.NewLine +
-                            docRespuesta.reglasValidacionDIAN;
-
-
-                    }
-                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                //+Environment.NewLine + ex.StackTrace
-                this.Cursor = Cursors.Arrow;
+                sfBusyIndicatorEstado.IsBusy = false;
+                GridMain.IsEnabled = true;
+                GridMain.Opacity = 1;
             }
-            this.Cursor = Cursors.Arrow;
+
         }
         #endregion
 
@@ -1276,6 +1194,56 @@ namespace SiasoftAppExt
                 MessageBox.Show("error al recargar:" + w);
             }
         }
+
+        private async void BtnRenviarPdf_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                rtxInformacion.Text = "Envio de Factura:" + Environment.NewLine;
+
+                string ruta = AppDomain.CurrentDomain.BaseDirectory + "/Tmp";
+                string numtrn = txtNumFactura.Text;
+
+                sfBusyIndicatorEstado.IsBusy = true;
+                sfBusyIndicatorEstado.Header = "Cargado Factura como Adjunto";
+                GridMain.IsEnabled = false;
+                GridMain.Opacity = 0.5;
+
+
+                Task<SendEmailResponse> docRespuesta;
+                docRespuesta = serviceClienteEnvio.EnvioCorreoAsync(tokenEmpresa, tokenAuthorizacion, numtrn, tbxEmail.Text, "0");
+                await docRespuesta;
+
+                if (docRespuesta.IsCompleted)
+                {
+
+                    StringBuilder response = new StringBuilder();
+                    response.Append("x Codigo x:" + docRespuesta.Result.codigo.ToString() + Environment.NewLine);
+                    response.Append("Mensaje :" + docRespuesta.Result.mensaje + Environment.NewLine);
+                    response.Append("Resultado :" + docRespuesta.Result.resultado + Environment.NewLine);
+                    rtxInformacion.Text += response.ToString();
+                }
+
+                sfBusyIndicatorEstado.IsBusy = false;
+                sfBusyIndicatorEstado.Header = "Enviando .......";
+                GridMain.IsEnabled = true;
+                GridMain.Opacity = 1;
+
+
+                rtxInformacion.Text += "** FIN ** " + Environment.NewLine;
+
+
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("error al reenviar adjunto:" + w);
+                sfBusyIndicatorEstado.IsBusy = false;
+                GridMain.IsEnabled = true;
+                GridMain.Opacity = 1;
+            }
+        }
+
 
 
     }
