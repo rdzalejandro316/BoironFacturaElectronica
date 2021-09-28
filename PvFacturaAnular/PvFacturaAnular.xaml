@@ -1,0 +1,131 @@
+﻿<Window x:Class="SiasoftAppExt.PvFacturaAnular"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:SiaSf="http://schemas.syncfusion.com/wpf"
+             xmlns:local="clr-namespace:SiasoftAppExt"
+             Width="500" Height="450" Loaded="Window_Loaded"  SiaSf:SkinStorage.VisualStyle="Metro" Title="Nota Credito">
+
+    <Window.Resources>
+        <Style TargetType="Button" x:Key="boton">
+            <Setter Property="Background" Value="#3498db"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Border Grid.Row="0" Background="white" Height="Auto"  BorderBrush="Gray" BorderThickness="1,1,1,1"  Margin="5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="0.5*"/>
+                        <RowDefinition Height="110"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="40"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.Resources>
+                        <Style TargetType="TextBlock" x:Key="title">
+                            <Setter Property="Margin" Value="10 0 0 0"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="HorizontalAlignment" Value="Right"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                        </Style>
+                        <Style TargetType="TextBox" x:Key="value">
+                            <Setter Property="Margin" Value="5"/>
+                        </Style>
+                    </Grid.Resources>
+
+                    <Border Background="#3498db" Grid.ColumnSpan="3">
+                        <TextBlock Name="Txtrn_anular" Text="Anulacion/Devolucion Factura" Margin="10,5,10,5" Foreground="White" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Segoe UI Bold"/>
+                    </Border>
+
+                    <Border Grid.Row="2" Grid.ColumnSpan="3" Background="white" Height="Auto"  BorderBrush="Silver" BorderThickness="1,1,1,1"  Margin="5">
+                        <Grid Margin="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="45"/>
+                                <RowDefinition Height="45"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="0.5*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Row="0" Text="Tipo de Documento: " Style="{StaticResource title}"/>
+                            <ComboBox  x:Name="CmbTipoDoc" Height="28" Grid.Row="0"  Grid.Column="1"  SelectedItem="{Binding SelectedItem}" IsSynchronizedWithCurrentItem="True" Margin="5 0 0 0" Cursor="Hand">
+                                <ComboBoxItem IsSelected="True" Content="Factura POS"/>
+                                <ComboBoxItem Content="Factura Credito"/>
+                            </ComboBox>
+
+                            <TextBlock Grid.Row="1" Text="Consulta Documento: " Style="{StaticResource title}"/>
+                            <StackPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Orientation="Horizontal">
+                                <StackPanel>
+                                    <TextBlock Text="Fecha Inicial" HorizontalAlignment="Center" FontSize="9" VerticalAlignment="Center"  FontWeight="Bold"/>
+                                    <DatePicker x:Name="FechaConsIni" Width="120" VerticalAlignment="Center" Margin="5"/>
+                                </StackPanel>
+                                <StackPanel>
+                                    <TextBlock Text="Fecha Final" HorizontalAlignment="Center" FontSize="9" VerticalAlignment="Center"  FontWeight="Bold"/>
+                                    <DatePicker x:Name="FechaConsFin" Width="120" VerticalAlignment="Center" Margin="5"/>
+                                </StackPanel>
+                                <Button Grid.Row="1" Name="BTNconsultar" Grid.Column="2" Margin="5" Click="BTNconsultar_Click" Style="{StaticResource boton}" Width="40" Height="30" VerticalAlignment="Bottom">
+                                    <Image Source="imagenes/magnifier.png" Margin="5"/>
+                                </Button>
+                            </StackPanel>
+
+                        </Grid>
+                    </Border>
+
+                    <TextBlock Grid.Row="3" Text="Factura Numero: " Style="{StaticResource title}"/>
+                    <TextBox Name="TXfactura" Grid.Row="3" Grid.Column="1" Style="{StaticResource value}" LostFocus="TXfactura_LostFocus"/>
+
+                    <TextBlock Grid.Row="4" Text="Nota: " Style="{StaticResource title}"/>
+                    <TextBox Grid.Row="4" Grid.Column="1" x:Name="TxtNota" Style="{StaticResource value}"/>
+
+                    <TextBlock Grid.Row="5" Text="Autoriza: " Style="{StaticResource title}"/>
+                    <TextBox Grid.Row="5" x:Name="TxtAutoriza" Grid.Column="1" Style="{StaticResource value}"/>
+
+                    <TextBlock Grid.Row="6" Text="Concepto Dev: " Style="{StaticResource title}"/>
+                    <!--<ComboBox x:Name="CBXconcepto" SelectedValue="{Binding SelectedValue, Mode=TwoWay}" Margin="5" Grid.Row="5" Grid.Column="1" SelectedValuePath="cod_dev"/>-->
+                    <SiaSf:ComboBoxAdv x:Name="CBXconcepto" Grid.Column="1" Grid.Row="6" FontSize="12" Margin="5,6,5,4"  DefaultText="Seleccione Un Concepto" DisplayMemberPath="descripcion"  SelectedValuePath="cod_dev" Cursor="Hand"/>
+
+                    <TextBlock Grid.Row="7" Text="Tipo: " Style="{StaticResource title}"/>
+                    <SiaSf:ComboBoxAdv x:Name="CBXTipo" Grid.Column="1" Grid.Row="7" FontSize="12" Margin="5,6,5,4"  DefaultText="Seleccione Un tipo" Width="150" HorizontalAlignment="Left" Cursor="Hand">
+                        <SiaSf:ComboBoxItemAdv Tag="1" Content="anulacion"/>
+                        <SiaSf:ComboBoxItemAdv Tag="2" Content="devolucion"/>
+                    </SiaSf:ComboBoxAdv>
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <Grid Width="200" Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Button Name="BTNvalidar" Grid.Column="0" Content="Validar" Margin="2" Click="BTNvalidar_Click" Style="{StaticResource boton}"/>
+                        <Button Grid.Column="1" Content="Cancelar" Margin="2" Style="{StaticResource boton}" Click="Button_Click" IsCancel="True"/>
+                    </Grid>
+
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
+
+    
+    

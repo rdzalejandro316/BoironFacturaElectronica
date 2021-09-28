@@ -128,6 +128,7 @@
                             <SiaSf:SfDataGrid.Columns>
                                 <SiaSf:GridTextColumn HeaderText="Codigo" MappingName="cod_trn" Width="80" />
                                 <SiaSf:GridTextColumn HeaderText="Transaccion " MappingName="num_trn" Width="100" />
+                                <SiaSf:GridTextColumn HeaderText="Doc DIAN" MappingName="siasoft_num_trn" Width="110"/>
                                 <SiaSf:GridTextColumn HeaderText="Fecha trn" MappingName="fec_trn" Width="110" />
                                 <SiaSf:GridTextColumn HeaderText="Vendedor" MappingName="cod_ven" Width="80" />
                                 <SiaSf:GridTextColumn HeaderText="Codigo Cliente" MappingName="cod_cli" Width="100" />

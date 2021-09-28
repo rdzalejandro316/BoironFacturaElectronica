@@ -1,0 +1,71 @@
+﻿<Window x:Class="PvFacturaAnular.ConsultaDocumentos"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:SiaSf="http://schemas.syncfusion.com/wpf"
+        xmlns:local="clr-namespace:PvFacturaAnular"        
+        Height="500" Width="850" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <Style TargetType="SiaSf:GridHeaderCellControl" x:Key="headerStyle">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#bdc3c7"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <TextBlock Text="F5=Selecionar" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#2980b9" FontWeight="Bold"/>
+        </Grid>
+
+        <Border Grid.Row="1" Background="white" Height="Auto"  BorderBrush="Silver" BorderThickness="1,1,1,1"  Margin="5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <SiaSf:SfBusyIndicator Name="sfBusyIndicator"
+                                    Margin="5,-99,4.8,5.4"
+                                    VerticalAlignment="Bottom" FontSize="12" AnimationSpeed="100" 
+                                    AnimationType="Rainy" Header="Cargando Datos - SiasoftApp" Height="200" 
+                                    IsBusy="False" Grid.ColumnSpan="3" />
+
+                <SiaSf:SfDataGrid x:Name="DataGridDoc"  AllowResizingColumns="True"  AutoGenerateColumns="False" AllowFiltering="True"  Margin="5" HeaderStyle="{StaticResource headerStyle}" PreviewKeyDown="DataGridDoc_PreviewKeyDown">
+                    <SiaSf:SfDataGrid.Columns>
+                        <SiaSf:GridTextColumn HeaderText="Tipo" MappingName="cod_trn" Width="60"/>
+                        <SiaSf:GridTextColumn HeaderText="Numero" MappingName="num_trn" Width="120"/>
+                        <SiaSf:GridTextColumn HeaderText="Doc DIAN" MappingName="siasoft_num_trn" Width="120"/>
+                        <SiaSf:GridTextColumn HeaderText="Fecha" MappingName="fec_trn" Width="140"/>
+                        <SiaSf:GridTextColumn HeaderText="Cliente" MappingName="nom_ter" Width="280"/>
+                        <SiaSf:GridTextColumn DisplayBinding="{Binding Path=cantidad, StringFormat='{}{0:N2}'}" Width="70" HeaderText="Cantidad" TextAlignment="Right" AllowFiltering="False"/>
+                        <SiaSf:GridTextColumn DisplayBinding="{Binding Path=tot_tot, StringFormat='{}{0:N2}'}" Width="148" HeaderText="Total" TextAlignment="Right" AllowFiltering="False"/>
+                    </SiaSf:SfDataGrid.Columns>
+                </SiaSf:SfDataGrid>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="2" Background="#373737">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Total : " VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10 0 0 0" Foreground="White" FontWeight="Bold"/>
+            <TextBlock Name="Total" Grid.Column="1" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+
+            <Button Name="BTNcons" Grid.Column="3" Margin="2" Content="Selecionar (F5)" Click="Button_Click" BorderBrush="{x:Null}" Background="#3498db" Foreground="White" Cursor="Hand"/>
+        </Grid>
+    </Grid>
+    
+    
+</Window>
+

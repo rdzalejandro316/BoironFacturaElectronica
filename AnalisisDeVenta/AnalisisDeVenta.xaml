@@ -1843,6 +1843,7 @@
                                     <syncfusion:SfDataGrid.Columns>
                                         <syncfusion:GridTextColumn HeaderText="cod_trn" MappingName="cod_trn" Width="50"/>
                                         <syncfusion:GridTextColumn HeaderText="Documento" MappingName="num_trn" Width="110"/>
+                                        <syncfusion:GridTextColumn HeaderText="Doc DIAN" MappingName="siasoft_num_trn" Width="110"/>
                                         <syncfusion:GridTextColumn HeaderText="Nit-cc" MappingName="cod_cli" Width="110"/>
                                         <syncfusion:GridTextColumn HeaderText="Nombre Cliente" MappingName="nom_cli" Width="200"/>
                                         <syncfusion:GridTextColumn HeaderText="Referencia" MappingName="cod_ref" Width="110"/>
@@ -2062,6 +2063,7 @@
 
                                         <syncfusion:GridTextColumn HeaderText="Trn" MappingName="cod_trn" Width="50"/>
                                         <syncfusion:GridTextColumn HeaderText="Documento" MappingName="num_trn" Width="110"/>
+                                        <syncfusion:GridTextColumn HeaderText="Doc DIAN" MappingName="siasoft_num_trn" Width="110"/>
                                         <syncfusion:GridTextColumn HeaderText="Fecha Trans" MappingName="fec_trn" Width="130"/>
                                         <syncfusion:GridTextColumn HeaderText="CUFE" MappingName="fa_cufe" Width="200"/>
                                         <syncfusion:GridTextColumn HeaderText="TRN ANUL" MappingName="trn_anu" Width="80"/>

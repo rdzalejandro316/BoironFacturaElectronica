@@ -83,7 +83,8 @@
                         <SiaSf:GridTextColumn HeaderText="IdRegCab" MappingName="idreg" Width="50"/>
                         <SiaSf:GridTextColumn HeaderText="Tipo" MappingName="cod_trn" Width="40"/>
                         <SiaSf:GridTextColumn HeaderText="Documento" MappingName="num_trn" Width="100"/>
-                        <SiaSf:GridTextColumn HeaderText="Fecha" MappingName="fec_trn" />
+                        <SiaSf:GridTextColumn HeaderText="Doc DIAN" MappingName="siasoft_num_trn" Width="100"/>
+                        <SiaSf:GridDateTimeColumn CustomPattern="dd-MM-yyyy hh:mm:ss" Pattern="CustomPattern" HeaderText="Fecha" MappingName="fec_trn" Width="120"/>
                         <SiaSf:GridTextColumn HeaderText="Nit/cc" MappingName="cod_cli" Width="120"/>
                         <SiaSf:GridTextColumn HeaderText="Nombre Cliente" MappingName="nom_cli" Width="350" />
                         <SiaSf:GridNumericColumn HeaderText="Cantidad" MappingName="cantidad" Width="70" />

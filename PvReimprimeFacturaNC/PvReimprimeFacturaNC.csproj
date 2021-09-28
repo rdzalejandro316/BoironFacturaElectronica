@@ -43,6 +43,10 @@
     <Reference Include="Syncfusion.SfShared.WPF">
       <HintPath>..\..\..\Syncfusion.SfShared.WPF.dll</HintPath>
     </Reference>
+    <Reference Include="Syncfusion.Shared.WPF, Version=16.1460.0.32, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Syncfusion.Shared.WPF.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />

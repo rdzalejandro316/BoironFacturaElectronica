@@ -166,14 +166,17 @@ namespace SiasoftAppExt
             try
             {
 
-                string tiponum = cod_trn == "005" ? "siasoft_num_trn" : "num_trn";
+                //string tiponum = cod_trn == "005" ? "siasoft_num_trn" : "num_trn";
 
-                string query = "select cab.idreg,cab.cod_trn,cab." + tiponum + " as num_trn,cab.fec_trn,cab.cod_cli,ter.cod_ven,vend.nom_mer,rtrim(ter.nom_ter) as nom_cli,cue.cod_bod,sum(cue.cantidad) as cantidad,sum(isnull(cue.subtotal+cue.val_iva-cue.val_des-cue.val_ret-cue.val_ica-cue.val_riva,0)) as tot_tot,max(trn.tip_trn) as tip_trn,cab.fa_cufe,cab.fa_fecharesp,cab.fa_codigo,cab.fa_msg,cab.fa_docelect,cab.trn_anu,cab.num_anu from incue_doc as cue ";
+                string query = "select cab.idreg,cab.cod_trn,cab.num_trn as num_trn,cab.siasoft_num_trn,cab.fec_trn,cab.cod_cli,ter.cod_ven,vend.nom_mer,rtrim(ter.nom_ter) as nom_cli,cue.cod_bod,sum(cue.cantidad) as cantidad,sum(isnull(cue.subtotal+cue.val_iva-cue.val_des-cue.val_ret-cue.val_ica-cue.val_riva,0)) as tot_tot,max(trn.tip_trn) as tip_trn,cab.fa_cufe,cab.fa_fecharesp,cab.fa_codigo,cab.fa_msg,cab.fa_docelect,cab.trn_anu,cab.num_anu from incue_doc as cue ";
                 query += " inner join incab_doc as cab on cab.idreg = cue.idregcab and cab.cod_trn='" + cod_trn + "'  inner join inmae_bod as bod on bod.cod_bod = cue.cod_bod ";
                 query += " inner join comae_ter as ter on cab.cod_cli = ter.cod_ter ";
                 query += " left join InMae_mer as vend on  ter.cod_ven = vend.cod_mer ";
                 query += " inner join inmae_trn as trn on trn.cod_trn=cab.cod_trn   where convert(date,cab.fec_trn) between '" + FI + "' and '" + FF + " 23:59:59' ";
-                query += " and cue.cod_bod = '" + bodega + "' group by cab.idreg,cab.cod_trn,cab." + tiponum + ",cab.fec_trn,cab.cod_cli,ter.nom_ter,cue.cod_bod,fa_cufe,cab.fa_fecharesp,cab.fa_codigo,cab.fa_msg ,fa_docelect,cab.trn_anu,cab.num_anu,ter.cod_ven,vend.nom_mer order by cab.cod_trn,cab.fec_trn";
+                query += " and cue.cod_bod = '" + bodega + "' ";
+                query += " group by cab.idreg,cab.cod_trn,cab.num_trn,cab.siasoft_num_trn,cab.fec_trn,cab.cod_cli,ter.nom_ter,cue.cod_bod,fa_cufe,cab.fa_fecharesp,cab.fa_codigo, ";
+                query += " cab.fa_msg,fa_docelect,cab.trn_anu,cab.num_anu,ter.cod_ven,vend.nom_mer  ";
+                query += " order by cab.cod_trn,cab.fec_trn ";
 
                 DataSet ds = new DataSet();
                 if (string.IsNullOrEmpty(cod_trn)) return null;
