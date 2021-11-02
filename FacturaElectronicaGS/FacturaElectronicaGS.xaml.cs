@@ -320,27 +320,39 @@ namespace SiasoftAppExt
 
                 #region impuestosGenerales
 
-                facturaDemo.impuestosGenerales = new FacturaImpuestos[1];
-                FacturaImpuestos impuestoGeneral1 = new FacturaImpuestos
-                {
-                    baseImponibleTOTALImp = dsImprimir.Tables[2].Rows[0]["base_iva"].ToString().Trim(),
-                    codigoTOTALImp = "01",
-                    porcentajeTOTALImp = dsImprimir.Tables[2].Rows[0]["por_iva"].ToString().Trim(),
-                    unidadMedida = "94",
-                    valorTOTALImp = dsImprimir.Tables[2].Rows[0]["val_iva"].ToString().Trim()
-                };
+                int reg = dsImprimir.Tables[2].Rows.Count;
+                facturaDemo.impuestosGenerales = new FacturaImpuestos[reg];
 
-                facturaDemo.impuestosGenerales[0] = impuestoGeneral1;
+                for (int j = 0; j < reg; j++)
+                {
+                    FacturaImpuestos impuestoGeneral1 = new FacturaImpuestos
+                    {
+                        baseImponibleTOTALImp = dsImprimir.Tables[2].Rows[j]["base"].ToString().Trim(),
+                        codigoTOTALImp = "01",
+                        porcentajeTOTALImp = dsImprimir.Tables[2].Rows[j]["por_iva"].ToString().Trim(),
+                        unidadMedida = "94",
+                        valorTOTALImp = dsImprimir.Tables[2].Rows[j]["val_iva"].ToString().Trim()
+                    };
+                    facturaDemo.impuestosGenerales[j] = impuestoGeneral1;
+                }
+
                 #endregion
 
                 #region impuestosTotales
-                facturaDemo.impuestosTotales = new ImpuestosTotales[1];
-                ImpuestosTotales impuestoGeneralTOTAL1 = new ImpuestosTotales
+                DataRow[] porivas = dsImprimir.Tables[2].Select("por_iva>0");
+                facturaDemo.impuestosTotales = new ImpuestosTotales[porivas.Length];
+
+                int k = 0;
+                foreach (DataRow rows in porivas)
                 {
-                    codigoTOTALImp = "01",
-                    montoTotal = dsImprimir.Tables[2].Rows[0]["val_iva"].ToString().Trim()
-                };
-                facturaDemo.impuestosTotales[0] = impuestoGeneralTOTAL1;
+                    ImpuestosTotales impuestoGeneralTOTAL1 = new ImpuestosTotales
+                    {
+                        codigoTOTALImp = "01",
+                        montoTotal = rows["val_iva"].ToString().Trim()
+                    };
+                    facturaDemo.impuestosTotales[k] = impuestoGeneralTOTAL1;
+                    k++;
+                }
                 #endregion
 
                 #region mediosDePago
@@ -388,10 +400,11 @@ namespace SiasoftAppExt
                 facturaDemo.totalProductos = numitems.ToString();
 
 
-                facturaDemo.totalBaseImponible = dsImprimir.Tables[2].Rows[0]["base"].ToString().Trim();
-                facturaDemo.totalBrutoConImpuesto = dsImprimir.Tables[2].Rows[0]["tot_tot"].ToString().Trim();
-                facturaDemo.totalMonto = dsImprimir.Tables[2].Rows[0]["tot_tot"].ToString().Trim();
-                facturaDemo.totalSinImpuestos = dsImprimir.Tables[2].Rows[0]["base"].ToString().Trim();
+                facturaDemo.totalBaseImponible = dsImprimir.Tables[2].Compute("SUM(base)", "").ToString().Trim();
+                facturaDemo.totalBrutoConImpuesto = dsImprimir.Tables[2].Compute("SUM(tot_tot)", "").ToString().Trim();
+                facturaDemo.totalMonto = dsImprimir.Tables[2].Compute("SUM(tot_tot)", "").ToString().Trim();
+                facturaDemo.totalSinImpuestos = dsImprimir.Tables[2].Compute("SUM(base)", "").ToString().Trim();
+
 
 
                 return facturaDemo;

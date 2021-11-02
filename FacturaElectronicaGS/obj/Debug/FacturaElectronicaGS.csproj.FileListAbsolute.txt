@@ -132,7 +132,6 @@ D:\Empresas\Empresas\Boirion\proyect\FacturaElectronicaGS\obj\Debug\FacturaElect
 D:\Empresas\Empresas\Boirion\proyect\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.Properties.Resources.resources
 D:\Empresas\Empresas\Boirion\proyect\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.csproj.GenerateResource.cache
 D:\Empresas\Empresas\Boirion\proyect\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.csproj.CoreCompileInputs.cache
-D:\Empresas\Empresas\Boirion\proyect\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.csproj.CopyComplete
 D:\Empresas\Empresas\Boirion\FacturaElectronicaGS.dll.config
 D:\Empresas\Empresas\Boirion\proyect\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.dll
 D:\Empresas\Empresas\Boirion\proyect\FacturaElectronicaGS\obj\Debug\FacturaElectronicaGS.pdb
